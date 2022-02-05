@@ -45,7 +45,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
     };
 
     const ContentComp = () => (
-        <div className={`flex flex-col h-full p-32 bg-black-1 bg-opacity-25 ${textAlign === 'centered' ? 'justify-center items-center' :
+        <div className={`flex flex-col h-full p-5 sm:p-5 lg:p-32 bg-black-1 bg-opacity-25 ${textAlign === 'centered' ? 'justify-center items-center' :
             textAlign === 'rightBottom' ? 'justify-end items-end' : textAlign === 'right' ? 'justify-center items-end' : textAlign === 'leftBottom' ? 'justify-end items-start'
                 : textAlign === 'left' ? 'justify-center items-start' :
                     textAlign === 'centeredTop' ? 'justify-start items-center' : 'justify-center items-center'}`}>

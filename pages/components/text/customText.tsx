@@ -26,7 +26,7 @@ export const CustomText = (props: TextProps) => {
         }
         if (style === 'title') {
             return (
-                <h1 className={`text-7xl font-bold`} style={{
+                <h1 className={` text-3xl sm:text-5xl md:text-7xl font-bold`} style={{
                     textAlign: textAlign === 'centeredTop' ? 'center' :
                         textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
                 }}>
