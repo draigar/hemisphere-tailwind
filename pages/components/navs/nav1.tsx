@@ -46,10 +46,10 @@ export default function Navbar1() {
                     >
                         <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
                             {nav && nav.map((el: any, i: number) => (
-                                <li className="nav-item mr-8" key={i}>
+                                <li className="nav-item mr-8 " key={i}>
                                     <Link href={el.slug}>
                                         <a
-                                            className={`px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug ${stickyClass ? 'text-black' : 'text-white'} hover:opacity-75`}
+                                            className={`px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:text-primary-600 hover:underline underline-offset-4 decoration-2 ${stickyClass ? 'text-black' : 'text-white'} hover:opacity-75`}
                                         >
                                             <span className="ml-2">{el.title}</span>
                                         </a>
