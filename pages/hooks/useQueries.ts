@@ -1,4 +1,4 @@
-import { getRefByData, routeQuery, siteConfig } from '@web/lib/sanity/queries';
+import { getRefByData, routeQuery, siteConfig } from '../lib/sanity/queries';
 import { useMutation, useQuery } from 'react-query';
 
 export const useQueries = () => {

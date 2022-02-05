@@ -1,4 +1,4 @@
-import { getRefByData } from '@web/lib/sanity/queries';
+import { getRefByData } from '../lib/sanity/queries';
 
 export const fetchRefByData = async (data: {
     document: string;
