@@ -1,5 +1,9 @@
 import * as React from 'react';
 
+import { CustomText } from '../text/customText';
+import { urlFor } from '@web/helpers/imageUrlGenerator';
+import { videoAssetFor } from '@web/helpers/video-url';
+
 interface ImageVideoBgComponentProps {
     content: any;
 }
@@ -40,15 +44,56 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
         return colors;
     };
 
-    console.log(content)
+    const ContentComp = () => (
+        <div className={`flex flex-col h-full p-32 bg-black-1 bg-opacity-25 ${textAlign === 'centered' ? 'justify-center items-center' :
+            textAlign === 'rightBottom' ? 'justify-end items-end' : textAlign === 'right' ? 'justify-center items-end' : textAlign === 'leftBottom' ? 'justify-end items-start'
+                : textAlign === 'left' ? 'justify-center items-start' :
+                    textAlign === 'centeredTop' ? 'justify-start items-center' : 'justify-center items-center'}`}>
+            <div className={`wow animate__animated animate__zoomIn mb-8 ${headingLengthSize === 'md' ? 'w-2/6' :
+                headingLengthSize === 'lg' ? 'w-2/5' : headingLengthSize === 'xl' ? 'w-2/4'
+                    : headingLengthSize === 'xs' ? 'w-1/5' : headingLengthSize === 'sm' ? 'w-1/4' :
+                        headingLengthSize === 'xxl' ? 'w-2/3' : headingLengthSize === 'xxs' ? 'w-1/6' : '10%'} `}
+                data-wow-duration="1s" data-wow-delay="0s">
+                <CustomText content={headingText} textAlign={textAlign} />
+            </div>
+            <div className={`wow animate__animated animate__zoomIn ${headingLengthSize === 'md' ? 'w-2/6' :
+                headingLengthSize === 'lg' ? 'w-2/5' : headingLengthSize === 'xl' ? 'w-2/4'
+                    : headingLengthSize === 'xs' ? 'w-1/5' : headingLengthSize === 'sm' ? 'w-1/4' :
+                        headingLengthSize === 'xxl' ? 'w-2/3' : headingLengthSize === 'xxs' ? 'w-1/6' : '10%'} `} data-wow-duration="1s" data-wow-delay=".7s">
+                {isTaglineEnabled && <CustomText content={tagline} textAlign={textAlign} />}
+            </div>
+        </div>
+    )
+
+    const RenderVideo = () => {
+        const videoAsset = videoAssetFor(backgroundVideo)
+        return (
+            <>
+                <video autoPlay loop muted id="video-bg">
+                    <source src={videoAsset.url} type={`video/${videoAsset.extension}`} />
+                </video>
+                <div className="absolute top-0 left-0 w-full h-full">
+                    <ContentComp />
+                </div>
+            </>
+        )
+    }
+
+    const RenderImage = () => {
+        const imageAsset = urlFor(backgroundImage).url()
+        const bgStyle = {
+            backgroundImage: `url(${imageAsset})`
+        }
+        return (
+            <div style={bgStyle} className="h-full bg-no-repeat bg-cover">
+                <ContentComp />
+            </div>
+        )
+      }
 
     return (
-        <div className="h-6/6 bg-teal-600 p-4">
-            <div className={`flex flex-col ${textAlign}`}>
-                <h1>Amaka, Ben, and Kosi Supernatural Hemp</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam lacus suspendisse faucibus
-                </p>
-            </div>
+        <div className="h-6/6 bg-teal-600">
+            {backgroundType === 'image' ? <RenderImage /> : backgroundType === 'video' ? <RenderVideo /> : <ContentComp />}
         </div>
     );
 };
