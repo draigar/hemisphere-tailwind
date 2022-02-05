@@ -8,12 +8,18 @@ interface DefaultLayoutProps {
     children?: any;
 }
 
-export const DefaultLayout = (props: DefaultLayoutProps) => {
+const DefaultLayout = (props: DefaultLayoutProps) => {
     const { children } = props;
     // const isFetching = useIsFetching()
 
     React.useEffect(() => {
         new WOW().init()
     },[])
-    return null
+    return (
+        <div>
+            {children}
+        </div>
+    )
 }
+
+export default DefaultLayout;
