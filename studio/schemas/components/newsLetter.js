@@ -44,16 +44,12 @@ export default {
             name: 'inputElement',
             title: 'Input Settings',
             type: 'formField',
-        },
+        }, 
         {
-            name: 'margin',
-            title: 'Margin Settings',
-            type: 'margin',
-        },
-        {
-            name: 'height',
-            title: 'Height Size',
-            type: 'size',
+            name: 'buttonType',
+            title: 'Select Button Type',
+            type: 'button',
+            description: 'Select Button Type and Fix the properties',
         },
     
     ],

@@ -10,19 +10,9 @@ export default {
             of: [{type: 'inputElement'}]
         },
         {
-            title: 'Submit Button',
-            name: 'submitButton',
-            type: 'button',
-        },
-        {
             title: 'Response Message',
             name: 'submitResponse',
             type: 'customText',
         },
-        {
-            title: 'Response Background',
-            name: 'submitResponseBackground',
-            type: 'color',
-        }
     ]
 }

@@ -23,8 +23,8 @@ export default {
               { title: "Default Button", value: "default" },
               { title: "Outlined Button", value: "outlined" },
               { title: "Decorative Button", value: "decorative" },
-              { title: "HyperLink", value: "hyperlink" },
-              { title: "Ghost", value: "ghost" },
+          { title: "HyperLink", value: "hyperlink" },
+          { title: "Ghost", value: "ghost" },
           ]
       }
   },
@@ -35,16 +35,6 @@ export default {
       validation: Rule => [
         Rule.max(10).error('Text should be less than 10')
       ]
-    },
-    {
-      title: 'Text Color',
-      name: 'textColor',
-      type: 'colors',
-    },
-    {
-      title: 'Size',
-      name: 'buttonSize',
-      type: 'size',
     },
     {
       title: 'Background Color',
@@ -66,18 +56,12 @@ export default {
         hidden: ({parent}) => !parent?.border && parent?.type !== "outlined"
     },
     {
-      title: 'Button Link',
-      name: 'buttonLinkEnabled',
-      type: 'boolean',
-    },
-    {
       title: 'Link ',
       description: 'Use this to link button to a route',
       name: 'buttonLink',
       type: 'link',
-      hidden: ({parent}) => !parent?.buttonLinkEnabled,
       validation: Rule => [
-        Rule.required().error('CTA Must be linked to something')
+        Rule.required().error('where does the button lead to')
       ],
     },
   ],

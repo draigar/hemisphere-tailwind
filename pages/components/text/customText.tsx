@@ -24,27 +24,34 @@ export const CustomText = (props: TextProps) => {
             )
             // return React.createElement(style, { className: `heading-${level}` }, props.children)
         }
-        if (style === 'title') {
-            return (
-                <h1 className={`text-7xl font-bold`} style={{
-                    textAlign: textAlign === 'centeredTop' ? 'center' :
-                        textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
-                }}>
-                    {props.children}
-                </h1>
-            )
+        if (style === "title") {
+          return (
+            <h1
+              className={`text-7xl font-bold`}
+              style={{
+                // textAlign: textAlign === 'centeredTop' ? 'center' :
+                //     textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
+                textAlign: textAlign,
+              }}
+            >
+              {props.children}
+            </h1>
+          );
         }
-        if (style === 'normal') {
-            return (
-                <p
-                    style={{
-                        lineHeight: lineHeight, fontSize: textTypeCombo(`p`), textAlign: textAlign === 'centeredTop' ? 'center' :
-                            textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
-                    }}
-                >
-                    {props.children}
-                </p>
-            )
+        if (style === "normal") {
+          return (
+            <p
+              style={{
+                // lineHeight: lineHeight, fontSize: textTypeCombo(`p`), textAlign: textAlign === 'centeredTop' ? 'center' :
+                //     textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
+                lineHeight: lineHeight,
+                fontSize: textTypeCombo(`p`),
+                textAlign: textAlign,
+              }}
+            >
+              {props.children}
+            </p>
+          );
         }
         // Fall back to default handling
         return BlockContent.defaultSerializers.types.block(props)

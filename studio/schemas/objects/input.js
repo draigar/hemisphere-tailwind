@@ -1,24 +1,29 @@
 export default {
     title: 'Input Element',
-    name: 'inputElement',
+    name: 'inputElement', 
     type: 'object',
     fields: [
         {
-            title: "Button Type",
+            title: "Input Type",
             name: "type",
             type: "string",
             options: {
                 list: [
-                    { title: "Email", value: "Email" },
+                    { title: "Email", value: "email" },
                     { title: "Text", value: "text" },
                     { title: "Text Area", value: "textArea" },
                 ]
             }
-        },  
+        }, 
         {
-            title: 'Input Background Color',
-            name: 'inputBackgroundColor',
-            type: 'colors',
+            title: 'Input Label',
+            name: 'inputlabel',
+            type: 'string',
+        },
+        {
+            title: 'Input Placeholder',
+            name: 'inputplaceholder',
+            type: 'string',
         },
     ],
     //TODO: Handle Previews in Sanity Schema

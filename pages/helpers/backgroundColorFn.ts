@@ -1,4 +1,6 @@
-export const bgColorCombo = (backgroundColor) => {
+export const bgColorCombo = (backgroundColor: any) => {
+	console.log('here');
+	
 	const colorClass = backgroundColor?.colorClass;
 	const brand = backgroundColor?.brand;
 	const neutral = backgroundColor?.neutral;
@@ -6,13 +8,13 @@ export const bgColorCombo = (backgroundColor) => {
 	const primary = backgroundColor?.primary;
 	const colors =
 		colorClass === 'brand'
-			? `brand.${brand}`
+			? `bg-brand-${brand}`
 			: colorClass === 'neutral'
-			? `neutral.${neutral}`
+			? `bg-neutral-${neutral}`
 			: colorClass === 'primary'
-			? `primary.${primary}`
+			? `bg-primary-${primary}`
 			: colorClass === 'black'
-			? `black.${black}`
-			: 'white';
+			? `bg-black-${black}`
+			: 'bg-white';
 	return colors;
 };
