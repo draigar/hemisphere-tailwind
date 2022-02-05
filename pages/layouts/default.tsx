@@ -1,3 +1,4 @@
+import Navbar1 from "@web/components/navs/nav1";
 import React from "react";
 
 const isServer = typeof window === 'undefined'
@@ -17,6 +18,7 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
     },[])
     return (
         <div>
+            <Navbar1 />
             {children}
         </div>
     )
