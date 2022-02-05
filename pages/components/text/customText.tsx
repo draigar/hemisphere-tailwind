@@ -18,7 +18,7 @@ export const CustomText = (props: TextProps) => {
         if (/^h\d/.test(style)) {
             const level = style.replace(/[^\d]/g, '')
             return (
-                <span style={{ lineHeight: lineHeight, fontSize: textTypeCombo(`h${level}`) }}>
+                <span style={{ lineHeight: lineHeight}} className={`${textTypeCombo(`h${level}`)}`}>
                     {props.children}
                 </span>
             )
@@ -37,8 +37,9 @@ export const CustomText = (props: TextProps) => {
         if (style === 'normal') {
             return (
                 <p
+                    className={`${textTypeCombo(`p`)}`}
                     style={{
-                        lineHeight: lineHeight, fontSize: textTypeCombo(`p`), textAlign: textAlign === 'centeredTop' ? 'center' :
+                        lineHeight: lineHeight, textAlign: textAlign === 'centeredTop' ? 'center' :
                             textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
                     }}
                 >
@@ -71,18 +72,18 @@ export const CustomText = (props: TextProps) => {
     const textTypeCombo = (type: string) => {
         const _type =
             type === 'h1'
-                ? '6xl'
+                ? 'text-6xl'
                 : type === 'h2'
-                    ? '5xl'
+                    ? 'text-5xl'
                     : type === 'h3'
-                        ? '4xl'
+                        ? 'text-4xl'
                         : type === 'h4'
-                            ? '3xl'
+                            ? 'text-3xl'
                             : type === 'h5'
-                                ? '2xl'
+                                ? 'text-2xl'
                                 : type === 'h6'
-                                    ? '1xl'
-                                    : 'md';
+                                    ? 'text-1xl'
+                                    : 'text-md';
         return _type;
     };
 
