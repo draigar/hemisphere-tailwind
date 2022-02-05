@@ -3,9 +3,11 @@ import Image from "next/image";
 
 function TextImageGrid() {
   return (
-    <div className="flex justify-between bg-red-500">
-      <section>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div className="flex flex-wrap justify-between md:p-11 px-4 py-11">
+      <section className="md:w-2/5 mb-6">
+        <p className="mb-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam lacus
@@ -25,7 +27,7 @@ function TextImageGrid() {
           Lobortis mattis aliquam faucibus purus in massa tempor nec feugiat.
         </p>
       </section>
-      <section>
+      <section className="md:w-2/4">
         <Image
           src="https://www.geo.tv/assets/uploads/updates/2022-02-05/397252_9866192_updates.jpg"
           alt="Picture of the author"
