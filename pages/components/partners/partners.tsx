@@ -1,8 +1,8 @@
-import React from "react";
-import Image from "next/image";
-import { urlFor } from "@web/helpers/imageUrlGenerator";
 import { CustomText } from "../text/customText";
+import Image from "next/image";
+import React from "react";
 import { bgColorCombo } from "../../helpers/backgroundColorFn";
+import { urlFor } from "@web/helpers/imageUrlGenerator";
 
 function Partners({ content }: any) {
   const caption = content?.caption?.text;
@@ -12,7 +12,7 @@ function Partners({ content }: any) {
   const ImageBg = content?.background?.backgroundImage?.asset?._ref;
   const colorBg = content?.background?.backgroundColor;
 
-  const imageAsset = urlFor(ImageBg).url();
+  const imageAsset = ImageBg && urlFor(ImageBg).url();
 
   const bgStyle = {
     backgroundImage: `url(${imageAsset})`,
@@ -40,9 +40,9 @@ function Partners({ content }: any) {
               <CustomText content={caption} textAlign="center" />
             </div>
             <div className="flex flex-wrap justify-center">
-              {partnerLogo?.map((val: any) => {
+              {partnerLogo?.map((val: any, i: number) => {
                 return (
-                  <div className="w-20 md:w-28 mr-6">
+                  <div key={i} className="w-20 md:w-28 mr-6">
                     <Image
                       src={urlFor(val.Image.asset._ref).url()}
                       alt="Picture of the author"

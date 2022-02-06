@@ -1,13 +1,15 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { getPageByData, siteConfig } from './lib/sanity/queries'
 
+import Card1 from './components/card/card'
 import DefaultLayout from './layouts/default'
 import Head from 'next/head'
 import ImageVideoBgComponent from './components/heros/imageVideoBgComponent'
+import Newletter1 from './components/newletters/newletter1'
+import Partners from './components/partners/partners'
+import TextImageGrid from './components/textImageGrid/textImageGrid'
 import { getClient } from './lib/sanity'
 import styles from '../styles/Home.module.css'
-import TextImageGrid from './components/textImageGrid/textImageGrid'
-import Partners from './components/partners/partners'
 
 export default function Home(data: any) {
   const { config, pages } = data.data;
@@ -28,13 +30,23 @@ export default function Home(data: any) {
         </Head>
 
         <main className="h-full">
-          {/* {content.map((el: any, i: number) => (
+          {content.map((el: any, i: number) => (
             <div key={i} className="h-full">
-              {el._type === 'imageVideoBgHeroComponent' && <ImageVideoBgComponent content={el} />}
+              {el._type === "imageVideoBgHeroComponent" ? (
+                  <ImageVideoBgComponent content={el} />
+                ) : el._type === "imageAndTextGrid" &&
+                  el.type === "imgLeftTextRight" ? (
+                  <TextImageGrid content={el} />
+                ) : el._type === "partners" ? (
+                  <Partners content={el} />
+                ) : el._type === "cardsAndCaptions" &&
+                  el.type === "cardsection1" ? (
+                  <Card1 content={el} />
+                ) : el._type === "newsletter" && el.type === "newsletter1" ? (
+                  <Newletter1 content={el} />
+                ) : null}
             </div>
-          ))} */}
-          <TextImageGrid />
-          <Partners />
+          ))}
         </main>
 
       </div>
