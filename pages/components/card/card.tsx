@@ -1,7 +1,7 @@
-import React from "react";
-import Image from "next/image";
-import { urlFor } from "@web/helpers/imageUrlGenerator";
 import { CustomText } from "../text/customText";
+import Image from "next/image";
+import React from "react";
+import { urlFor } from "@web/helpers/imageUrlGenerator";
 
 function Card1({ content }: any) {
   console.log("====================================");
@@ -14,20 +14,20 @@ function Card1({ content }: any) {
 
   return (
     <div className="md:p-11 px-4 py-11">
-      <div className="mb-8">
+      <div className="mb-8 px-52">
         <CustomText content={heading} textAlign="center" />
         <CustomText content={caption} textAlign="center" />
       </div>
-      <div className="flex justify-between flex-wrap">
-        {cards?.map((val: any) => {
+      <div className="flex justify-between flex-wrap px-52">
+        {cards?.map((val: any, i: number) => {
           return (
-            <div className="w-full md:w-30 shadow-md mb-8">
+            <div key={i} className="w-full md:w-30 shadow-md mb-8">
               <div className="w-full">
                 <Image
                   src={urlFor(val.Image.asset._ref).url()}
                   alt="Picture of the author"
-                  width={800}
-                  height={800}
+                  width={650}
+                  height={600}
                 />
               </div>
               <div className="p-4">

@@ -1,13 +1,15 @@
-import React from "react";
-import { urlFor } from "@web/helpers/imageUrlGenerator";
-import { CustomText } from "../text/customText";
-import { bgColorCombo } from "../../helpers/backgroundColorFn";
 import Button1 from "../button/button1";
 import CustomButton from "../button/mainButton";
+import { CustomText } from "../text/customText";
+import React from "react";
+import { bgColorCombo } from "../../helpers/backgroundColorFn";
+import { urlFor } from "@web/helpers/imageUrlGenerator";
 
 function Newletter1({ content }: any) {
   const bgImage = content?.background?.backgroundImage?.asset?._ref;
   const colorBg = content?.background?.backgroundColor;
+
+  const backgroundType = content?.background?.type
 
   const headLine = content?.headLine?.text;
   const tagline = content?.tagline?.text;
@@ -19,11 +21,14 @@ function Newletter1({ content }: any) {
   const inputElement = content?.inputElement?.inputElements;
   const submissionResponse = content?.inputElement?.submitResponse;
 
+  console.log('====================================');
+  console.log(backgroundType);
+  console.log('====================================');
+
   const bgStyle = {
-    backgroundImage: `url(${imageAsset})`,
-    backgroundSize: "100% 100%",
-    backgroundRepeat: "no-repeat",
+    backgroundImage: backgroundType === 'image' ? `url(${imageAsset})` : undefined,
     minHeight: "80vh",
+    backgroundSize: '100% 100%'
   };
 
   const bgOverlayStyle = {
@@ -31,24 +36,18 @@ function Newletter1({ content }: any) {
     minHeight: "80vh",
   };
 
-  const bgColorStyle = {
-    backgroundColor: bgColorCombo(colorBg),
-  };
-
   return (
-    <div style={bgImage && bgStyle}>
-      <div style={colorBg && bgColorStyle}>
-        <div
-          style={bgImage && bgOverlayStyle}
-          className="flex justify-center content-center items-center px-4 py-11"
+    <div style={bgStyle} className={`bg-no-repeat ${bgColorCombo(colorBg)} bg-red-500`}>
+      <div
+          className="flex h-full justify-center items-center px-4 py-11"
         >
           <div>
             <CustomText content={headLine} textAlign="center" />
             <CustomText content={tagline} textAlign="center" />
             <form>
-              {inputElement.map((val: any) => {
+              {inputElement.map((val: any, i: number) => {
                 return (
-                  <div className="mb-4">
+                  <div key={i} className="mb-4">
                     <label className="block">{val?.inputlabel}</label>
                     <input
                       placeholder={val?.inputplaceholder}
@@ -62,7 +61,6 @@ function Newletter1({ content }: any) {
             </form>
           </div>
         </div>
-      </div>
     </div>
   );
 }
