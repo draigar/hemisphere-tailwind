@@ -7,7 +7,7 @@ module.exports = {
         root: ['./pages'],
         extensions: ['.js', '.ts', '.tsx', '.json'],
         alias: {
-          '@web': './pages/',
+          '@web': './src/',
         },
       },
     ],

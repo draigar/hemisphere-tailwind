@@ -16,7 +16,7 @@
     "incremental": true,
     "paths": {
       "@web/*": [
-        "./pages/*"
+        "./src/*"
       ]
 		}
   },

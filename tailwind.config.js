@@ -1,7 +1,7 @@
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -34,10 +34,14 @@ module.exports = {
         }
       },
       height: {
-        '6/6': '90%'
+        '6/6': '90%',
+        'screen-90': '90vh',
       },
       width: {
         '30': '30%',
+      },
+      spacing: {
+        '10px': '10px'
       }
     },
   },

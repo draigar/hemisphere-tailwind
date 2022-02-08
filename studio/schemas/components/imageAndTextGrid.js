@@ -4,18 +4,6 @@ export default {
     description: 'Image And Text Grid',
     fields: [
         {
-            name: 'type',
-            type: 'string',
-            options: {
-                list: [
-                    {title: 'Image Left, Text Right', value: 'imgLeftTextRight'},
-                    {title: 'Image Right, Text Left', value: 'imgRightTextLeft'},
-                ],
-                initialValue: 'none',
-                description: 'Select the type of image and text grid',
-            }
-        },
-        {
             name: 'background',
             type: 'background',
             title: 'Background',
@@ -30,6 +18,18 @@ export default {
                 Rule.required().error('image bust be set for this component')
             ],
             description: 'Select the Image for this Component'
+        },
+        {
+            name: 'imagePositon',
+            type: 'string',
+            options: {
+                list: [
+                    {title: 'Image Left', value: 'left'},
+                    {title: 'Image Right', value: 'right'},
+                ],
+                description: 'Select the image position',
+            },
+            initialValue: 'left',
         },
         {
             name: 'heading',

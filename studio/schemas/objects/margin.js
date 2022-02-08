@@ -18,6 +18,12 @@ export default {
             }
         }, 
         {
+            title: 'Margin Size',
+            name: 'marginsize',
+            type: 'size',
+            // hidden: ({parent}) => !(parent?.type === 'top') || !(parent?.type === 'topandside')
+        },
+        {
             title: 'Top Margin Size',
             name: 'topmarginsize',
             type: 'size',
