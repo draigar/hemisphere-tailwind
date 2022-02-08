@@ -14,6 +14,12 @@ export default {
       title: 'Site title',
     },
     {
+      name: 'slug',
+      type: 'string',
+      title: 'Site slug',
+      description: 'This is a small description of the site. E.g - Hemisphere for hemp'
+    },
+    {
       title: 'URL',
       name: 'url',
       type: 'url',
@@ -71,8 +77,7 @@ export default {
     {
       title: 'Application Description',
       type: 'text',
-      name: "ben",
-      title: 'Description',
+      name: "description",
       description: 'This description populates meta-tags on the webpage',
       // fieldset: 'metadata',
     },
