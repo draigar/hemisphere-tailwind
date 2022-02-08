@@ -39,6 +39,9 @@ module.exports = {
       },
       width: {
         '30': '30%',
+      },
+      spacing: {
+        '10px': '10px'
       }
     },
   },
