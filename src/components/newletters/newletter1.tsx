@@ -21,10 +21,6 @@ function Newletter1({ content }: any) {
   const inputElement = content?.inputElement?.inputElements;
   const submissionResponse = content?.inputElement?.submitResponse;
 
-  console.log('====================================');
-  console.log(backgroundType);
-  console.log('====================================');
-
   const bgStyle = {
     backgroundImage: backgroundType === 'image' ? `url(${imageAsset})` : undefined,
     minHeight: "80vh",
