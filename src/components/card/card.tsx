@@ -59,8 +59,8 @@ function Card1({ content }: any) {
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
-          <CustomText content={heading} textAlign="center" />
-          <CustomText content={caption} textAlign="center" />
+          <CustomText content={heading} textAlign="centeredTop" />
+          <CustomText content={caption} textAlign="centeredTop" />
           <Vertical />
         </div>
       </div>
