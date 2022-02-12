@@ -5,10 +5,6 @@ import bgColorCombo from "../../helpers/backgroundColorFn";
 import CustomButton from "../button/mainButton";
 
 function TextCenteredandBg1({ content }: any) {
-  console.log("====================================");
-  console.log(content);
-  console.log("====================================");
-
   const bgImage = content?.background?.backgroundImage?.asset?._ref;
   const imageAsset = bgImage && urlFor(bgImage)?.url();
 
@@ -25,9 +21,11 @@ function TextCenteredandBg1({ content }: any) {
   const bgStyle = {
     backgroundImage:
       backgroundType === "image" ? `url(${imageAsset})` : undefined,
-    minHeight: "100vh",
-    backgroundSize: "100% 100%",
+    height: "100%",
+    width: "100%",
+    backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center",
   };
 
   const bgOverlayStyle = {
@@ -39,9 +37,9 @@ function TextCenteredandBg1({ content }: any) {
     <div style={bgStyle}>
       <div
         style={bgOverlayStyle}
-        className="flex justify-center content-center items-center text-center"
+        className="flex md:justify-center md:content-center md:items-center "
       >
-        <div className="w-2/3">
+        <div className="md:w-2/3 mt-12 p-6">
           <CustomText content={heading} textAlign="centeredTop" />
           <div className="mb-4"></div>
           <CustomText content={bodyText} textAlign="centeredTop" />
