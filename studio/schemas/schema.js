@@ -38,6 +38,7 @@ import team from './components/team';
 import teamMember from './objects/teamMember';
 import text from './objects/text';
 import textcenteredandimagebg from './components/imageCenteredAndText';
+import article from './components/article';
 import video from './objects/video';
 import propertySize from './objects/propertySize';
 import margin from './objects/margin'
@@ -92,6 +93,7 @@ export default createSchema({
     propertySize,
     margin,
     input,
+    article,
     footer
 
   ]),
