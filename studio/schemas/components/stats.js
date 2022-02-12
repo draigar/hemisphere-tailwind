@@ -11,9 +11,8 @@ export default {
         type: 'string',
         options:{
             list: [
-                {title: 'Statistics Type 1', value: 'stats1'},
-                {title: 'Statistics Type 2', value: 'stats2'},
-                {title: 'Statistics Type 3', value: 'stats3'},
+                {title: 'Simple Background Stats Type', value: 'stats1'},
+                {title: 'Card Type Stats', value: 'stats2'},
                 ]
             }
         },
