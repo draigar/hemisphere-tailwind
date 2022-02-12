@@ -7,9 +7,15 @@ import ImageVideoBgComponent from '../components/heros/imageVideoBgComponent'
 import Newletter1 from '../components/newletters/newletter1'
 import Partners from '../components/partners/partners'
 import { SiteMetaConfigType } from '../types'
-import TextImageGrid from '../components/textImageGrid/textImageGrid'
+import dynamic from 'next/dynamic'
+// import TextImageGrid from '../components/textImageGrid/textImageGrid'
 import { getClient } from '../lib/sanity'
 import styles from '../styles/Home.module.css'
+
+const TextImageGrid = dynamic(
+  () => import('../components/textImageGrid/textImageGrid'),
+  { ssr: false }
+)
 
 export default function Home(data: any) {
   const { config, pages } = data.data;
