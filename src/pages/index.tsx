@@ -2,6 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next'
 import { getPageByData, siteConfig } from '../lib/sanity/queries'
 
 import Card1 from '../components/card/card'
+import CarouselComp from '../components/carousel'
 import DefaultLayout from '../layouts/default'
 import ImageVideoBgComponent from '../components/heros/imageVideoBgComponent'
 import Newletter1 from '../components/newletters/newletter1'
@@ -38,7 +39,8 @@ export default function Home(data: any) {
   return (
     <DefaultLayout siteConfig={siteMetaData}>
       <main className="h-full">
-        {content.map((el: any, i: number) => (
+        <CarouselComp />
+        {/* {content.map((el: any, i: number) => (
           <div key={i} className="">
             {el._type === "imageAndTextGrid" && <TextImageGrid content={el} />}
             {el._type === "imageVideoBgHeroComponent" && <ImageVideoBgComponent content={el} />}
@@ -46,7 +48,7 @@ export default function Home(data: any) {
             {el._type === "cardsAndCaptions" && <Card1 content={el} />}
             {el._type === "newsletter" && <Newletter1 content={el} />}
           </div>
-        ))}
+        ))} */}
       </main>
     </DefaultLayout>
   )
