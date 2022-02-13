@@ -25,12 +25,19 @@ const Stats1 = ({ content }) => {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center relative mx-auto my-12 w-full">
+        <div className="flex justify-center relative mx-auto my-12 w-full">
           {content?.statistics?.map((stat: any) => {
             return (
-              <div className="flex-1 text-center" key={stat._key}>
-                <h3 className="text-white text-9xl mb-3">{stat?.Number}</h3>
-                <p className="text-base text-white font-thin">{stat?.text}</p>
+              <div
+                className="lg:flex-1 text-center md:basis-3/12 md:mr-5 sm:mr-10"
+                key={stat._key}
+              >
+                <h3 className="text-white lg:text-9xl mb-3 md:text-6xl sm:text-6xl">
+                  {stat?.Number}
+                </h3>
+                <p className="lg:text-base text-white font-thin">
+                  {stat?.text}
+                </p>
               </div>
             );
           })}
