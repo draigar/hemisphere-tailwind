@@ -12,9 +12,9 @@ export default {
         type: 'string',
         options:{ 
             list: [
-                    {title: 'Card And Captions Type 1(image above, text below)', value: 'cardblog1'},
-                    {title: 'Card And Captions Type 2(image and image side by side)', value: 'cardblog2'},
-                    {title: 'Card And Captions Type 3(image above, text below with box shadow)', value: 'cardsection1'},
+                    {title: 'Card And Captions Horizontal Type(image above, text below)', value: 'horizontal'},
+                    {title: 'Card And Captions Vertical Type Block Image (image and image side by side)', value: 'verticalBlockImage'},
+                    {title: 'Card And Captions Vertical Type Rounded Image (image above, text below with box shadow)', value: 'verticalRoundedImage'},
                 ]
             }
         },
@@ -40,6 +40,12 @@ export default {
             of: [
                 {type: 'card'}
             ]
+        },
+        {
+            name: 'isReview',
+            title: 'Add Review Mark',
+            type: 'boolean',
+            description: 'Add Review Mark to use as a Review style',
         },
         {
             name: 'shadow',
