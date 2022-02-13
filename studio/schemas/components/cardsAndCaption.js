@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { type } from "os";
 
 export default {
@@ -18,6 +19,11 @@ export default {
             }
         },
         {
+            title: 'Background',
+            name: 'background',
+            type: 'colors',
+        },
+        {
             name: 'heading',
             title: 'Heading',
             type: 'customText',
@@ -36,17 +42,10 @@ export default {
             ]
         },
         {
-            name: 'isCTAEnabled',
-            title: 'Enable CTA',
+            name: 'shadow',
+            title: 'Drop shadow',
             type: 'boolean',
-            description: 'Enter the Tagline Text for this Component',
-        },
-        {
-            name: 'buttonType',
-            title: 'Select Button Type',
-            type: 'button',
-            hidden: ({parent}) => !(parent?.isCTAEnabled),
-            description: 'Select Button Type and Fix the properties',
+            description: 'Should have a drop shadow',
         },
     
     ],

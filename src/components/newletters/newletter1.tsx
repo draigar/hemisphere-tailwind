@@ -4,59 +4,107 @@ import CustomText from "../text/customText";
 import React from "react";
 import bgColorCombo from "../../helpers/backgroundColorFn";
 import urlFor from "../../helpers/imageUrlGenerator";
+import videoAssetFor from "@web/helpers/video-url";
 
-function Newletter1({ content }: any) {
+interface props {
+  content: any
+};
+
+function Newletter1(props: props) {
+  const { content } = props;
   const bgImage = content?.background?.backgroundImage?.asset?._ref;
   const colorBg = content?.background?.backgroundColor;
-
+  const backgroundVideo = content?.background?.backgroundVideo?.videoFile?.asset?._ref
   const backgroundType = content?.background?.type
-
   const headLine = content?.headLine?.text;
   const tagline = content?.tagline?.text;
-
+  const buttonPosition = content?.buttonPosition
   const btnDetails = content?.buttonType;
-
-  const imageAsset = urlFor(bgImage).url();
-
+  const imageAsset = bgImage && urlFor(bgImage)?.url();
   const inputElement = content?.inputElement?.inputElements;
   const submissionResponse = content?.inputElement?.submitResponse;
 
+  console.log(content)
+
   const bgStyle = {
     backgroundImage: backgroundType === 'image' ? `url(${imageAsset})` : undefined,
-    minHeight: "80vh",
-    backgroundSize: '100% 100%'
+    height: "100%",
+    width: "100%",
+    backgroundSize: "100% 100%",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center",
   };
 
-  const bgOverlayStyle = {
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-    minHeight: "80vh",
+  const RenderVideo = () => {
+    const videoAsset = videoAssetFor(backgroundVideo)
+    return (
+      <div className="h-full">
+        <video autoPlay loop muted id="video-bg">
+          <source src={videoAsset.url} type={`video/${videoAsset.extension}`} />
+        </video>
+        <div className="absolute top-0 left-0 w-full bottom-0">
+          <ContentComp />
+        </div>
+      </div>
+    )
+  }
+
+  const colorCombo = (_color: any) => {
+    const colorClass = _color?.colorClass;
+    const brand = _color?.brand;
+    const neutral = _color?.neutral;
+    const black = _color?.black;
+    const primary = _color?.primary;
+    const colors =
+      colorClass === 'brand'
+        ? `brand-${brand}`
+        : colorClass === 'neutral'
+          ? `neutral-${neutral}`
+          : colorClass === 'primary'
+            ? `primary-${primary}`
+            : colorClass === 'black'
+              ? `black-${black}`
+              : 'white';
+    return backgroundType === 'color' ? colors : 'white';
   };
+
+  const ContentComp = () => (
+    <div
+      className="flex h-full justify-center items-center px-4 py-11 relative z-10"
+    >
+      <div className="w-1/3">
+        <div className="my-8">
+        <CustomText content={headLine} textAlign="centered" />
+        </div>
+        <CustomText content={tagline} textAlign="centered" />
+        <form className="mt-8">
+          {inputElement && inputElement.map((val: any, i: number) => {
+            return (
+              <div key={i} className="mb-4">
+                <label style={{ color: `${val?.inputLabelColor.hex}` }} className="block">{val?.inputlabel}</label>
+                <input
+                  placeholder={val?.inputplaceholder}
+                  type={val.type}
+                  className="w-full mt-2 p-2 h-14 rounded-sm"
+                />
+              </div>
+            );
+          })}
+          <div className={`w-full flex ${buttonPosition === 'right' ? 'justify-end' 
+          : buttonPosition === 'left' ? 'justify-start' : 'justify-center' }`}>
+            <CustomButton content={btnDetails} />
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 
   return (
-    <div style={bgStyle} className={`bg-no-repeat ${bgColorCombo(colorBg)} bg-red-500`}>
-      <div
-          className="flex h-full justify-center items-center px-4 py-11"
-        >
-          <div>
-            <CustomText content={headLine} textAlign="center" />
-            <CustomText content={tagline} textAlign="center" />
-            <form>
-              {inputElement.map((val: any, i: number) => {
-                return (
-                  <div key={i} className="mb-4">
-                    <label className="block">{val?.inputlabel}</label>
-                    <input
-                      placeholder={val?.inputplaceholder}
-                      type={val.type}
-                      className="w-full mt-2 p-2 rounded-sm"
-                    />
-                  </div>
-                );
-              })}
-              <CustomButton content={btnDetails} />
-            </form>
-          </div>
-        </div>
+    <div className="h-600px bg-black-1">
+      <div style={bgStyle} className={`relative bg-${colorCombo(colorBg)} h-full w-full `}>
+        <div className={`${backgroundType !== 'color' && 'bg-black-1 bg-opacity-25'} z-10 h-full absolute w-full`}></div>
+        {backgroundType === 'video' ? <RenderVideo /> : <ContentComp />}
+      </div>
     </div>
   );
 }

@@ -9,12 +9,15 @@ import Newletter1 from '../components/newletters/newletter1'
 import Partners from '../components/partners/partners'
 import { SiteMetaConfigType } from '../types'
 import dynamic from 'next/dynamic'
-// import TextImageGrid from '../components/textImageGrid/textImageGrid'
 import { getClient } from '../lib/sanity'
 import styles from '../styles/Home.module.css'
 
 const TextImageGrid = dynamic(
   () => import('../components/textImageGrid/textImageGrid'),
+  { ssr: false }
+)
+const TextCenteredAndBg = dynamic(
+  () => import('@web/components/textCenteredandBg/textCenteredandBg1'),
   { ssr: false }
 )
 
@@ -34,21 +37,20 @@ export default function Home(data: any) {
     return 'No Content to display for' + pages.title;
   }
 
-  console.log(content)
-
   return (
     <DefaultLayout siteConfig={siteMetaData}>
       <main className="h-full">
         <CarouselComp />
-        {/* {content.map((el: any, i: number) => (
+        {content.map((el: any, i: number) => (
           <div key={i} className="">
             {el._type === "imageAndTextGrid" && <TextImageGrid content={el} />}
             {el._type === "imageVideoBgHeroComponent" && <ImageVideoBgComponent content={el} />}
             {el._type === "partners" && <Partners content={el} />}
             {el._type === "cardsAndCaptions" && <Card1 content={el} />}
             {el._type === "newsletter" && <Newletter1 content={el} />}
+            {el._type === "textCenteredAndImageBg" && <TextCenteredAndBg content={el} />}
           </div>
-        ))} */}
+        ))}
       </main>
     </DefaultLayout>
   )

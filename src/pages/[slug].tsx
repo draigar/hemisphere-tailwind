@@ -7,13 +7,11 @@ import ImageVideoBgComponent from "../components/heros/imageVideoBgComponent";
 import Newletter1 from "../components/newletters/newletter1";
 import Partners from "../components/partners/partners";
 import { SiteMetaConfigType } from "../types";
+import TextCenteredandBg1 from "@web/components/textCenteredandBg/textCenteredandBg1";
 import TextImageGrid from "../components/textImageGrid/textImageGrid";
 import { getClient } from "../lib/sanity";
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
-import TextCenteredandBg1 from "@web/components/textCenteredandBg/textCenteredandBg1";
-import TextCenteredandBg2 from "@web/components/textCenteredandBg/textCenteredandBg2";
-import TextCenteredandBg3 from "@web/components/textCenteredandBg/textCenteredandBg3";
 
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
@@ -54,15 +52,8 @@ export default function Slug({ data, preview, config }: any) {
                   <Card1 content={el} />
                 ) : el._type === "newsletter" && el.type === "newsletter1" ? (
                   <Newletter1 content={el} />
-                ) : el._type === "textCenteredAndImageBg" &&
-                  el.type === "textCenteredandBg1" ? (
+                ) : el._type === "textCenteredAndImageBg" ? (
                   <TextCenteredandBg1 content={el} />
-                ) : el._type === "textCenteredAndImageBg" &&
-                  el.type === "textCenteredandBg2" ? (
-                  <TextCenteredandBg2 content={el} />
-                ) : el._type === "textCenteredAndImageBg" &&
-                  el.type === "textCenteredandBg3" ? (
-                  <TextCenteredandBg3 content={el} />
                 ) : null}
               </div>
             ))}
