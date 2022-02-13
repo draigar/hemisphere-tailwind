@@ -14,6 +14,10 @@ import { useRouter } from "next/router";
 import TextCenteredandBg1 from "@web/components/textCenteredandBg/textCenteredandBg1";
 import TextCenteredandBg2 from "@web/components/textCenteredandBg/textCenteredandBg2";
 import TextCenteredandBg3 from "@web/components/textCenteredandBg/textCenteredandBg3";
+import Contact1 from "@web/components/contact/contact1";
+import Contact2 from "@web/components/contact/contact2";
+import Article1 from "@web/components/article/article1";
+import Article2 from "@web/components/article/article2";
 
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
@@ -63,6 +67,14 @@ export default function Slug({ data, preview, config }: any) {
                 ) : el._type === "textCenteredAndImageBg" &&
                   el.type === "textCenteredandBg3" ? (
                   <TextCenteredandBg3 content={el} />
+                ) : el._type === "contact" && el.type === "contact1" ? (
+                  <Contact1 content={el} />
+                ) : el._type === "contact" && el.type === "contact2" ? (
+                  <Contact2 content={el} />
+                ) : el._type === "article" && el.type === "article1" ? (
+                  <Article1 content={el} />
+                ) : el._type === "article" && el.type === "article2" ? (
+                  <Article2 content={el} />
                 ) : null}
               </div>
             ))}
