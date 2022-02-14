@@ -11,8 +11,8 @@ export default {
 			type: 'string',
 			options: {
 				list: [
-					{ title: 'Contact Type 1', value: 'contact1' },
-					{ title: 'Contact Type 2', value: 'contact2' }
+					{ title: 'Contact Type 1 with Background Color', value: 'contact1' },
+					{ title: 'Contact Type 2 with Image', value: 'contact2' }
 				]
 			}
 		},
@@ -22,20 +22,30 @@ export default {
 			type: 'background'
 		},
 		{
+			name: 'heading',
+			title: 'Heading',
+			type: 'customText'
+		},
+		{
 			name: 'caption',
 			title: 'Tag Line Text',
-			type: 'bodyText'
+			type: 'customText'
 		},
 		{
 			name: 'address',
 			title: 'Office Address',
-			type: 'text'
+			type: 'customText'
 		},
 		{
 			name: 'email',
 			title: 'Email Address',
-			type: 'string'
+			type: 'customText'
 		},
+		{
+			name: 'inputElement',
+			title: 'Input Settings',
+			type: 'formField',
+		}, 
 		{
 			name: 'buttonType',
 			title: 'Configure Submit Button',

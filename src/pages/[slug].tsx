@@ -1,6 +1,10 @@
 import { siteConfig, slugQuery } from "../lib/sanity/queries";
 
+import Article1 from "@web/components/article/article1";
+import Article2 from "@web/components/article/article2";
 import Card1 from "../components/card/card";
+import Contact1 from "@web/components/contact/contact1";
+import Contact2 from "@web/components/contact/contact2";
 import DefaultLayout from "../layouts/default";
 import Head from "next/head";
 import ImageVideoBgComponent from "../components/heros/imageVideoBgComponent";
@@ -54,6 +58,14 @@ export default function Slug({ data, preview, config }: any) {
                   <Newletter1 content={el} />
                 ) : el._type === "textCenteredAndImageBg" ? (
                   <TextCenteredandBg1 content={el} />
+                ) : el._type === "contact" && el.type === "contact1" ? (
+                  <Contact1 content={el} />
+                ) : el._type === "contact" && el.type === "contact2" ? (
+                  <Contact2 content={el} />
+                ) : el._type === "article" && el.type === "article1" ? (
+                  <Article1 content={el} />
+                ) : el._type === "article" && el.type === "article2" ? (
+                  <Article2 content={el} />
                 ) : null}
               </div>
             ))}
