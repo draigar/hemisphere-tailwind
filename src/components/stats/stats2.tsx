@@ -16,8 +16,8 @@ const Stats2 = ({ content }) => {
   return (
     <div className={`${bgColorStyle} md:p-11 px-8 py-20 relative`}>
       <div className="w-4/5 mx-auto">
-        <div className="w-3/6 mb-20 md:w-full sm:w-full">
-          <div className="text-6xl mb-4">
+        <div className="lg:w-3/6 mb-20 md:w-full sm:w-full">
+          <div className="lg:text-5xl mb-4 md:text-6xl sm:text-6xl">
             <CustomText content={caption} textAlign="left" />
           </div>
           <div className="text-xl text-black font-thin">
@@ -29,7 +29,7 @@ const Stats2 = ({ content }) => {
           {content?.statistics?.map((stat: any) => {
             return (
               <div
-                className="lg:flex-1 text-left border-2 border-black lg:mr-8 py-10 px-5 md:basis-full md:mb-8"
+                className="lg:flex-1 text-left border-2 border-black lg:mr-8 py-10 px-5 md:basis-full mb-10"
                 key={stat._key}
               >
                 <h3 className="text-lime-900 text-6xl font-light mb-3">
