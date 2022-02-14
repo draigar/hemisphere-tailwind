@@ -1,7 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { getPageByData, siteConfig } from '../lib/sanity/queries'
 
-import Card1 from '../components/card/card'
 import CarouselComp from '../components/carousel'
 import DefaultLayout from '../layouts/default'
 import ImageVideoBgComponent from '../components/heros/imageVideoBgComponent'
@@ -18,6 +17,10 @@ const TextImageGrid = dynamic(
 )
 const TextCenteredAndBg = dynamic(
   () => import('@web/components/textCenteredandBg/textCenteredandBg1'),
+  { ssr: false }
+)
+const Card = dynamic(
+  () => import('../components/card/card'),
   { ssr: false }
 )
 
@@ -40,13 +43,12 @@ export default function Home(data: any) {
   return (
     <DefaultLayout siteConfig={siteMetaData}>
       <main className="h-full">
-        <CarouselComp />
         {content.map((el: any, i: number) => (
           <div key={i} className="">
             {el._type === "imageAndTextGrid" && <TextImageGrid content={el} />}
             {el._type === "imageVideoBgHeroComponent" && <ImageVideoBgComponent content={el} />}
             {el._type === "partners" && <Partners content={el} />}
-            {el._type === "cardsAndCaptions" && <Card1 content={el} />}
+            {el._type === "cardsAndCaptions" && <Card content={el} />}
             {el._type === "newsletter" && <Newletter1 content={el} />}
             {el._type === "textCenteredAndImageBg" && <TextCenteredAndBg content={el} />}
           </div>

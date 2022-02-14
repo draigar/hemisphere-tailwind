@@ -4,6 +4,7 @@ import CustomText from "../text/customText";
 import React from "react";
 import bgColorCombo from "../../helpers/backgroundColorFn";
 import urlFor from "../../helpers/imageUrlGenerator";
+import { utilities } from "@web/helpers/utilities";
 import videoAssetFor from "@web/helpers/video-url";
 
 interface props {
@@ -36,7 +37,7 @@ function Newletter1(props: props) {
   };
 
   const RenderVideo = () => {
-    const videoAsset = videoAssetFor(backgroundVideo)
+    const videoAsset = utilities.VideoFn(backgroundVideo)
     return (
       <div className="h-full">
         <video autoPlay loop muted id="video-bg">
@@ -48,25 +49,6 @@ function Newletter1(props: props) {
       </div>
     )
   }
-
-  const colorCombo = (_color: any) => {
-    const colorClass = _color?.colorClass;
-    const brand = _color?.brand;
-    const neutral = _color?.neutral;
-    const black = _color?.black;
-    const primary = _color?.primary;
-    const colors =
-      colorClass === 'brand'
-        ? `brand-${brand}`
-        : colorClass === 'neutral'
-          ? `neutral-${neutral}`
-          : colorClass === 'primary'
-            ? `primary-${primary}`
-            : colorClass === 'black'
-              ? `black-${black}`
-              : 'white';
-    return backgroundType === 'color' ? colors : 'white';
-  };
 
   const ContentComp = () => (
     <div
@@ -101,7 +83,7 @@ function Newletter1(props: props) {
 
   return (
     <div className="h-600px bg-black-1">
-      <div style={bgStyle} className={`relative bg-${colorCombo(colorBg)} h-full w-full `}>
+      <div style={bgStyle} className={`relative ${utilities.ColorCombo(colorBg)} h-full w-full `}>
         <div className={`${backgroundType !== 'color' && 'bg-black-1 bg-opacity-25'} z-10 h-full absolute w-full`}></div>
         {backgroundType === 'video' ? <RenderVideo /> : <ContentComp />}
       </div>

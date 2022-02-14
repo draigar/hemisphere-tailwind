@@ -2,9 +2,7 @@ import CustomButton from "../button/mainButton";
 import CustomText from "../text/customText";
 import MarginSizing from "@web/helpers/marginSizing";
 import React from "react";
-import bgColorCombo from "../../helpers/backgroundColorFn";
-import urlFor from "../../helpers/imageUrlGenerator";
-import videoAssetFor from "@web/helpers/video-url";
+import { utilities } from "@web/helpers/utilities";
 
 interface props {
   content: any
@@ -16,7 +14,7 @@ function TextCenteredandBg1(props: props) {
   const bgColor = content?.background?.backgroundColor;
   const bgImage = content?.background?.backgroundImage?.asset?._ref;
   const backgroundType = content?.background?.type;
-  const imageAsset = bgImage && urlFor(bgImage)?.url();
+  const imageAsset = bgImage && utilities.ImageFn(bgImage)
   const marginSize = content?.margin
 
   const bodyText = content?.bodyText?.text;
@@ -37,7 +35,7 @@ function TextCenteredandBg1(props: props) {
   };
 
   const RenderVideo = () => {
-    const videoAsset = videoAssetFor(backgroundVideo)
+    const videoAsset = utilities.VideoFn(backgroundVideo)
     return (
       <div className="h-full">
         <video autoPlay loop muted id="video-bg">
@@ -49,25 +47,6 @@ function TextCenteredandBg1(props: props) {
       </div>
     )
   }
-
-  const colorCombo = (_color: any) => {
-    const colorClass = _color?.colorClass;
-    const brand = _color?.brand;
-    const neutral = _color?.neutral;
-    const black = _color?.black;
-    const primary = _color?.primary;
-    const colors =
-      colorClass === 'brand'
-        ? `brand-${brand}`
-        : colorClass === 'neutral'
-          ? `neutral-${neutral}`
-          : colorClass === 'primary'
-            ? `primary-${primary}`
-            : colorClass === 'black'
-              ? `black-${black}`
-              : 'white';
-    return backgroundType === 'color' ? colors : 'white';
-  };
 
   const ContentComp = () => (
     <div className="flex md:justify-center md:content-center md:items-center h-full relative z-10">
@@ -84,7 +63,7 @@ function TextCenteredandBg1(props: props) {
 
   return (
     <div className="px-16 py-4 h-600px">
-      <div style={bgStyle} className={`relative bg-${colorCombo(bgColor)} h-full ${MarginSizing(marginSize)}`}>
+      <div style={bgStyle} className={`relative ${utilities.ColorCombo(bgColor)} h-full ${MarginSizing(marginSize)}`}>
         <div className={`${backgroundType !== 'color' && 'bg-black-1 bg-opacity-25' } z-10 h-full absolute w-full`}></div>
         {backgroundType === 'video' ? <RenderVideo /> : <ContentComp />}
       </div>

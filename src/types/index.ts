@@ -4,3 +4,12 @@ export interface SiteMetaConfigType {
     description: string;
     openGraphImage: string;
 }
+
+export interface ColorObject {
+    brand: string;
+    colorClass: string;
+    _type: string;
+    neutral: string;
+    black: string;
+    primary: string;
+}
