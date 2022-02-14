@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
     type: 'object',
     name: 'card',
@@ -34,6 +35,19 @@ export default {
             title: 'Border Color',
             name: 'borderColor',
             type: 'colors',
+        },
+        {
+            name: 'buttonType',
+            title: 'Select Button Type',
+            type: 'button',
+            hidden: ({parent}) => !(parent?.isCTAEnabled),
+            description: 'Select Button Type and Fix the properties',
+        },
+        {
+            name: 'isCTAEnabled',
+            title: 'Enable CTA',
+            type: 'boolean',
+            description: 'Enter the Tagline Text for this Component',
         },
     ],
     preview: {

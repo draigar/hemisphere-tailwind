@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
     title: 'Input Element',
     name: 'inputElement', 
@@ -24,6 +25,11 @@ export default {
             title: 'Input Placeholder',
             name: 'inputplaceholder',
             type: 'string',
+        },
+        {
+            title: 'Input Label Color',
+            name: 'inputLabelColor',
+            type: 'color',
         },
     ],
     //TODO: Handle Previews in Sanity Schema

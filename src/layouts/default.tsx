@@ -35,7 +35,7 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
             <Navbar1 />
             {children}
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </div>
     );

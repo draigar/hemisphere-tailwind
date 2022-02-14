@@ -4,18 +4,6 @@ export default {
     description: 'Text Centered and image Background',
     fields: [
         {
-            name: 'type',
-            title: 'Component Type',
-            type: 'string',
-            options: {
-                list: [
-                    { title: 'Type 1', value: 'textCenteredandBg1' },
-                    { title: 'Type 2', value: 'textCenteredandBg2' },
-                    { title: 'Type 3', value: 'textCenteredandBg3' },
-                ]
-            }
-        },
-        {
             name: 'background',
             type: 'background',
             title: 'Background',

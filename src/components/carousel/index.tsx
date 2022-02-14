@@ -126,7 +126,7 @@ const CarouselComp = (props: CarouselProps) => {
     );
 
     return (
-        <Carousel1 />
+        <Carousel2 />
     );
 };
 
