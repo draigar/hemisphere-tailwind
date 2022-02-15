@@ -4,8 +4,6 @@ import bgColorCombo from "../../helpers/backgroundColorFn";
 import CustomText from "../text/customText";
 
 const Stats2 = ({ content }) => {
-  console.log("From Stats 2", content);
-
   const caption = content?.caption?.text;
   const tagLine = content?.tagLine?.text;
   const bgColor = content?.background;

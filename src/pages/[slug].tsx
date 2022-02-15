@@ -14,6 +14,8 @@ import { useRouter } from "next/router";
 
 import Stats1 from "../components/stats/stats1";
 import Stats2 from "../components/stats/stats2";
+import Contact1 from "../components/contact/contact1";
+import Contact2 from "../components/contact/contact2";
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
   const router = useRouter();
@@ -57,6 +59,10 @@ export default function Slug({ data, preview, config }: any) {
                   <Stats1 content={el} />
                 ) : el._type === "statistics" && el.type === "stats2" ? (
                   <Stats2 content={el} />
+                ) : el._type === "contact" && el.type === "contact1" ? (
+                  <Contact1 content={el} />
+                ) : el._type === "contact" && el.type === "contact2" ? (
+                  <Contact2 content={el} />
                 ) : null}
               </div>
             ))}

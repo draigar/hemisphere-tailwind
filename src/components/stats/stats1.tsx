@@ -15,14 +15,14 @@ const Stats1 = ({ content }) => {
         <div className="text-center">
           <h2 className="text-6xl text-white mb-8">{content?.caption?.Text}</h2>
           {/* <CustomText content={caption} textAlign="center" /> */}
-          <p className="text-base text-white font-thin">
+          <div className="text-xl text-white font-thin">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ullam
             a magni adipisci magnam ipsum accusantium fugit error beatae impedit
             veniam doloremque ut nostrum blanditiis, ratione, quod, nam
             provident dicta aut cumque culpa soluta? Enim quisquam delectus
             officia, sunt laboriosam hic obcaecati eos suscipit ullam. A velit
             blanditiis mollitia esse.
-          </p>
+          </div>
         </div>
 
         <div className="flex justify-center relative mx-auto my-12 w-full">
@@ -35,7 +35,7 @@ const Stats1 = ({ content }) => {
                 <h3 className="text-white lg:text-9xl mb-3 md:text-6xl sm:text-6xl">
                   {stat?.Number}
                 </h3>
-                <p className="lg:text-base text-white font-thin">
+                <p className="lg:text-base text-white font-thin text-xl">
                   {stat?.text}
                 </p>
               </div>
