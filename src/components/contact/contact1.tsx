@@ -25,6 +25,7 @@ const Contact1 = ({ content }) => {
                 hello...
               </p>
             </div>
+
             <div className="text-black font-thin text-6xl mb-10 text-zinc-500">
               <p>{content?.email}</p>
             </div>
