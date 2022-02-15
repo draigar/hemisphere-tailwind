@@ -13,9 +13,9 @@ const Contact2 = ({ content }) => {
   return (
     <div className="relative min-h-full">
       <div
-        className={`${bgColorStyle} px-10 py-20 w-full flex flex-wrap justify-around`}
+        className={`${bgColorStyle} lg:px-10 lg:py-20 w-full flex flex-col items-center justify-around md:px-10 md:py-20 sm:px-10 sm:py-10 sm:flex-col  md:flex-col lg:flex-row`}
       >
-        <div className="basis-2/4">
+        <div className="basis-2/4 w-full">
           <div className="text-white font-light mb-10 text-4xl">
             <h3>{content?.caption?.Text}</h3>
           </div>
@@ -33,7 +33,7 @@ const Contact2 = ({ content }) => {
           {buttonDetails && <CustomButton content={buttonDetails} />}
         </div>
 
-        <div className="">
+        <div className="sm:w-2/4 lg:w-fit justify-self-end sm:self-start md:self-center">
           <div className="text-white font-semibold mb-10">
             <h3>Location</h3>
           </div>
