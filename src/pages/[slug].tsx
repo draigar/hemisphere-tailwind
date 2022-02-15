@@ -16,6 +16,7 @@ import TextImageGrid from "../components/textImageGrid/textImageGrid";
 import { getClient } from "../lib/sanity";
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
+import CarouselComp from "@web/components/carousel";
 
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
@@ -66,6 +67,8 @@ export default function Slug({ data, preview, config }: any) {
                   <Article1 content={el} />
                 ) : el._type === "article" && el.type === "article2" ? (
                   <Article2 content={el} />
+                ) : el._type === "carousel" && el.type === "carousel1" ? (
+                  <CarouselComp content={el} />
                 ) : null}
               </div>
             ))}
