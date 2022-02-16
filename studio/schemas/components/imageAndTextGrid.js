@@ -61,7 +61,7 @@ export default {
             title: 'Select Margin',
             type: 'margin',
             description: 'Select Button Type and Fix the properties',
-        },
+        }
     ],
     preview: {
         select: {
