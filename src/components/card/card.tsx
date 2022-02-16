@@ -2,8 +2,9 @@
 import CustomButton from "../button/mainButton";
 import CustomText from "../text/customText";
 import Image from "next/image";
+import Quote from '../../assets/svg/quote';
 import React from "react";
-import {utilities} from '../../helpers/utilities'
+import { utilities } from '../../helpers/utilities'
 
 function Card1({ content }: any) {
   const heading = content?.heading?.text;
@@ -13,6 +14,8 @@ function Card1({ content }: any) {
   const background = content?.background;
   const shadow = content?.shadow;
   const type = content?.type;
+
+  console.log(content)
 
   const Horizontal = () => (
     <div className={`mt-6 space-y-12 lg:space-y-0 lg:grid ${cards?.length === 2 ? 'lg:grid-cols-2 px-48'
@@ -26,7 +29,7 @@ function Card1({ content }: any) {
               className="w-full h-full object-center object-cover"
             />
           </div>
-          <div className="py-4 px-3 pb-8">
+          <div className=" relative py-4 px-3 pb-8">
             <div className="mb-4">
               <CustomText content={val?.heading?.text} textAlign="center" />
             </div>
@@ -35,7 +38,12 @@ function Card1({ content }: any) {
               textAlign="center"
             />
             <div className="my-4"></div>
-            <CustomText content={val?.bodyText?.text} textAlign="center" classNames="text-base font-normal" />
+            <div style={{ zIndex: 4 }}>
+              <CustomText content={val?.bodyText?.text} textAlign="center" classNames="text-base font-normal" />
+            </div>
+            {content?.isReview && <div className="relative flex justify-end w-full bottom-6 opacity-75 right-0">
+              <Quote width={92} height={82} />
+            </div>}
           </div>
         </div>
       ))}
@@ -45,16 +53,21 @@ function Card1({ content }: any) {
   const Vertical = () => (
     <div className="">
       {cards.map((val: any, i: number) => (
-        <figure key={i} className={`md:flex my-6 ${val?.background !== undefined ? utilities.ColorCombo(val?.background) : 'white'} p-8 md:p-0 ${shadow && 'shadow-lg'}`}>
-          <img className={`${shadow && 'shadow-lg'} w-24 h-24 md:w-48 md:h-auto mx-auto`} src={ utilities.ImageFn(val.Image.asset._ref) } alt="" width="384" height="512" />
-          <div className="pt-6 md:p-8 text-center md:text-left">
+        <figure key={i} className={`flex items-start my-6 ${val?.background !== undefined ? utilities.ColorCombo(val?.background) : 'white'} p-8 md:p-0 ${shadow && 'shadow-lg'}`}>
+          <div className="w-80 h-48">
+            <img className={`${shadow && 'shadow-lg'} ${type === 'verticalRoundedImage' && 'rounded-full'} w-full h-44 mx-auto`} src={utilities.ImageFn(val.Image.asset._ref)} alt="" />
+          </div>
+          <div className="px-8 text-left relative">
             <CustomText content={val?.heading?.text} textAlign="center" />
             <CustomText
               content={val?.subheading?.text}
               textAlign="center"
             />
-            <div className="my-4"></div>
+            <div className="my-6"></div>
             <CustomText content={val?.bodyText?.text} textAlign="center" classNames="text-base font-normal" />
+            {content?.isReview && <div className="relative flex justify-end w-full bottom-6 right-0">
+              <Quote width={101} height={92} />
+            </div>}
           </div>
         </figure>
       ))}

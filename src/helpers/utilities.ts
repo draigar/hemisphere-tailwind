@@ -1,6 +1,7 @@
-import { ColorObject } from "@web/types";
+import { ColorObject, fetchRefByDataType } from "@web/types";
 import urlFor from "./imageUrlGenerator";
 import videoAssetFor from "./video-url";
+import fetchRefByData from '../hooks/useActions';
 
 export const utilities = {
     ImageFn(ImageAsset: string) {
@@ -38,15 +39,19 @@ export const utilities = {
         const primary = _color?.primary;
         const colors =
             colorClass === 'brand'
-                ? `bg-brand-${brand} hover:bg-primary-800`
+                ? `brand-${brand} hover:bg-primary-800`
                 : colorClass === 'neutral'
-                    ? `bg-neutral-${neutral} hover:bg-neutral-hover`
+                    ? `neutral-${neutral} hover:bg-neutral-hover`
                     : colorClass === 'primary'
-                        ? `bg-primary-${primary}`
+                        ? `primary-${primary}`
                         : colorClass === 'black'
-                            ? `bg-black-${black} ${black === '1' ? 'hover:bg-black-2' : 'hover:bg-black-1'}`
-                            : 'bg-white hover:bg-black hover:bg-opacity-25';
+                            ? `black-${black} ${black === '1' ? 'hover:bg-black-2' : 'hover:bg-black-1'}`
+                            : 'white hover:bg-black hover:bg-opacity-25';
 
         return colors;
+    },
+    async getRef(refObject: fetchRefByDataType) {
+        const res = await fetchRefByData(refObject)
+        return res
     }
 }

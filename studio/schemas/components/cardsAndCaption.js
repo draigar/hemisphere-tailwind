@@ -12,9 +12,9 @@ export default {
         type: 'string',
         options:{ 
             list: [
-                    {title: 'Card And Captions Horizontal Type(image above, text below)', value: 'horizontal'},
-                    {title: 'Card And Captions Vertical Type Block Image (image and image side by side)', value: 'verticalBlockImage'},
-                    {title: 'Card And Captions Vertical Type Rounded Image (image above, text below with box shadow)', value: 'verticalRoundedImage'},
+                    {title: 'Card And Captions Horizontal Type', value: 'horizontal'},
+                    {title: 'Card And Captions Vertical Type Block Image', value: 'verticalBlockImage'},
+                    {title: 'Card And Captions Vertical Type Rounded Image', value: 'verticalRoundedImage'},
                 ]
             }
         },

@@ -1,11 +1,7 @@
+import { fetchRefByDataType } from '@web/types';
 import { getRefByData } from '../lib/sanity/queries';
 
-const fetchRefByData = async (data: {
-    document: string;
-    ref: string;
-    key: string;
-    limit: string;
-}) => {
+const fetchRefByData = async (data: fetchRefByDataType) => {
     try {
         const {document, ref, key, limit} = data;
         const getItems = getRefByData(document, key, ref, limit)
