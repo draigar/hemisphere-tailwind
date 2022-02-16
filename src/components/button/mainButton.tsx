@@ -1,8 +1,14 @@
-import React from "react";
-import Button1 from "./button1";
+// import Button1 from "./button1";
 import Button2 from "./button2";
 import Button3 from "./button3";
 import Button4 from "./button4";
+import React from "react";
+import dynamic from "next/dynamic";
+
+const Button1 = dynamic(
+  () => import('./button1'),
+  { ssr: false }
+)
 
 interface BtnProps {
   content: any;
