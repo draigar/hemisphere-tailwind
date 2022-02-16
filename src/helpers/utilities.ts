@@ -1,6 +1,7 @@
-import { ColorObject } from "@web/types";
+import { ColorObject, fetchRefByDataType } from "@web/types";
 import urlFor from "./imageUrlGenerator";
 import videoAssetFor from "./video-url";
+import fetchRefByData from '../hooks/useActions';
 
 export const utilities = {
     ImageFn(ImageAsset: string) {
@@ -48,5 +49,9 @@ export const utilities = {
                             : 'white hover:bg-black hover:bg-opacity-25';
 
         return colors;
+    },
+    async getRef(refObject: fetchRefByDataType) {
+        const res = await fetchRefByData(refObject)
+        return res
     }
 }

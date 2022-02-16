@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   title: 'Button',
   name: 'button',
@@ -37,10 +38,21 @@ export default {
       ]
     },
     {
+      title: 'Button Text Color',
+      name: 'buttonColor',
+      type: 'color',
+    },
+    {
       title: 'Background Color',
       name: 'backgroundColor',
-      type: 'colors',
+      type: 'color',
       hidden: ({parent}) => (parent?.type === "hyperlink") || (parent?.type === "ghost") || (parent?.type === "outlined")
+    },
+    {
+      title: 'Secondary Background Color',
+      name: 'secondaryBackgroundColor',
+      type: 'color',
+      hidden: ({parent}) => (!parent?.type.value === "decorative")
     },
     
     {
@@ -52,7 +64,7 @@ export default {
     {
         title: 'Border Color',
         name: 'borderColor',
-        type: 'colors',
+        type: 'color',
         hidden: ({parent}) => !parent?.border && parent?.type !== "outlined"
     },
     {

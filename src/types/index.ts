@@ -13,3 +13,10 @@ export interface ColorObject {
     black: string;
     primary: string;
 }
+
+export interface fetchRefByDataType {
+    document: string;
+    ref: string;
+    key: string;
+    limit: string;
+}

@@ -3,36 +3,58 @@ import React from "react";
 import bgColorCombo from "../../helpers/backgroundColorFn";
 import { useRouter } from "next/router";
 import { utilities } from "@web/helpers/utilities";
+import { useQueries } from "@web/hooks";
+import { fetchRefByDataType } from "@web/types";
 
 interface BtnProps {
   content: any;
 }
 
-function Button1({ content }: BtnProps) {
-  const bgColor = utilities.ButtonColorFn(content?.backgroundColor);
+const Button1 = ({ content }: BtnProps) => {
+  const bgColor = content?.backgroundColor;
   const linkType = content?.buttonLink?.linkType;
   const internalLink = content?.buttonLink?.internalLink?._ref;
   const externalLink = content?.buttonLink?.externalUrl;
   const btnText = content?.buttontext;
+  const [linkUrl, setLinkUrl] = React.useState('');
+  const buttonColor = content?.buttonColor;
 
   const router = useRouter();
 
-  console.log(bgColor)
+  const getUrl = React.useCallback(async () => {
+    const obj: fetchRefByDataType = {
+      document: 'page',
+      ref: internalLink,
+      key: '_id',
+      limit: '0'
+    }
+    const url = await utilities.getRef(obj)
+    setLinkUrl(url.slug.current)
+  }, [internalLink])
+
+  React.useEffect(() => {
+    getUrl()
+  }, [getUrl])
+
+  const Styles = {
+    backgroundColor: `${bgColor?.hex}`,
+    color: `${buttonColor?.hex}`,
+  }
 
   return (
     <>
       {linkType === "internal" ? (
-        <Link href="/">
-          <button type="button"
-            className={`text-white bg-${bgColor} focus:ring-4 
-          focus:ring-blue-300 font-medium text-sm px-10 py-3 text-center mr-2 mb-2 
-      `}>{btnText}</button> 
+        <Link href={linkUrl} passHref>
+          <a>
+            <button style={Styles} type="button"
+              className={`text-white font-medium text-sm px-10 py-3 text-center mr-2 mb-2 
+      `}>{btnText}</button>
+          </a>
         </Link>
       ) : (
         <Link href={externalLink} passHref={true}>
-          <button type="button"
-            className={`text-white bg-${bgColor} focus:ring-4 
-          focus:ring-blue-300 font-medium text-sm px-10 py-3 text-center mr-2 mb-2 
+          <button style={Styles} type="button"
+            className={`text-white font-medium text-sm px-10 py-3 text-center mr-2 mb-2 
       `}>{btnText}</button>
         </Link>
       )}
