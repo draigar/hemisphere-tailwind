@@ -25,14 +25,14 @@ function Button1({ content }: BtnProps) {
         <Link href="/">
           <button type="button"
             className={`text-white bg-${bgColor} focus:ring-4 
-          focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-2.5 text-center mr-2 mb-2 
+          focus:ring-blue-300 font-medium text-sm px-10 py-3 text-center mr-2 mb-2 
       `}>{btnText}</button> 
         </Link>
       ) : (
         <Link href={externalLink} passHref={true}>
           <button type="button"
             className={`text-white bg-${bgColor} focus:ring-4 
-          focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-2.5 text-center mr-2 mb-2 
+          focus:ring-blue-300 font-medium text-sm px-10 py-3 text-center mr-2 mb-2 
       `}>{btnText}</button>
         </Link>
       )}
