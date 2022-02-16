@@ -22,6 +22,12 @@ export default {
             title: 'Enter Heading Text',
             type: 'customText',
             description: 'Enter the Heading Text Content for this Component',
+        }, 
+        {
+            name: 'datePublished',
+            title: 'Published date',
+            type: 'date',
+            description: 'Enter date published',
         },
         {
             name: 'subHeading',
@@ -43,8 +49,8 @@ export default {
         },
         {
             name: 'author',
-            title: 'Enter Quote Author',
-            type: 'string',
+            title: 'Enter Article Author',
+            type: 'customText',
             description: 'Enter the quote author',
         },
         

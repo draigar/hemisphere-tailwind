@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import CustomText from "../text/customText";
+import { utilities } from "@web/helpers/utilities";
 import urlFor from "../../helpers/imageUrlGenerator";
-import videoAssetFor from "../../helpers/video-url";
 
 interface ImageVideoBgComponentProps {
   content: any;
@@ -25,25 +25,6 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
   const headingText = heading.text;
   const headingLengthSize = heading.lengthSize?.size;
   const taglineLengthSize = content.tagline.lengthSize?.size;
-
-  const colorCombo = (_color: any) => {
-    const colorClass = _color?.colorClass;
-    const brand = _color?.brand;
-    const neutral = _color?.neutral;
-    const black = _color?.black;
-    const primary = _color?.primary;
-    const colors =
-      colorClass === "brand"
-        ? `brand.${brand}`
-        : colorClass === "neutral"
-        ? `neutral.${neutral}`
-        : colorClass === "primary"
-        ? `primary.${primary}`
-        : colorClass === "black"
-        ? `black.${black}`
-        : "white";
-    return colors;
-  };
 
   const ContentComp = () => (
     <div
@@ -115,7 +96,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
   );
 
   const RenderVideo = () => {
-    const videoAsset = videoAssetFor(backgroundVideo);
+    const videoAsset = utilities.VideoFn(backgroundVideo);
     return (
       <div className="h-full">
         <video autoPlay loop muted id="video-bg">
@@ -129,7 +110,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
   };
 
   const RenderImage = () => {
-    const imageAsset = urlFor(backgroundImage).url();
+    const imageAsset = utilities.ImageFn(backgroundImage);
     const bgStyle = {
       backgroundImage: `url(${imageAsset})`,
     };
@@ -139,6 +120,16 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
       </div>
     );
   };
+
+  // const RenderVideo = () => {
+  //   const videoAsset = videoAssetFor(backgroundVideo);
+  //   return (
+  //       <div className="h-screen-90 relative">
+  //           {backgroundType === 'image' ? <RenderImage /> : backgroundType === 'video' ? <RenderVideo /> : <ContentComp />}
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
   return (
     <div className="bg-teal-600 h-screen-90 relative">

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { type } from "os";
 
 export default {
@@ -11,10 +12,9 @@ export default {
         type: 'string',
         options:{
             list: [
-                { title: 'Full View Height Design', value: 'newsletter1' },
-                { title: '1/2 View Height Design', value: 'newsletter2' },
-                { title: '1/4 View Height Design', value: 'newsletter3' },
-                { title: 'Text and Image Grid', value: 'newsletter4' },
+                { title: 'Simple background and form', value: 'newsletter1' },
+                { title: 'Text and form Grid newsletter', value: 'newsletter5' },
+                { title: 'Text and Image Grid Newsletter', value: 'newsletter4' },
                 ]
             }
         },
@@ -51,6 +51,19 @@ export default {
             type: 'button',
             description: 'Select Button Type and Fix the properties',
         },
+        {
+            name:'buttonPosition',
+            title: 'Button Position',
+            type: 'string',
+            options:{
+                list: [
+                    { title: 'Input Left', value: 'left' },
+                    { title: 'Input Center', value: 'center' },
+                    { title: 'Input Right', value: 'right' },
+                    ]
+                },
+            hidden: ({parent}) => (parent?.type === 'newsletter4' )
+            },
     
     ],
     preview: {

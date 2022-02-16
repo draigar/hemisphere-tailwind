@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { type } from "os";
 
 export default {
@@ -11,11 +12,16 @@ export default {
         type: 'string',
         options:{ 
             list: [
-                    {title: 'Card And Captions Type 1(image above, text below)', value: 'cardblog1'},
-                    {title: 'Card And Captions Type 2(image and image side by side)', value: 'cardblog2'},
-                    {title: 'Card And Captions Type 3(image above, text below with box shadow)', value: 'cardsection1'},
+                    {title: 'Card And Captions Horizontal Type(image above, text below)', value: 'horizontal'},
+                    {title: 'Card And Captions Vertical Type Block Image (image and image side by side)', value: 'verticalBlockImage'},
+                    {title: 'Card And Captions Vertical Type Rounded Image (image above, text below with box shadow)', value: 'verticalRoundedImage'},
                 ]
             }
+        },
+        {
+            title: 'Background',
+            name: 'background',
+            type: 'colors',
         },
         {
             name: 'heading',
@@ -36,17 +42,16 @@ export default {
             ]
         },
         {
-            name: 'isCTAEnabled',
-            title: 'Enable CTA',
+            name: 'isReview',
+            title: 'Add Review Mark',
             type: 'boolean',
-            description: 'Enter the Tagline Text for this Component',
+            description: 'Add Review Mark to use as a Review style',
         },
         {
-            name: 'buttonType',
-            title: 'Select Button Type',
-            type: 'button',
-            hidden: ({parent}) => !(parent?.isCTAEnabled),
-            description: 'Select Button Type and Fix the properties',
+            name: 'shadow',
+            title: 'Drop shadow',
+            type: 'boolean',
+            description: 'Should have a drop shadow',
         },
     
     ],

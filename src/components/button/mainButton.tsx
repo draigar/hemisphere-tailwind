@@ -13,9 +13,9 @@ function CustomButton({ content }: BtnProps) {
   return (
     <>
       {buttonType === "outlined" ? (
-        <Button3 content={content} />
-      ) : buttonType === "decorative" ? (
         <Button2 content={content} />
+      ) : buttonType === "decorative" ? (
+        <Button3 content={content} />
       ) : buttonType === "hyperlink" ? (
         <Button4 content={content} />
       ) : (

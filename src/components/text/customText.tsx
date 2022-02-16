@@ -19,7 +19,11 @@ const CustomText = (props: TextProps) => {
         if (/^h\d/.test(style)) {
             const level = style.replace(/[^\d]/g, '')
             return (
-                <span style={{ lineHeight: lineHeight}} className={`${classNames} ${textTypeCombo(`h${level}`)}`}>
+                <span style={{
+                    lineHeight: lineHeight,
+                    textAlign: textAlign === 'centeredTop' ? 'center' :
+                        textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
+                }} className={`${classNames} ${textTypeCombo(`h${level}`)}`}>
                     {props.children}
                 </span>
             )

@@ -1,49 +1,71 @@
+import React from "react";
 import CustomText from "../text/customText";
+import urlFor from "../../helpers/imageUrlGenerator";
 import CustomButton from "../button/mainButton";
-import urlFor from "@web/helpers/imageUrlGenerator";
-import bgColorCombo from "@web/helpers/backgroundColorFn";
 
-const Contact2 = ({ content }) => {
-  console.log("From Contact 2", content);
+function Contact2({ content }: any) {
+  const bgImage = content?.background?.backgroundImage?.asset?._ref;
+  const imageAsset = bgImage && urlFor(bgImage)?.url();
 
-  const bgColor = content?.background?.backgroundColor;
-  const bgColorStyle = bgColorCombo(bgColor);
-  const buttonDetails = content?.buttonType;
+  const address = content?.address?.text;
+  const background = content?.background?.backgroundColor;
+  const email = content?.email?.text;
+  const caption = content?.caption?.text;
+  const heading = content?.heading?.text;
+  const submitResponse =
+    content?.inputElement?.submitResponse?.text[0]?.children[0]?.text;
+  const buttonType = content?.buttonType;
+
+  const inputElements = content?.inputElement?.inputElements;
+
+  const textInputElement = inputElements?.filter(
+    (val: any) => val.type === "text"
+  );
+  const emailInputElement = inputElements?.filter(
+    (val: any) => val.type === "email"
+  );
+  const textAreaInputElement = inputElements?.filter(
+    (val: any) => val.type === "textArea"
+  );
+
+  const bgStyle = {
+    backgroundImage: `url(${imageAsset})`,
+    minHeight: "50vh",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  };
 
   return (
-    <div className="relative min-h-full">
-      <div
-        className={`${bgColorStyle} lg:px-10 lg:py-20 w-full flex flex-col items-center justify-around md:px-10 md:py-20 sm:px-10 sm:py-10 sm:flex-col  md:flex-col lg:flex-row`}
-      >
-        <div className="basis-2/4 w-full">
-          <div className="text-white font-light mb-10 text-4xl">
-            <h3>{content?.caption?.Text}</h3>
+    <div className="relative mb-10 h-screen">
+      <div style={bgStyle}></div>
+      <div className="-mt-40 lg:w-3/5 sm:w-4/5 mx-auto mb-8 bg-white p-10 shadow-lg flex justify-between">
+        <div className="flex flex-col justify-evenly sm:w-full lg:w-1/2">
+          <div className="text-black font-normal mb-10">
+            <CustomText content={heading} />
           </div>
-          <div className="text-white font-thin text-2xl mb-10">
-            <p>Want to say hello? Send us a message</p>
+          <div className="text-black font-thin lg:text-3xl mb-10 sm:text-xl">
+            <p>
+              <CustomText content={caption} />
+            </p>
           </div>
 
-          <textarea
-            placeholder="Send Us A Message"
-            cols={30}
-            rows={10}
-            className="w-full p-5"
-          ></textarea>
-
-          {buttonDetails && <CustomButton content={buttonDetails} />}
+          <div className="text-black font-thin lg:text-5xl mb-10 text-zinc-500 sm:text-2xl">
+            <CustomText content={email} />
+          </div>
         </div>
 
-        <div className="sm:w-2/4 lg:w-fit justify-self-end sm:self-start md:self-center">
-          <div className="text-white font-semibold mb-10">
-            <h3>Location</h3>
+        <div className="flex flex-col sm:w-1/2">
+          <div className="text-black font-semibold mb-10">
+            <h3>Offices</h3>
           </div>
-          <div className="text-white">
-            <p>{content?.address}</p>
+          <div>
+            <CustomText content={address} />
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Contact2;

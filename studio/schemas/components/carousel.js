@@ -9,7 +9,7 @@ export default {
             type: "string",
             options: {
                 list: [
-                    { title: "Carousel Type 1", value: "carousel1" },
+                    { title: "Full Horizontal image", value: "carousel1" },
                     { title: "Carousel Type 2", value: "carousel2" },
                     { title: "Carousel Type 3", value: "carousel3" },
                     { title: "Carousel Type 4", value: "carousel4" }
