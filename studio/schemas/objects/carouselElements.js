@@ -29,30 +29,16 @@ export default {
             title: 'Image',
         },
         {
-            title: 'CTA Type',
-            name: 'cta',
-            type: 'string',
-            options: {
-                list: [
-                    { title: "None", value: "none" },
-                    { title: "Button", value: "button" },
-                    { title: "Embed", value: "embed" },
-                ],
-            },
-            initialValue: "none",
-        },
+            name: 'isCTAEnabled',
+            title: 'Enable CTA',
+            type: 'boolean',
+            description: 'Enter the Tagline Text for this Component',
+        }, 
         {
             title: 'Button',
             name: 'button',
             type: 'button',
-            hidden: ({parent}) => !(parent?.cta === "button")
-        },
-        {
-            title: 'link',
-            description: 'Use this to link between pages on the website',
-            name: 'elementLink',
-            type: 'link',
-            hidden: ({parent}) => !(parent?.cta === "embed")
+            hidden: ({ parent }) => !(parent?.isCTAEnabled),
         },
     ],
     preview: {
