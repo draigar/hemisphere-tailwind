@@ -23,7 +23,7 @@ interface BtnProps {
 
 function CustomButton({ content }: BtnProps) {
   let buttonType = content?.type;
-  console.log(buttonType);
+  console.log(content);
   return (
     <>
       {buttonType === "outlined" ? (
