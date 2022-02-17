@@ -33,8 +33,11 @@ function Partners({ content }: any) {
       <div style={ImageBg && bgOverlayStyle}>
         <div style={colorBg && bgColorStyle}>
           <div className="md:p-11 px-4 py-11">
-            <div className="flex flex-row items-center mb-8 wow animate__animated animate__slideInLeft" 
-            data-wow-duration="1s" data-wow-delay="0">
+            <div
+              className="flex flex-row items-center mb-8 wow animate__animated animate__slideInLeft"
+              data-wow-duration="1s"
+              data-wow-delay="0"
+            >
               <div className="text-center mr-4">
                 <CustomText content={heading} textAlign="center" />
               </div>
@@ -42,8 +45,11 @@ function Partners({ content }: any) {
                 <CustomText content={caption} textAlign="center" />
               </div>
             </div>
-            <div className="flex flex-wrap justify-center relative wow animate__animated animate__slideInUp" 
-            data-wow-duration="1.2s" data-wow-delay="1.2s">
+            <div
+              className="flex flex-wrap justify-center relative wow animate__animated animate__slideInUp"
+              data-wow-duration="1.2s"
+              data-wow-delay="1.2s"
+            >
               {partnerLogo?.map((val: any, i: number) => {
                 return (
                   <div key={i} className="w-20 md:w-28 mr-6 relative">

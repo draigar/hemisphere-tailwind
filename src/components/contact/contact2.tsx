@@ -28,8 +28,6 @@ function Contact2({ content }: any) {
     (val: any) => val.type === "textArea"
   );
 
-  console.log(imageAsset);
-
   const bgStyle = {
     backgroundImage: `url(${imageAsset})`,
     minHeight: "50vh",
@@ -39,69 +37,31 @@ function Contact2({ content }: any) {
   };
 
   return (
-    <div>
+    <div className="relative mb-10 h-screen">
       <div style={bgStyle}></div>
-      <div className="flex justify-center content-center items-center">
-        <div>
-          <div
-            className="bg-white py-6 px-6 mx-4 rounded md:flex md:justify-between"
-            style={{ marginTop: inputElements ? "-10rem" : "-5rem" }}
-          >
-            <div className="md:w-45">
-              <CustomText content={heading} />
-              <div className="mb-4"></div>
-              <CustomText content={caption} />
-              <div className="mb-4"></div>
-              <CustomText content={email} />
-            </div>
-            <div className="md:w-45 self-center">
-              <CustomText content={address} />
-            </div>
+      <div className="-mt-40 lg:w-3/5 sm:w-4/5 mx-auto mb-8 bg-white p-10 shadow-lg flex justify-between">
+        <div className="flex flex-col justify-evenly sm:w-full lg:w-1/2">
+          <div className="text-black font-normal mb-10">
+            <CustomText content={heading} />
           </div>
-          <form className="md:w-45 py-6 px-12">
-            {textInputElement &&
-              textInputElement.map((val: any) => {
-                return (
-                  <div className="">
-                    <label>{val?.inputlabel}</label>
-                    <div className="mb-2"></div>
-                    <input
-                      type="text"
-                      placeholder={val?.inputplaceholder}
-                      className="border-solid border-2 rounded-sm w-full p-4 focus:outline-none focus:ring focus:ring-primary-300"
-                    />
-                  </div>
-                );
-              })}
-            {emailInputElement &&
-              emailInputElement.map((val: any) => {
-                return (
-                  <div className="mt-6">
-                    <label>{val?.inputlabel}</label>
-                    <div className="mb-2"></div>
-                    <input
-                      type="email"
-                      placeholder={val?.inputplaceholder}
-                      className="border-solid border-2 rounded-sm w-full p-2 focus:outline-none focus:ring focus:ring-primary-300"
-                    />
-                  </div>
-                );
-              })}
-            {textAreaInputElement &&
-              textAreaInputElement.map((val: any) => {
-                return (
-                  <div className="mt-6">
-                    <CustomText content={val?.inputlabel} />
-                    <div className="mb-2"></div>
-                    <textarea
-                      placeholder={val?.inputplaceholder}
-                      className="border-solid border-2 rounded-sm w-full p-2 focus:outline-none focus:ring focus:ring-primary-300"
-                    />
-                  </div>
-                );
-              })}
-            {buttonType && <CustomButton content={buttonType} />}
-          </form>
+          <div className="text-black font-thin lg:text-3xl mb-10 sm:text-xl">
+            <p>
+              <CustomText content={caption} />
+            </p>
+          </div>
+
+          <div className="text-black font-thin lg:text-5xl mb-10 text-zinc-500 sm:text-2xl">
+            <CustomText content={email} />
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:w-1/2">
+          <div className="text-black font-semibold mb-10">
+            <h3>Offices</h3>
+          </div>
+          <div>
+            <CustomText content={address} />
+          </div>
         </div>
       </div>
     </div>

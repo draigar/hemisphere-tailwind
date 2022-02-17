@@ -20,6 +20,8 @@ import CarouselComp from "@web/components/carousel";
 import Newsletter2 from "@web/components/newletters/newletter2";
 import Newsletter3 from "@web/components/newletters/newletter3";
 
+import Stats1 from "../components/stats/stats1";
+import Stats2 from "../components/stats/stats2";
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
   const router = useRouter();
@@ -85,37 +87,37 @@ export default function Slug({ data, preview, config }: any) {
 }
 
 export async function getStaticProps({ params, preview = false }: any) {
-    const slug = params.slug;
-    const sQuery = slugQuery(slug);
-    const config = siteConfig();
+  const slug = params.slug;
+  const sQuery = slugQuery(slug);
+  const config = siteConfig();
 
-    const paths = await getClient(false).fetch(config);
-    const data = paths;
+  const paths = await getClient(false).fetch(config);
+  const data = paths;
 
-    const ref = data;
+  const ref = data;
 
-    const pages = await getClient(false).fetch(sQuery, {
-        slug: params.slug
-    });
+  const pages = await getClient(false).fetch(sQuery, {
+    slug: params.slug,
+  });
 
-    console.log(ref)
+  console.log(ref);
 
-    return {
-        props: {
-            preview,
-            data: { pages },
-            config: ref,
-        }
-    };
+  return {
+    props: {
+      preview,
+      data: { pages },
+      config: ref,
+    },
+  };
 }
 
 export async function getStaticPaths() {
-    const paths = await getClient(false).fetch(
-        groq`*[_type == "page" && defined(slug.current)][].slug.current`
-    );
+  const paths = await getClient(false).fetch(
+    groq`*[_type == "page" && defined(slug.current)][].slug.current`
+  );
 
-    return {
-        paths: paths.map((slug: any) => ({ params: { slug } })),
-        fallback: true
-    };
+  return {
+    paths: paths.map((slug: any) => ({ params: { slug } })),
+    fallback: true,
+  };
 }

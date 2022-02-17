@@ -1,33 +1,23 @@
 import Link from "next/link";
 import React from "react";
-import bgColorCombo from "../../helpers/backgroundColorFn";
-import classNames from 'classnames';
 import { useRouter } from "next/router";
 import { utilities } from "@web/helpers/utilities";
 import { fetchRefByDataType } from "@web/types";
+
 interface BtnProps {
   content: any;
 }
 
-function Button2({ content }: BtnProps) {
+const Button5 = ({ content }: BtnProps) => {
+  const bgColor = content?.backgroundColor;
   const linkType = content?.buttonLink?.linkType;
   const internalLink = content?.buttonLink?.internalLink?._ref;
   const externalLink = content?.buttonLink?.externalUrl;
   const btnText = content?.buttontext;
-  const buttonColor = content?.buttonColor
-  const borderColor = content?.borderColor;
   const [linkUrl, setLinkUrl] = React.useState('');
+  const buttonColor = content?.buttonColor;
 
   const router = useRouter();
-
-  const style = {
-    color: `${buttonColor?.hex}`,
-    borderColor: `${borderColor?.hex}`,
-  }
-
-  const className = classNames(`hover:text-white border-2 
-  hover:underline underline-offset-4 decoration-2
-  font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2`)
 
   const getUrl = React.useCallback(async () => {
     const obj: fetchRefByDataType = {
@@ -44,21 +34,30 @@ function Button2({ content }: BtnProps) {
     getUrl()
   }, [getUrl])
 
+  const Styles = {
+    // backgroundColor: `${bgColor?.hex}`,
+    color: `${buttonColor?.hex}`,
+  }
+
   return (
     <>
       {linkType === "internal" ? (
         <Link href={linkUrl} passHref>
-          <button type="button" style={style} className={`hover:text-white border-2 
-          border-${borderColor}  hover:bg-${borderColor}
-          font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2`}>{btnText}</button>
+          <a>
+            <button style={Styles} type="button"
+              className={`hover:underline underline-offset-4 decoration-2 font-medium text-sm px-10 py-3 text-center mr-2 mb-2 
+      `}>{btnText}</button>
+          </a>
         </Link>
       ) : (
         <Link href={externalLink} passHref={true}>
-          <button type="button" style={style} className={className}>{btnText}</button>
+          <button style={Styles} type="button"
+            className={`font-medium hover:underline underline-offset-4 decoration-2 text-sm px-10 py-3 text-center mr-2 mb-2 
+      `}>{btnText}</button>
         </Link>
       )}
     </>
   );
 }
 
-export default Button2;
+export default Button5;

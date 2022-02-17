@@ -38,6 +38,7 @@ import team from './components/team';
 import teamMember from './objects/teamMember';
 import text from './objects/text';
 import textcenteredandimagebg from './components/imageCenteredAndText';
+import breakPoint from './components/breakpoint'
 import article from './components/article';
 import video from './objects/video';
 import propertySize from './objects/propertySize';
@@ -94,6 +95,7 @@ export default createSchema({
     margin,
     input,
     article,
+    breakPoint,
     footer
 
   ]),

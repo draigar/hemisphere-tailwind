@@ -50,7 +50,8 @@ export default {
         {type: 'statistics'},
         {type: 'textCenteredAndImageBg'},
         {type: 'carousel'},
-        { type: 'article' }
+        { type: 'article' },
+        {type: 'breakPoint' }
       ],
     },
     {

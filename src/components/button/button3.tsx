@@ -1,29 +1,61 @@
+import {ArrowRight} from 'react-feather';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import React from "react";
 import bgColorCombo from "../../helpers/backgroundColorFn";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/router";
+import { fetchRefByDataType } from '@web/types';
+import { utilities } from '@web/helpers/utilities';
 
 interface BtnProps {
   content: any;
 }
 
 function Button3({ content }: BtnProps) {
-  const bgColor = bgColorCombo(content?.backgroundColor);
+  const bgColor = content?.backgroundColor;
   const linkType = content?.buttonLink?.linkType;
   const internalLink = content?.buttonLink?.internalLink?._ref;
   const externalLink = content?.buttonLink?.externalUrl;
   const btnText = content?.buttontext;
+  const buttonBgRgb = bgColor?.rgb
+  const buttonColor = content?.buttonColor;
+  const secondaryBackgroundColor = content?.secondaryBackgroundColor
 
-  const arrowRight = <FontAwesomeIcon icon={faArrowRight} />;
+  const arrowRight = <ArrowRight size={30} />;
+
+  const [linkUrl, setLinkUrl] = React.useState('');
+
+  const getUrl = React.useCallback(async () => {
+    const obj: fetchRefByDataType = {
+      document: 'page',
+      ref: internalLink,
+      key: '_id',
+      limit: '0'
+    }
+    const url = await utilities.getRef(obj)
+    setLinkUrl(url.slug.current)
+  }, [internalLink])
+
+  React.useEffect(() => {
+    getUrl()
+  }, [getUrl])
+
+  const Styles = {
+    backgroundColor: `${bgColor?.hex}`,
+    color: `${buttonColor?.hex}`,
+  }
+  const Styles2 = {
+    backgroundColor: `${secondaryBackgroundColor !== undefined ? secondaryBackgroundColor?.hex : 'white'}`,
+    color: `${buttonColor?.hex}`,
+  }
 
   return (
     <>
       {linkType === "internal" ? (
-        <Link href="/">
+        <Link href={linkUrl} passHref>
           <div className="flex cursor-pointer mt-6 ">
-            <div className="bg-primary-400 py-6 px-8 hover:opacity-80 rounded-l-sm">
+            <div style={Styles} className={`py-6 px-8 hover:opacity-80 rounded-l-sm`}>
               {btnText}
             </div>
             <div className="bg-primary-100 py-6 px-8 hover:opacity-80 rounded-r-sm">
@@ -32,16 +64,10 @@ function Button3({ content }: BtnProps) {
           </div>
         </Link>
       ) : (
-        <Link href={externalLink} passHref={true}>
-          <div className="flex cursor-pointer mt-6">
-            <div className="bg-primary-400 py-6 px-8 hover:opacity-80">
-              {btnText}
-            </div>
-            <div className="bg-primary-100 py-6 px-8 hover:opacity-80">
-              {arrowRight}
-            </div>
-          </div>
-        </Link>
+        <button type="button" style={Styles} className="font-medium text-lg w-48 h-16 flex items-center justify-between text-gray-900">
+          <span className="flex-1">{btnText}</span>
+          <span style={Styles2} className="flex h-full px-3 items-center">{arrowRight}</span>
+        </button>
       )}
     </>
   );
