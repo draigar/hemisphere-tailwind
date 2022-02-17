@@ -15,20 +15,22 @@ function Newletter1(props: props) {
   const { content } = props;
   const bgImage = content?.background?.backgroundImage?.asset?._ref;
   const colorBg = content?.background?.backgroundColor;
-  const backgroundVideo = content?.background?.backgroundVideo?.videoFile?.asset?._ref
-  const backgroundType = content?.background?.type
+  const backgroundVideo =
+    content?.background?.backgroundVideo?.videoFile?.asset?._ref;
+  const backgroundType = content?.background?.type;
   const headLine = content?.headLine?.text;
   const tagline = content?.tagline?.text;
-  const buttonPosition = content?.buttonPosition
+  const buttonPosition = content?.buttonPosition;
   const btnDetails = content?.buttonType;
   const imageAsset = bgImage && urlFor(bgImage)?.url();
   const inputElement = content?.inputElement?.inputElements;
   const submissionResponse = content?.inputElement?.submitResponse;
 
-  console.log(content)
+  console.log(content);
 
   const bgStyle = {
-    backgroundImage: backgroundType === 'image' ? `url(${imageAsset})` : undefined,
+    backgroundImage:
+      backgroundType === "image" ? `url(${imageAsset})` : undefined,
     height: "100%",
     width: "100%",
     backgroundSize: "100% 100%",
@@ -37,7 +39,7 @@ function Newletter1(props: props) {
   };
 
   const RenderVideo = () => {
-    const videoAsset = utilities.VideoFn(backgroundVideo)
+    const videoAsset = utilities.VideoFn(backgroundVideo);
     return (
       <div className="h-full">
         <video autoPlay loop muted id="video-bg">
@@ -47,33 +49,44 @@ function Newletter1(props: props) {
           <ContentComp />
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   const ContentComp = () => (
-    <div
-      className="flex h-full justify-center items-center px-4 py-11 relative z-10"
-    >
+    <div className="flex h-full justify-center items-center px-4 py-11 relative z-10">
       <div className="w-1/3">
         <div className="my-8">
-        <CustomText content={headLine} textAlign="centered" />
+          <CustomText content={headLine} textAlign="centered" />
         </div>
         <CustomText content={tagline} textAlign="centered" />
         <form className="mt-8">
-          {inputElement && inputElement.map((val: any, i: number) => {
-            return (
-              <div key={i} className="mb-4">
-                <label style={{ color: `${val?.inputLabelColor.hex}` }} className="block">{val?.inputlabel}</label>
-                <input
-                  placeholder={val?.inputplaceholder}
-                  type={val.type}
-                  className="w-full mt-2 p-2 h-14 rounded-sm"
-                />
-              </div>
-            );
-          })}
-          <div className={`w-full flex ${buttonPosition === 'right' ? 'justify-end' 
-          : buttonPosition === 'left' ? 'justify-start' : 'justify-center' }`}>
+          {inputElement &&
+            inputElement.map((val: any, i: number) => {
+              return (
+                <div key={i} className="mb-4">
+                  <label
+                    style={{ color: `${val?.inputLabelColor.hex}` }}
+                    className="block"
+                  >
+                    {val?.inputlabel}
+                  </label>
+                  <input
+                    placeholder={val?.inputplaceholder}
+                    type={val.type}
+                    className="w-full mt-2 p-2 h-14 rounded-sm"
+                  />
+                </div>
+              );
+            })}
+          <div
+            className={`w-full flex ${
+              buttonPosition === "right"
+                ? "justify-end"
+                : buttonPosition === "left"
+                ? "justify-start"
+                : "justify-center"
+            }`}
+          >
             <CustomButton content={btnDetails} />
           </div>
         </form>
@@ -83,9 +96,16 @@ function Newletter1(props: props) {
 
   return (
     <div className="h-600px bg-black-1">
-      <div style={bgStyle} className={`relative ${utilities.ColorCombo(colorBg)} h-full w-full `}>
-        <div className={`${backgroundType !== 'color' && 'bg-black-1 bg-opacity-25'} z-10 h-full absolute w-full`}></div>
-        {backgroundType === 'video' ? <RenderVideo /> : <ContentComp />}
+      <div
+        style={bgStyle}
+        className={`relative ${utilities.ColorCombo(colorBg)} h-full w-full `}
+      >
+        <div
+          className={`${
+            backgroundType !== "color" && "bg-black-1 bg-opacity-25"
+          } z-10 h-full absolute w-full`}
+        ></div>
+        {backgroundType === "video" ? <RenderVideo /> : <ContentComp />}
       </div>
     </div>
   );

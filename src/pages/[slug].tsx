@@ -16,6 +16,8 @@ import { getClient } from "../lib/sanity";
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import CarouselComp from "@web/components/carousel";
+import Newsletter2 from "@web/components/newletters/newletter2";
+import Newsletter3 from "@web/components/newletters/newletter3";
 
 import Stats1 from "../components/stats/stats1";
 import Stats2 from "../components/stats/stats2";
@@ -54,8 +56,19 @@ export default function Slug({ data, preview, config }: any) {
               {el._type === "cardsAndCaptions" && <Card content={el} />}
               {el._type === "contact" && <Contact content={el} />}
               {el._type === "article" && <Article content={el} />}
+              {el.type === "newsletter1" && <Newletter1 content={el} />}
+              {el.type === "newsletter2" && <Newsletter2 content={el} />}
+              { el.type === "newsletter3" && <Newsletter3 content={el} />}
+
+              { el._type === "textCenteredAndImageBg" && <TextCenteredandBg1 content={el} />}
+              { el._type === "partners" && <Partners content={el} />}
+              { el._type === "imageVideoBgHeroComponent" && <ImageVideoBgComponent content={el} />}
+              { el.type === "imgLeftTextRight" && <TextImageGrid content={el} />}
+
+              {el.type === "carousel1" && <CarouselComp content={el} />}
+
             </div>
-          ))}
+          ))} 
         </main>
     </DefaultLayout>
   );
