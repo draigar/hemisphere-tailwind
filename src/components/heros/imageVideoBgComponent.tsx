@@ -121,16 +121,6 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
     );
   };
 
-  // const RenderVideo = () => {
-  //   const videoAsset = videoAssetFor(backgroundVideo);
-  //   return (
-  //       <div className="h-screen-90 relative">
-  //           {backgroundType === 'image' ? <RenderImage /> : backgroundType === 'video' ? <RenderVideo /> : <ContentComp />}
-  //       </div>
-  //     </div>
-  //   );
-  // };
-
   return (
     <div className="bg-teal-600 h-screen-90 relative">
       {backgroundType === "image" ? (

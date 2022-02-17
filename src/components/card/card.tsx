@@ -75,9 +75,9 @@ function Card1({ content }: any) {
   );
 
   return (
-    <div className={`${background !== undefined ? utilities.ColorCombo(background) : 'bg-gray-100'} `}>
+    <div className={`${background !== undefined ? utilities.ColorCombo(background) : 'transparent'} `}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
+        <div className="max-w-2xl mx-auto py-6 sm:py-6 lg:py-2 lg:max-w-none">
           <div className="w-2/3">
             <div className="mb-4">
               <CustomText content={heading} textAlign="center" />

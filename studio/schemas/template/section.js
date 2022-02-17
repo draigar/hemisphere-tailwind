@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
     name: 'pageSection',
     type: 'object',
@@ -13,9 +14,9 @@ export default {
                     {title: 'Video and Text Caption', value: 'videoAndTextCaption'},
                     {title: 'Image and Text Grid', value: 'imageAndTextGrid'},
                     {title: 'Newsletter', value: 'newsLetter'},
-                    {title: 'Team', value: 'team'},
+                    // {title: 'Team', value: 'team'},
                     {title: 'Partners', value: 'partners'},
-                    {title: 'Reviews', value: 'reviews'},
+                    // {title: 'Reviews', value: 'reviews'},
                     {title: 'Gallery', value: 'gallery'},
                     {title: 'Image Background and text-Card Overflow', value: 'imageBgandTextCardOverflow'},
                     {title: 'Cards and Caption', value: 'cardsAndCaptions'},
@@ -53,7 +54,7 @@ export default {
         },
         {
             name:'teamSection',
-            type:'team',
+            // type:'team',
             title:'Configure Team Section',
             hidden: ({parent}) => (parent?.sectionType !== 'team')
         },
@@ -65,7 +66,7 @@ export default {
         },
         {
             name:'reviewsSection',
-            type:'reviews',
+            // type:'reviews',
             title:'Configure Reviews Section',
             hidden: ({parent}) => (parent?.sectionType !== 'reviews')
         },

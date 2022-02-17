@@ -1,10 +1,9 @@
 import { siteConfig, slugQuery } from "../lib/sanity/queries";
 
-import Article1 from "@web/components/article/article1";
+import Article from "@web/components/article";
 import Article2 from "@web/components/article/article2";
 import Card1 from "../components/card/card";
-import Contact1 from "@web/components/contact/contact1";
-import Contact2 from "@web/components/contact/contact2";
+import Contact from "@web/components/contact";
 import DefaultLayout from "../layouts/default";
 import Head from "next/head";
 import ImageVideoBgComponent from "../components/heros/imageVideoBgComponent";
@@ -20,6 +19,7 @@ import CarouselComp from "@web/components/carousel";
 
 import Stats1 from "../components/stats/stats1";
 import Stats2 from "../components/stats/stats2";
+import dynamic from "next/dynamic";
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
   const router = useRouter();
@@ -39,43 +39,24 @@ export default function Slug({ data, preview, config }: any) {
     openGraphImage: config?.openGraphImage,
   };
 
+  const Card = dynamic(
+    () => import('../components/card/card'),
+    { ssr: false }
+  )
+
   const content = data?.pages?.content;
+  console.log(content)
   return (
     <DefaultLayout siteConfig={siteMetaData}>
-      <div className="h-screen">
-        <main>
-          {content &&
-            content.map((el: any, i: number) => (
-              <div key={i} className="h-full">
-                {el._type === "imageVideoBgHeroComponent" ? (
-                  <ImageVideoBgComponent content={el} />
-                ) : el._type === "imageAndTextGrid" &&
-                  el.type === "imgLeftTextRight" ? (
-                  <TextImageGrid content={el} />
-                ) : el._type === "partners" ? (
-                  <Partners content={el} />
-                ) : el._type === "cardsAndCaptions" &&
-                  el.type === "cardsection1" ? (
-                  <Card1 content={el} />
-                ) : el._type === "newsletter" && el.type === "newsletter1" ? (
-                  <Newletter1 content={el} />
-                ) : el._type === "textCenteredAndImageBg" ? (
-                  <TextCenteredandBg1 content={el} />
-                ) : el._type === "contact" && el.type === "contact1" ? (
-                  <Contact1 content={el} />
-                ) : el._type === "contact" && el.type === "contact2" ? (
-                  <Contact2 content={el} />
-                ) : el._type === "article" && el.type === "article1" ? (
-                  <Article1 content={el} />
-                ) : el._type === "article" && el.type === "article2" ? (
-                  <Article2 content={el} />
-                ) : el._type === "carousel" && el.type === "carousel1" ? (
-                  <CarouselComp content={el} />
-                ) : null}
-              </div>
-            ))}
+      <main className="h-full">
+          {content && content.map((el: any, i: number) => (
+            <div key={i}>
+              {el._type === "cardsAndCaptions" && <Card content={el} />}
+              {el._type === "contact" && <Contact content={el} />}
+              {el._type === "article" && <Article content={el} />}
+            </div>
+          ))}
         </main>
-      </div>
     </DefaultLayout>
   );
 }
