@@ -7,7 +7,7 @@ import bgColorCombo from "../../helpers/backgroundColorFn";
 function Newsletter3({ content }: any) {
   console.log(content);
 
-  const bgImage = content?.background?.backgroundImage?.asset?._ref;
+  const bgImage = content?.image?.Image?.asset?._ref;
   const colorBg = content?.background?.backgroundColor;
   const backgroundVideo =
     content?.background?.backgroundVideo?.videoFile?.asset?._ref;
@@ -35,14 +35,17 @@ function Newsletter3({ content }: any) {
   const bgColor = bgColorCombo(colorBg);
 
   return (
-    <div className={`md:flex md:justify-between ${bgColor} md:p-9 p-4 `}>
-      <div className="md:w-45 ">
+    <div
+      className={`md:flex md:justify-between ${bgColor} md:py-9 md:px-28 lg:px-36 p-4 `}
+    >
+      <div className="md:w-48 ">
         <img src={imageAsset} alt="newsletter image" />
       </div>
-      <div className="md:w-45">
+      <div className="md:w-48 self-center">
         <CustomText content={headLine} />
         <div className="mb-2"></div>
         <CustomText content={tagline} />
+        <div className="mb-4"></div>
         <form className="mt-6 md:mt-0">
           {textInputElement &&
             textInputElement.map((val: any) => {

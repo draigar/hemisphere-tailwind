@@ -3,6 +3,7 @@ import urlFor from "../../helpers/imageUrlGenerator";
 import CustomButton from "../button/mainButton";
 import CustomText from "../text/customText";
 import bgColorCombo from "../../helpers/backgroundColorFn";
+import { utilities } from "../../helpers/utilities";
 
 function Newsletter2({ content }: any) {
   console.log(content);
@@ -30,18 +31,18 @@ function Newsletter2({ content }: any) {
     (val: any) => val.type === "textArea"
   );
 
-  console.log();
-
-  const bgColor = bgColorCombo(colorBg);
+  const bgColor = utilities.ColorCombo(colorBg);
 
   return (
-    <div className={`md:flex md:justify-between ${bgColor} md:p-9 p-4 `}>
-      <div className="md:w-45 ">
+    <div
+      className={`md:flex md:justify-between ${bgColor} md:py-9 md:px-28 lg:px-36 p-4`}
+    >
+      <div className="md:w-48 ">
         <CustomText content={headLine} />
         <div className="mb-2"></div>
         <CustomText content={tagline} />
       </div>
-      <div className="md:w-45">
+      <div className="md:w-48">
         <form className="mt-6 md:mt-0">
           {textInputElement &&
             textInputElement.map((val: any) => {

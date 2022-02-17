@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import {isUniqueAcrossAllDocuments} from '../../lib/isUniqueAcrossAllDocuments'
 
 export default {
@@ -40,9 +41,9 @@ export default {
         {type: 'videoAndTextCaption'},
         {type: 'imageAndTextGrid'},
         {type: 'newsletter'},
-        {type: 'team'},
+        // {type: 'team'},
         {type: 'partners'},
-        {type: 'reviews'},
+        // {type: 'reviews'},
         {type: 'gallery'},
         {type: 'imageBgandTextCardOverflow'},
         {type: 'cardsAndCaptions'},
