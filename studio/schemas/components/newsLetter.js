@@ -9,12 +9,12 @@ export default {
         {
         name:'type',
         title: 'Newsletter Type',
-        type: 'string',
+            type: 'string', 
         options:{
             list: [
                 { title: 'Simple background and form', value: 'newsletter1' },
-                { title: 'Text and form Grid newsletter', value: 'newsletter5' },
-                { title: 'Text and Image Grid Newsletter', value: 'newsletter4' },
+                { title: 'Text and form Grid newsletter', value: 'newsletter2' },
+                { title: 'Text and Image Grid Newsletter', value: 'newsletter3' },
                 ]
             }
         },
@@ -22,13 +22,13 @@ export default {
             name: 'image',
             title: 'Select Image',
             type: 'imageObject',
-            hidden: ({ parent }) => !(parent?.type === 'newsletter4')
+            hidden: ({ parent }) => !(parent?.type === 'newsletter3')
         },
         {
             name: 'background',
             title: 'background',
             type: 'background',
-            hidden: ({ parent }) => (parent?.type === 'newsletter4')
+            hidden: ({ parent }) => (parent?.type === 'newsletter3')
         }, 
         {
             name: 'headLine',

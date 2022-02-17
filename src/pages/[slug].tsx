@@ -17,6 +17,8 @@ import { getClient } from "../lib/sanity";
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import CarouselComp from "@web/components/carousel";
+import Newsletter2 from "@web/components/newletters/newletter2";
+import Newsletter3 from "@web/components/newletters/newletter3";
 
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
@@ -57,6 +59,10 @@ export default function Slug({ data, preview, config }: any) {
                   <Card1 content={el} />
                 ) : el._type === "newsletter" && el.type === "newsletter1" ? (
                   <Newletter1 content={el} />
+                ) : el._type === "newsletter" && el.type === "newsletter2" ? (
+                  <Newsletter2 content={el} />
+                ) : el._type === "newsletter" && el.type === "newsletter3" ? (
+                  <Newsletter3 content={el} />
                 ) : el._type === "textCenteredAndImageBg" ? (
                   <TextCenteredandBg1 content={el} />
                 ) : el._type === "contact" && el.type === "contact1" ? (
