@@ -1,4 +1,4 @@
-import { type } from 'os';
+/* eslint-disable import/no-anonymous-default-export */
 
 export default {
 	name: 'contact',
@@ -17,9 +17,16 @@ export default {
 			}
 		},
 		{
-			name: 'background',
+			name: 'backgroundColor',
 			title: 'background',
-			type: 'background'
+			type: 'colors',
+			hidden: ({parent}) => parent?.type !== 'contact1',
+		},
+		{
+			name: 'backgrounds',
+			title: 'background',
+			type: 'background',
+			hidden: ({parent}) => parent?.type !== 'contact2',
 		},
 		{
 			name: 'heading',
@@ -34,11 +41,6 @@ export default {
 		{
 			name: 'address',
 			title: 'Office Address',
-			type: 'customText'
-		},
-		{
-			name: 'email',
-			title: 'Email Address',
 			type: 'customText'
 		},
 		{

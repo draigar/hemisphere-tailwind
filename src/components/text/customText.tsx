@@ -92,9 +92,23 @@ const CustomText = (props: TextProps) => {
         return _type;
     };
 
+    const NormalText = () => (
+        <p
+            className={`${classNames} ${textTypeCombo(`p`)}`}
+            style={{
+                lineHeight: lineHeight, textAlign: textAlign === 'centeredTop' ? 'center' :
+                    textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
+            }}
+        >
+            {MainText}
+        </p>
+    )
+
     return (
         <>
-            <BlockContent blocks={MainText} serializers={serializers} />
+            {typeof MainText === 'object' ?
+                <BlockContent blocks={MainText} serializers={serializers} />
+                : <NormalText />}
         </>
     );
 };

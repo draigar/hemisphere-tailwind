@@ -27,14 +27,14 @@ import page from './documents/page';
 import partners from './components/partners';
 import portableText from './objects/portableText';
 import reviewer from './objects/reviewer';
-import reviews from './components/reviews';
+// import reviews from './components/reviews';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
-import section from './template/section';
+// import section from './template/section';
 import simplePortableText from './objects/simplePortableText';
 import siteConfig from './documents/siteConfig';
 import stat from './objects/stat';
 import statistics from './components/stats';
-import team from './components/team';
+// import team from './components/team';
 import teamMember from './objects/teamMember';
 import text from './objects/text';
 import textcenteredandimagebg from './components/imageCenteredAndText';
@@ -52,7 +52,7 @@ export default createSchema({
   // Then proceed to concatenate our our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    section,
+    // section,
     page,
     siteConfig,
     text,
@@ -87,9 +87,9 @@ export default createSchema({
     imageVideoBgHero,
     newsLetter,
     partners,
-    reviews,
+    // reviews,
     statistics,
-    team,
+    // team,
     videoAndTextCaption,
     propertySize,
     margin,
