@@ -4,8 +4,8 @@ import Link from "next/link";
 import React from "react";
 import bgColorCombo from "../../helpers/backgroundColorFn";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { useRouter } from "next/router";
 import { fetchRefByDataType } from '@web/types';
+import { useRouter } from "next/router";
 import { utilities } from '@web/helpers/utilities';
 
 interface BtnProps {
@@ -24,7 +24,7 @@ function Button3({ content }: BtnProps) {
 
   const arrowRight = <ArrowRight size={30} />;
 
-  const [linkUrl, setLinkUrl] = React.useState('');
+  const [linkUrl, setLinkUrl] = React.useState('/');
 
   const getUrl = React.useCallback(async () => {
     const obj: fetchRefByDataType = {
@@ -34,7 +34,12 @@ function Button3({ content }: BtnProps) {
       limit: '0'
     }
     const url = await utilities.getRef(obj)
-    setLinkUrl(url.slug.current)
+    if (url?.slug.current !== undefined) {
+      console.log('====================================');
+      console.log(url);
+      console.log('====================================');
+      // setLinkUrl(url?.slug.current)
+    }
   }, [internalLink])
 
   React.useEffect(() => {

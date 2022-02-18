@@ -3,25 +3,25 @@ import { siteConfig, slugQuery } from "../lib/sanity/queries";
 import Article from "@web/components/article";
 import Article2 from "@web/components/article/article2";
 import Card1 from "../components/card/card";
+import CarouselComp from "@web/components/carousel";
 import Contact from "@web/components/contact";
 import DefaultLayout from "../layouts/default";
 import Head from "next/head";
 import ImageVideoBgComponent from "../components/heros/imageVideoBgComponent";
 import Newletter1 from "../components/newletters/newletter1";
+import Newsletter2 from "@web/components/newletters/newletter2";
+import Newsletter3 from "@web/components/newletters/newletter3";
 import Partners from "../components/partners/partners";
 import { SiteMetaConfigType } from "../types";
+import Stats1 from "../components/stats/stats1";
+import Stats2 from "../components/stats/stats2";
 import TextCenteredandBg1 from "@web/components/textCenteredandBg/textCenteredandBg1";
 import TextImageGrid from "../components/textImageGrid/textImageGrid";
+import dynamic from "next/dynamic";
 import { getClient } from "../lib/sanity";
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
-import CarouselComp from "@web/components/carousel";
-import Newsletter2 from "@web/components/newletters/newletter2";
-import Newsletter3 from "@web/components/newletters/newletter3";
 
-import Stats1 from "../components/stats/stats1";
-import Stats2 from "../components/stats/stats2";
-import dynamic from "next/dynamic";
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
   const router = useRouter();
@@ -47,7 +47,7 @@ export default function Slug({ data, preview, config }: any) {
   )
 
   const content = data?.pages?.content;
-  console.log(content)
+  console.log('main', data)
   return (
     <DefaultLayout siteConfig={siteMetaData}>
       <main className="h-full">

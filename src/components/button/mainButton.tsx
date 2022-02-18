@@ -1,10 +1,5 @@
-// import Button1 from "./button1";
-// import Button2 from "./button2";
-import Button3 from "./button3";
-import Button4 from "./button4";
 import React from "react";
 import dynamic from "next/dynamic";
-import Button5 from "./button5";
 
 const Button1 = dynamic(
   () => import('./button1'),
@@ -13,6 +8,21 @@ const Button1 = dynamic(
 
 const Button2 = dynamic(
   () => import('./button2'),
+  { ssr: false }
+)
+
+const Button3 = dynamic(
+  () => import('./button3'),
+  { ssr: false }
+)
+
+const Button4 = dynamic(
+  () => import('./button4'),
+  { ssr: false }
+)
+
+const Button5 = dynamic(
+  () => import('./button5'),
   { ssr: false }
 )
 

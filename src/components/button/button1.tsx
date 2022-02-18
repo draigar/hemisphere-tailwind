@@ -1,10 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import bgColorCombo from "../../helpers/backgroundColorFn";
+import { fetchRefByDataType } from "@web/types";
+import { useQueries } from "@web/hooks";
 import { useRouter } from "next/router";
 import { utilities } from "@web/helpers/utilities";
-import { useQueries } from "@web/hooks";
-import { fetchRefByDataType } from "@web/types";
 
 interface BtnProps {
   content: any;
@@ -29,7 +29,9 @@ const Button1 = ({ content }: BtnProps) => {
       limit: '0'
     }
     const url = await utilities.getRef(obj)
-    setLinkUrl(url.slug.current)
+    if (url?.slug.current !== undefined) {
+      setLinkUrl(url?.slug.current)
+    }
   }, [internalLink])
 
   React.useEffect(() => {
