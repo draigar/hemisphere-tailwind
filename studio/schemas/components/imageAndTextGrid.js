@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
     name: 'imageAndTextGrid',
     type: 'object',
@@ -30,6 +31,19 @@ export default {
                 description: 'Select the image position',
             },
             initialValue: 'left',
+        },
+        {
+            name: 'bleedType',
+            type: 'string',
+            options: {
+                list: [
+                    {title: 'Full screen bleed', value: 'full'},
+                    {title: 'Medium screen bleed', value: 'medium'},
+                    {title: 'No screen bleed', value: 'no'}
+                ],
+                description: 'Select the bleed type',
+            },
+            initialValue: 'medium'
         },
         {
             name: 'heading',

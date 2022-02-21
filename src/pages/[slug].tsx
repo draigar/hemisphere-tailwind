@@ -16,7 +16,6 @@ import { SiteMetaConfigType } from "../types";
 import Stats1 from "../components/stats/stats1";
 import Stats2 from "../components/stats/stats2";
 import TextCenteredandBg1 from "@web/components/textCenteredandBg/textCenteredandBg1";
-import TextImageGrid from "../components/textImageGrid/textImageGrid";
 import dynamic from "next/dynamic";
 import { getClient } from "../lib/sanity";
 import { groq } from "next-sanity";
@@ -46,30 +45,35 @@ export default function Slug({ data, preview, config }: any) {
     { ssr: false }
   )
 
+  const TextImageGrid = dynamic(
+    () => import('../components/textImageGrid'),
+    { ssr: false }
+  )
+
   const content = data?.pages?.content;
   console.log('main', data)
   return (
     <DefaultLayout siteConfig={siteMetaData}>
       <main className="h-full">
-          {content && content.map((el: any, i: number) => (
-            <div key={i}>
-              {el._type === "cardsAndCaptions" && <Card content={el} />}
-              {el._type === "contact" && <Contact content={el} />}
-              {el._type === "article" && <Article content={el} />}
-              {el.type === "newsletter1" && <Newletter1 content={el} />}
-              {el.type === "newsletter2" && <Newsletter2 content={el} />}
-              { el.type === "newsletter3" && <Newsletter3 content={el} />}
+        {content && content.map((el: any, i: number) => (
+          <div key={i}>
+            {el._type === "cardsAndCaptions" && <Card content={el} />}
+            {el._type === "contact" && <Contact content={el} />}
+            {el._type === "article" && <Article content={el} />}
+            {el.type === "newsletter1" && <Newletter1 content={el} />}
+            {el.type === "newsletter2" && <Newsletter2 content={el} />}
+            {el.type === "newsletter3" && <Newsletter3 content={el} />}
 
-              { el._type === "textCenteredAndImageBg" && <TextCenteredandBg1 content={el} />}
-              { el._type === "partners" && <Partners content={el} />}
-              { el._type === "imageVideoBgHeroComponent" && <ImageVideoBgComponent content={el} />}
-              { el.type === "imgLeftTextRight" && <TextImageGrid content={el} />}
+            {el._type === "textCenteredAndImageBg" && <TextCenteredandBg1 content={el} />}
+            {el._type === "partners" && <Partners content={el} />}
+            {el._type === "imageVideoBgHeroComponent" && <ImageVideoBgComponent content={el} />}
+            {el._type === "imageAndTextGrid" && <TextImageGrid content={el} />}
 
-              {el.type === "carousel1" && <CarouselComp content={el} />}
+            {el.type === "carousel1" && <CarouselComp content={el} />}
 
-            </div>
-          ))} 
-        </main>
+          </div>
+        ))}
+      </main>
     </DefaultLayout>
   );
 }

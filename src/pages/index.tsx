@@ -12,7 +12,7 @@ import { getClient } from '../lib/sanity'
 import styles from '../styles/Home.module.css'
 
 const TextImageGrid = dynamic(
-  () => import('../components/textImageGrid/textImageGrid'),
+  () => import('../components/textImageGrid'),
   { ssr: false }
 )
 const TextCenteredAndBg = dynamic(
