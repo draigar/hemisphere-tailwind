@@ -2,7 +2,7 @@ import * as React from "react";
 
 import CustomText from "../text/customText";
 import { utilities } from "@web/helpers/utilities";
-import urlFor from "../../helpers/imageUrlGenerator";
+import Button from '../button/mainButton';
 
 interface ImageVideoBgComponentProps {
   content: any;
@@ -92,6 +92,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
           <CustomText content={tagline} textAlign={textAlign} />
         )}
       </div>
+      {isCTAEnabled && <Button content={buttonType} />}
     </div>
   );
 
