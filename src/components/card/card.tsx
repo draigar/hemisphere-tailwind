@@ -15,13 +15,20 @@ function Card1({ content }: any) {
   const shadow = content?.shadow;
   const type = content?.type;
 
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
+
   console.log(content)
 
   const Horizontal = () => (
     <div className={`mt-6 space-y-12 lg:space-y-0 lg:grid ${cards?.length === 2 ? 'lg:grid-cols-2 px-48'
       : cards?.length === 3 ? 'lg:grid-cols-3' : cards?.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-1'} lg:gap-x-6`}>
       {cards.map((val: any, i: number) => (
-        <div key={i} className={`group relative ${shadow && 'shadow-lg'} p-0 ${val?.background !== undefined ? utilities.ColorCombo(val?.background) : 'white'} `}>
+        <div key={i} className={`group relative ${shadow && 'shadow-lg'} p-0 ${val?.background !== undefined ? utilities.ColorCombo(val?.background) : 'white'} `}
+        >
           <div className="relative w-full h-80 bg-white overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
             <img
               src={utilities.ImageFn(val.Image.asset._ref)}
@@ -84,7 +91,8 @@ function Card1({ content }: any) {
             </div>
             <CustomText content={caption} textAlign="center" />
           </div>
-          <div className="my-10">
+          <div className={`my-10 ${isAnimationEnabled && 'wow animate__animated'} ${animationName}`} data-wow-duration={`${animationDuration}s`}
+            data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
             {type === 'vertical' ? <Vertical /> : type === 'horizontal' ? <Horizontal /> : <Vertical />}
           </div>
         </div>

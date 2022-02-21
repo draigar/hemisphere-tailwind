@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
     name: 'textCenteredAndImageBg',
     type: 'object',
@@ -40,6 +41,17 @@ export default {
             type: 'margin',
             description: 'Select Button Type and Fix the properties',
         },
+        {
+            name: 'isAnimationEnabled',
+            title: 'Enable Animation',
+            type: 'boolean',
+            description: 'Enable animation on component',
+        },
+        {
+            name: 'animation',
+            type: 'animations',
+            hidden: ({ parent }) => !(parent?.isAnimationEnabled),
+        }
     ],
     preview: {
         select: {

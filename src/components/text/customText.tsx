@@ -11,7 +11,13 @@ interface TextProps {
 
 const CustomText = (props: TextProps) => {
     const { content, textAlign, lineHeight, classNames } = props;
-    const MainText = content;
+    const MainText = content?.text !== undefined ? content?.text : content;
+
+    const isAnimationEnabled = content?.isAnimationEnabled
+    const animationDelay = content?.animation?.animationDelay
+    const animationDuration = content?.animation?.animationDuration
+    const animationName = content?.animation?.animationName
+    const animationOffset = content?.animation?.animationOffset
 
     const HeadingRenderer = (props: any) => {
         const { style = 'normal' } = props.node
@@ -19,37 +25,46 @@ const CustomText = (props: TextProps) => {
         if (/^h\d/.test(style)) {
             const level = style.replace(/[^\d]/g, '')
             return (
-                <span style={{
-                    lineHeight: lineHeight,
-                    textAlign: textAlign === 'centeredTop' ? 'center' :
-                        textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
-                }} className={`${classNames} ${textTypeCombo(`h${level}`)}`}>
-                    {props.children}
-                </span>
+                <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
+                    data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
+                    <span style={{
+                        lineHeight: lineHeight,
+                        textAlign: textAlign === 'centeredTop' ? 'center' :
+                            textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
+                    }} className={`${classNames} ${textTypeCombo(`h${level}`)}`}>
+                        {props.children}
+                    </span>
+                </div>
             )
             // return React.createElement(style, { className: `heading-${level}` }, props.children)
         }
         if (style === 'title') {
             return (
-                <h1 className={`${classNames} text-3xl sm:text-5xl md:text-7xl font-bold`} style={{
-                    textAlign: textAlign === 'centeredTop' ? 'center' :
-                        textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
-                }}>
-                    {props.children}
-                </h1>
+                <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
+                    data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
+                    <h1 className={`${classNames} text-3xl sm:text-5xl md:text-7xl font-bold`} style={{
+                        textAlign: textAlign === 'centeredTop' ? 'center' :
+                            textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
+                    }}>
+                        {props.children}
+                    </h1>
+                </div>
             )
         }
         if (style === 'normal') {
             return (
-                <p
-                    className={`${classNames} ${textTypeCombo(`p`)}`}
-                    style={{
-                        lineHeight: lineHeight, textAlign: textAlign === 'centeredTop' ? 'center' :
-                            textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
-                    }}
-                >
-                    {props.children}
-                </p>
+                <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
+                    data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
+                    <p
+                        className={`${classNames} ${textTypeCombo(`p`)}`}
+                        style={{
+                            lineHeight: lineHeight, textAlign: textAlign === 'centeredTop' ? 'center' :
+                                textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
+                        }}
+                    >
+                        {props.children}
+                    </p>
+                </div>
             )
         }
         // Fall back to default handling
@@ -60,16 +75,20 @@ const CustomText = (props: TextProps) => {
         types: {
             code: (props: any) => {
                 return (
-                    <pre data-language={props.node.language}>
-                        <code>{props.node.code}</code>
-                    </pre>
+                    <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
+                        data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
+                        <pre data-language={props.node.language}>
+                            <code>{props.node.code}</code>
+                        </pre>
+                    </div>
                 )
             },
             block: HeadingRenderer,
         },
         marks: {
             color: (props: any) => {
-                return <span style={{ color: props.mark.hex }}>{props.children}</span>
+                return <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
+                    data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}><span style={{ color: props.mark.hex }}>{props.children}</span></div>
             }
         }
     }
@@ -93,15 +112,19 @@ const CustomText = (props: TextProps) => {
     };
 
     const NormalText = () => (
-        <p
-            className={`${classNames} ${textTypeCombo(`p`)}`}
-            style={{
-                lineHeight: lineHeight, textAlign: textAlign === 'centeredTop' ? 'center' :
-                    textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
-            }}
-        >
-            {MainText}
-        </p>
+        <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
+            data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
+            <p
+                className={`${classNames !== undefined && classNames} ${textTypeCombo(`p`)}`}
+                style={{
+                    lineHeight: lineHeight, textAlign: textAlign === 'centeredTop' ? 'center' :
+                        textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
+                }}
+            >
+                {animationName}
+                {MainText}
+            </p>
+        </div>
     )
 
     return (

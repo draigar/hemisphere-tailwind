@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   type: 'object',
   name: 'customText',
@@ -100,6 +101,17 @@ export default {
     {
       name: 'lengthSize',
       type: 'size',
-    }
+    },
+    {
+      name: 'isAnimationEnabled',
+      title: 'Enable Animation',
+      type: 'boolean',
+      description: 'Enable animation on component',
+  },
+  {
+      name: 'animation',
+      type: 'animations',
+      hidden: ({parent}) => !(parent?.isAnimationEnabled),
+  }
   ]
 };

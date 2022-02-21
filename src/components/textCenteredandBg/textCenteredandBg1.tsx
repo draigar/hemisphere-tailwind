@@ -17,13 +17,17 @@ function TextCenteredandBg1(props: props) {
   const imageAsset = bgImage && utilities.ImageFn(bgImage)
   const marginSize = content?.margin
 
-  const bodyText = content?.bodyText?.text;
-  const heading = content?.heading?.text;
+  const bodyText = content?.bodyText;
+  const heading = content?.heading;
 
   const isCTAEnabled = content?.isCTAEnabled;
   const buttonType = content?.buttonType;
 
-  console.log(content)
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
 
   const bgStyle = {
     backgroundImage: backgroundType === 'image' ? `url(${imageAsset})` : undefined,
@@ -63,7 +67,9 @@ function TextCenteredandBg1(props: props) {
 
   return (
     <div className="px-16 py-4 h-600px">
-      <div style={bgStyle} className={`relative ${utilities.ColorCombo(bgColor)} h-full ${MarginSizing(marginSize)}`}>
+      <div style={bgStyle} className={`relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName} ${utilities.ColorCombo(bgColor)} h-full`}
+      data-wow-duration={`${animationDuration}s`}
+      data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
         <div className={`${backgroundType !== 'color' && 'bg-black-1 bg-opacity-25' } z-10 h-full absolute w-full`}></div>
         {backgroundType === 'video' ? <RenderVideo /> : <ContentComp />}
       </div>

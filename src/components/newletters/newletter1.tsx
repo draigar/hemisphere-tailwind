@@ -18,15 +18,19 @@ function Newletter1(props: props) {
   const backgroundVideo =
     content?.background?.backgroundVideo?.videoFile?.asset?._ref;
   const backgroundType = content?.background?.type;
-  const headLine = content?.headLine?.text;
-  const tagline = content?.tagline?.text;
+  const headLine = content?.headLine;
+  const tagline = content?.tagline;
   const buttonPosition = content?.buttonPosition;
   const btnDetails = content?.buttonType;
   const imageAsset = bgImage && urlFor(bgImage)?.url();
   const inputElement = content?.inputElement?.inputElements;
   const submissionResponse = content?.inputElement?.submitResponse;
 
-  console.log(content);
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
 
   const bgStyle = {
     backgroundImage:
@@ -65,7 +69,7 @@ function Newletter1(props: props) {
               return (
                 <div key={i} className="mb-4">
                   <label
-                    style={{ color: `${val?.inputLabelColor.hex}` }}
+                    style={{ color: `${val?.inputLabelColor?.hex}` }}
                     className="block"
                   >
                     {val?.inputlabel}
@@ -98,7 +102,9 @@ function Newletter1(props: props) {
     <div className="h-600px bg-black-1">
       <div
         style={bgStyle}
-        className={`relative ${utilities.ColorCombo(colorBg)} h-full w-full `}
+        className={`relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName} ${utilities.ColorCombo(colorBg)} h-full w-full `}
+        data-wow-duration={`${animationDuration}s`}
+      data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}
       >
         <div
           className={`${

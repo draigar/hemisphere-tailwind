@@ -8,7 +8,7 @@ export default {
             name: 'background',
             type: 'background',
             title: 'Background',
-            hidden: ({parent}) => !(parent?.isCustomBg),
+            hidden: ({ parent }) => !(parent?.isCustomBg),
             description: 'Set the Background you want on this component',
         },
         {
@@ -25,8 +25,8 @@ export default {
             type: 'string',
             options: {
                 list: [
-                    {title: 'Image Left', value: 'left'},
-                    {title: 'Image Right', value: 'right'},
+                    { title: 'Image Left', value: 'left' },
+                    { title: 'Image Right', value: 'right' },
                 ],
                 description: 'Select the image position',
             },
@@ -37,9 +37,9 @@ export default {
             type: 'string',
             options: {
                 list: [
-                    {title: 'Full screen bleed', value: 'full'},
-                    {title: 'Medium screen bleed', value: 'medium'},
-                    {title: 'No screen bleed', value: 'no'}
+                    { title: 'Full screen bleed', value: 'full' },
+                    { title: 'Medium screen bleed', value: 'medium' },
+                    { title: 'No screen bleed', value: 'no' }
                 ],
                 description: 'Select the bleed type',
             },
@@ -67,7 +67,7 @@ export default {
             name: 'buttonType',
             title: 'Select Button Type',
             type: 'button',
-            hidden: ({parent}) => !(parent?.isCTAEnabled),
+            hidden: ({ parent }) => !(parent?.isCTAEnabled),
             description: 'Select Button Type and Fix the properties',
         },
         {
@@ -75,18 +75,29 @@ export default {
             title: 'Select Margin',
             type: 'margin',
             description: 'Select Button Type and Fix the properties',
+        },
+        {
+            name: 'isAnimationEnabled',
+            title: 'Enable Animation',
+            type: 'boolean',
+            description: 'Enable animation on component',
+        },
+        {
+            name: 'animation',
+            type: 'animations',
+            hidden: ({ parent }) => !(parent?.isAnimationEnabled),
         }
     ],
     preview: {
         select: {
-          media: 'image',
+            media: 'image',
         },
         prepare({ title, media }) {
-          return {
-            title: "Image And Text Grid",
-            subtitle: "Image And Text Grid",
-            media,
-          };
+            return {
+                title: "Image And Text Grid",
+                subtitle: "Image And Text Grid",
+                media,
+            };
         },
-      },
+    },
 }
