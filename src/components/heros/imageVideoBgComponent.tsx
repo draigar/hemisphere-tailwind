@@ -30,7 +30,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
     <div
       className={`flex flex-col h-full p-5 sm:p-5 lg:p-32 bg-black-1 bg-opacity-25 ${
         textAlign === "centered"
-          ? "justify-center items-center"
+          ? "justify-center text-center items-center"
           : textAlign === "rightBottom"
           ? "justify-end items-end"
           : textAlign === "right"
@@ -69,23 +69,23 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
         className={`${
           headingLengthSize === "md"
             ? "w-2/6"
-            : headingLengthSize === "lg"
+            : taglineLengthSize === "lg"
             ? "w-2/5"
-            : headingLengthSize === "xl"
+            : taglineLengthSize === "xl"
             ? "w-2/4"
-            : headingLengthSize === "xs"
+            : taglineLengthSize === "xs"
             ? "w-1/5"
-            : headingLengthSize === "sm"
+            : taglineLengthSize === "sm"
             ? "w-1/4"
-            : headingLengthSize === "xxl"
+            : taglineLengthSize === "xxl"
             ? "w-2/3"
-            : headingLengthSize === "xxs"
+            : taglineLengthSize === "xxs"
             ? "w-1/6"
             : "10%"
         } `}
       >
         {isTaglineEnabled && (
-          <CustomText content={tagline} textAlign={textAlign} />
+          <CustomText content={taglineText} textAlign={textAlign} />
         )}
       </div>
       {isCTAEnabled && <Button content={buttonType} />}
