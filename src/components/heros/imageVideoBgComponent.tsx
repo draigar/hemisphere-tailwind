@@ -12,25 +12,27 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
   const { content } = props;
 
   const heading = content.heading;
+  const tagLine = content.tagline;
   const backgroundType = content.background.type;
   const backgroundVideo =
     content.background.backgroundVideo?.videoFile?.asset?._ref;
   const backgroundImage = content.background.backgroundImage?.asset?._ref;
   const backgroundColor = content.background.backgroundColor;
-  const tagline = content.tagline.text;
+  const taglineText = tagLine.text;
   const textAlign = content.textAlign;
   const isTaglineEnabled = content.isTaglineEnabled;
   const isCTAEnabled = content.isCTAEnabled;
   const buttonType = content.buttonType;
   const headingText = heading.text;
   const headingLengthSize = heading.lengthSize?.size;
-  const taglineLengthSize = content.tagline.lengthSize?.size;
+  const taglineLengthSize = tagLine.lengthSize?.size;
+
 
   const ContentComp = () => (
     <div
       className={`flex flex-col h-full p-5 sm:p-5 lg:p-32 bg-black-1 bg-opacity-25 ${
         textAlign === "centered"
-          ? "justify-center items-center"
+          ? "justify-center text-center items-center"
           : textAlign === "rightBottom"
           ? "justify-end items-end"
           : textAlign === "right"
@@ -69,19 +71,19 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
       </div>
       <div
         className={`wow animate__animated animate__zoomIn ${
-          headingLengthSize === "md"
+          taglineLengthSize === "md"
             ? "w-2/6"
-            : headingLengthSize === "lg"
+            : taglineLengthSize === "lg"
             ? "w-2/5"
-            : headingLengthSize === "xl"
+            : taglineLengthSize === "xl"
             ? "w-2/4"
-            : headingLengthSize === "xs"
+            : taglineLengthSize === "xs"
             ? "w-1/5"
-            : headingLengthSize === "sm"
+            : taglineLengthSize === "sm"
             ? "w-1/4"
-            : headingLengthSize === "xxl"
+            : taglineLengthSize === "xxl"
             ? "w-2/3"
-            : headingLengthSize === "xxs"
+            : taglineLengthSize === "xxs"
             ? "w-1/6"
             : "10%"
         } `}
@@ -89,7 +91,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
         data-wow-delay=".7s"
       >
         {isTaglineEnabled && (
-          <CustomText content={tagline} textAlign={textAlign} />
+          <CustomText content={taglineText} textAlign={textAlign} />
         )}
       </div>
     </div>
