@@ -11,20 +11,20 @@ interface ImageVideoBgComponentProps {
 const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
   const { content } = props;
 
-  const heading = content.heading;
-  const backgroundType = content.background.type;
+  const heading = content?.heading;
+  const backgroundType = content?.background.type;
   const backgroundVideo =
-    content.background.backgroundVideo?.videoFile?.asset?._ref;
-  const backgroundImage = content.background.backgroundImage?.asset?._ref;
-  const backgroundColor = content.background.backgroundColor;
-  const tagline = content.tagline.text;
-  const textAlign = content.textAlign;
-  const isTaglineEnabled = content.isTaglineEnabled;
-  const isCTAEnabled = content.isCTAEnabled;
-  const buttonType = content.buttonType;
-  const headingText = heading.text;
-  const headingLengthSize = heading.lengthSize?.size;
-  const taglineLengthSize = content.tagline.lengthSize?.size;
+    content?.background.backgroundVideo?.videoFile?.asset?._ref;
+  const backgroundImage = content?.background.backgroundImage?.asset?._ref;
+  const backgroundColor = content?.background.backgroundColor;
+  const tagline = content?.tagline;
+  const textAlign = content?.textAlign;
+  const isTaglineEnabled = content?.isTaglineEnabled;
+  const isCTAEnabled = content?.isCTAEnabled;
+  const buttonType = content?.buttonType;
+  const headingText = heading?.text;
+  const headingLengthSize = heading?.lengthSize?.size;
+  const taglineLengthSize = content?.tagline.lengthSize?.size;
 
   const ContentComp = () => (
     <div
@@ -45,7 +45,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
       }`}
     >
       <div
-        className={`wow animate__animated animate__zoomIn mb-8 ${
+        className={`mb-8 ${
           headingLengthSize === "md"
             ? "w-2/6"
             : headingLengthSize === "lg"
@@ -62,13 +62,11 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
             ? "w-1/6"
             : "10%"
         } `}
-        data-wow-duration="1s"
-        data-wow-delay="0s"
       >
-        <CustomText content={headingText} textAlign={textAlign} />
+        <CustomText content={heading} textAlign={textAlign} />
       </div>
       <div
-        className={`wow animate__animated animate__zoomIn ${
+        className={`${
           headingLengthSize === "md"
             ? "w-2/6"
             : headingLengthSize === "lg"
@@ -85,8 +83,6 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
             ? "w-1/6"
             : "10%"
         } `}
-        data-wow-duration="1s"
-        data-wow-delay=".7s"
       >
         {isTaglineEnabled && (
           <CustomText content={tagline} textAlign={textAlign} />

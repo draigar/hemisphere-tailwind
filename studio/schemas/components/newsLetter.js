@@ -5,16 +5,16 @@ export default {
     name: 'newsletter',
     type: 'object',
     description: 'Newsletter',
-    fields:[
+    fields: [
         {
-        name:'type',
-        title: 'Newsletter Type',
-            type: 'string', 
-        options:{
-            list: [
-                { title: 'Simple background and form', value: 'newsletter1' },
-                { title: 'Text and form Grid newsletter', value: 'newsletter2' },
-                { title: 'Text and Image Grid Newsletter', value: 'newsletter3' },
+            name: 'type',
+            title: 'Newsletter Type',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Simple background and form', value: 'newsletter1' },
+                    { title: 'Text and form Grid newsletter', value: 'newsletter2' },
+                    { title: 'Text and Image Grid Newsletter', value: 'newsletter3' },
                 ]
             }
         },
@@ -29,7 +29,7 @@ export default {
             title: 'background',
             type: 'background',
             hidden: ({ parent }) => (parent?.type === 'newsletter3')
-        }, 
+        },
         {
             name: 'headLine',
             title: 'HeadLine',
@@ -44,7 +44,7 @@ export default {
             name: 'inputElement',
             title: 'Input Settings',
             type: 'formField',
-        }, 
+        },
         {
             name: 'buttonType',
             title: 'Select Button Type',
@@ -52,30 +52,41 @@ export default {
             description: 'Select Button Type and Fix the properties',
         },
         {
-            name:'buttonPosition',
+            name: 'buttonPosition',
             title: 'Button Position',
             type: 'string',
-            options:{
+            options: {
                 list: [
                     { title: 'Input Left', value: 'left' },
                     { title: 'Input Center', value: 'center' },
                     { title: 'Input Right', value: 'right' },
-                    ]
-                },
-            hidden: ({parent}) => (parent?.type === 'newsletter4' )
+                ]
             },
-    
+            hidden: ({ parent }) => (parent?.type === 'newsletter4')
+        },
+        {
+            name: 'isAnimationEnabled',
+            title: 'Enable Animation',
+            type: 'boolean',
+            description: 'Enable animation on component',
+        },
+        {
+            name: 'animation',
+            type: 'animations',
+            hidden: ({ parent }) => !(parent?.isAnimationEnabled),
+        }
+
     ],
     preview: {
         select: {
-        //   media: 'images',
+            //   media: 'images',
         },
         prepare({ heading, media }) {
-          return {
-            title: "Newsletter Section",
-            subtitle: 'Subscribe for news',
-            // media,
-        };
+            return {
+                title: "Newsletter Section",
+                subtitle: 'Subscribe for news',
+                // media,
+            };
         },
     },
 

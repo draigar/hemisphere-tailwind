@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
     name: 'imageVideoBgHeroComponent',
     type: 'object',
@@ -62,7 +63,7 @@ export default {
                 Rule.required().error('Text Alignment must be selected')
             ],
             description: '',
-        }
+        },
     ],
     preview: {
         select: {
