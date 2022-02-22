@@ -18,12 +18,12 @@ export default function Navbar1() {
         const { title, ctaButton, navigationCTA, nav } = navItems;
 
         return (
-            <nav className={`${router.route === '/' && 'fixed' } z-30 ${stickyClass && 'bg-white drop-shadow-md'} w-full flex flex-wrap items-center justify-between px-2 py-3`}>
+            <nav className={`${router.route === '/' && 'fixed' } z-30 ${stickyClass && 'bg-white drop-shadow-md'} w-full bg-white lg:bg-transparent flex flex-wrap items-center justify-between px-2 py-3`}>
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                         <Link href="/">
                             <a
-                                className={`text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase ${stickyClass ? 'text-black' : 'text-white'}`}
+                                className={`text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase ${stickyClass ? 'text-black' : 'text-black'}`}
                             >
                                 {title}
                             </a>
@@ -35,7 +35,7 @@ export default function Navbar1() {
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >
                             {/* <i className="fas fa-bars"></i> */}
-                            <Menu color="white" size={38} />
+                            <Menu color="black" size={38} />
                         </button>
                     </div>
                     <div
@@ -45,7 +45,7 @@ export default function Navbar1() {
                         }
                         id="example-navbar-danger"
                     >
-                        <ul className="flex flex-col bg-white lg:bg-transparent w-full lg:flex-row list-none lg:ml-auto transition-all duration-500 ">
+                        <ul className="flex flex-col bg-white lg:bg-transparent lg:flex-row list-none lg:ml-auto transition-all duration-500 ">
                             {nav && nav.map((el: any, i: number) => (
                                 <li className="nav-item mr-8 " key={i}>
                                     <Link href={el.slug}>
