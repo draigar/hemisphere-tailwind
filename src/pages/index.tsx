@@ -13,7 +13,7 @@ import styles from '../styles/Home.module.css'
 import Contact from "@web/components/contact";
 import Newsletter2 from '@web/components/newletters/newletter2'
 import Newsletter3 from '@web/components/newletters/newletter3'
-import Article from "@web/components/article";ß
+import Article from "@web/components/article";
 
 const TextImageGrid = dynamic(
   () => import('../components/textImageGrid'),
