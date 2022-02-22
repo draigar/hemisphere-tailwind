@@ -35,7 +35,7 @@ export default function Navbar1() {
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >
                             {/* <i className="fas fa-bars"></i> */}
-                            <Menu color="black" size={38} />
+                            <Menu color="white" size={38} />
                         </button>
                     </div>
                     <div
@@ -45,12 +45,12 @@ export default function Navbar1() {
                         }
                         id="example-navbar-danger"
                     >
-                        <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+                        <ul className="flex flex-col bg-white lg:bg-transparent w-full lg:flex-row list-none lg:ml-auto transition-all duration-500 ">
                             {nav && nav.map((el: any, i: number) => (
                                 <li className="nav-item mr-8 " key={i}>
                                     <Link href={el.slug}>
                                         <a
-                                            className={`px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:text-primary-600 hover:underline underline-offset-4 decoration-2 ${stickyClass ? 'text-black' : 'text-white'} hover:opacity-75`}
+                                            className={`px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug transition delay-150 hover:ease-in duration-300 hover:text-primary-600 hover:underline underline-offset-4 decoration-2 ${stickyClass ? 'text-black' : 'text-black md:text-white'} hover:opacity-75`}
                                         >
                                             <span className="ml-2">{el.title}</span>
                                         </a>
