@@ -58,7 +58,7 @@ function Newletter1(props: props) {
 
   const ContentComp = () => (
     <div className="flex h-full justify-center items-center px-4 py-11 relative z-10">
-      <div className="w-1/3">
+      <div className="w-full lg:w-1/3">
         <div className="my-8">
           <CustomText content={headLine} textAlign="centered" />
         </div>

@@ -10,6 +10,7 @@ import { SiteMetaConfigType } from '../types'
 import dynamic from 'next/dynamic'
 import { getClient } from '../lib/sanity'
 import styles from '../styles/Home.module.css'
+import Contact from "@web/components/contact";
 
 const TextImageGrid = dynamic(
   () => import('../components/textImageGrid'),
@@ -51,6 +52,7 @@ export default function Home(data: any) {
             {el._type === "cardsAndCaptions" && <Card content={el} />}
             {el._type === "newsletter" && <Newletter1 content={el} />}
             {el._type === "textCenteredAndImageBg" && <TextCenteredAndBg content={el} />}
+            {el._type === "contact" && <Contact content={el} />}
           </div>
         ))}
       </main>

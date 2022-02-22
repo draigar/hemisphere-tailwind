@@ -38,9 +38,9 @@ function Partners({ content }: any) {
     <div style={ImageBg && bgStyle}>
       <div style={ImageBg && bgOverlayStyle}>
         <div style={colorBg && bgColorStyle}>
-          <div className="md:p-11 px-4 py-11 mx-20">
+          <div className="md:p-11 px-4 py-11 mx-4 lg:mx-20">
             <div
-              className="flex flex-row items-center mb-8"
+              className="flex flex-col lg:flex-row items-start lg:items-center mb-8"
             >
               <div className="text-center mr-4">
                 <CustomText content={heading} textAlign="center" />
@@ -55,7 +55,7 @@ function Partners({ content }: any) {
               data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
               {partnerLogo?.map((val: any, i: number) => {
                 return (
-                  <div key={i} className="w-20 md:w-28 mr-6 relative">
+                  <div key={i} className="w-20 md:w-28 mb-2 mr-6 relative">
                     <Image
                       src={urlFor(val.Image.asset._ref).url()}
                       alt="Picture of the author"

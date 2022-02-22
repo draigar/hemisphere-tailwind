@@ -85,7 +85,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
         } `}
       >
         {isTaglineEnabled && (
-          <CustomText content={taglineText} textAlign={textAlign} />
+          <CustomText content={tagline} textAlign={textAlign} />
         )}
       </div>
       {isCTAEnabled && <Button content={buttonType} />}
@@ -119,7 +119,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
   };
 
   return (
-    <div className="bg-teal-600 h-screen-90 relative">
+    <div className="bg-teal-600 h-500px lg:h-screen-90 relative">
       {backgroundType === "image" ? (
         <RenderImage />
       ) : backgroundType === "video" ? (

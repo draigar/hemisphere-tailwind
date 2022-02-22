@@ -60,9 +60,9 @@ function Card1({ content }: any) {
   const Vertical = () => (
     <div className="">
       {cards.map((val: any, i: number) => (
-        <figure key={i} className={`flex items-start my-6 ${val?.background !== undefined ? utilities.ColorCombo(val?.background) : 'white'} p-8 md:p-0 ${shadow && 'shadow-lg'}`}>
-          <div className="w-80 h-48">
-            <img className={`${shadow && 'shadow-lg'} ${type === 'verticalRoundedImage' && 'rounded-full'} w-full h-44 mx-auto`} src={utilities.ImageFn(val.Image.asset._ref)} alt="" />
+        <figure key={i} className={`flex flex-col lg:flex-row items-start my-6 mb-12 lg:mb-0 ${val?.background !== undefined ? utilities.ColorCombo(val?.background) : 'white'} p-0 lg:p-8 md:p-0 ${shadow && 'shadow-lg'}`}>
+          <div className="w-full lg:w-80 h-80 lg:h-48 mb-8 lg:mb-0">
+            <img className={`${shadow && 'shadow-lg'} ${type === 'verticalRoundedImage' && 'rounded-full'} w-full h-full lg:h-44 mx-auto`} src={utilities.ImageFn(val.Image.asset._ref)} alt="" />
           </div>
           <div className="px-8 text-left relative">
             <CustomText content={val?.heading?.text} textAlign="center" />
