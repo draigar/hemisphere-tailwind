@@ -71,6 +71,7 @@ export default function Slug({ data, preview, config }: any) {
 
             {el.type === "carousel1" && <CarouselComp content={el} />}
 
+
           </div>
         ))}
       </main>
