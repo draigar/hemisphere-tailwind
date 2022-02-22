@@ -96,18 +96,18 @@ const CustomText = (props: TextProps) => {
     const textTypeCombo = (type: string) => {
         const _type =
             type === 'h1'
-                ? 'text-6xl'
+                ? ' text-4xl lg:text-6xl'
                 : type === 'h2'
-                    ? 'text-5xl'
+                    ? ' text-3xl lg:text-5xl'
                     : type === 'h3'
-                        ? 'text-4xl'
+                        ? 'text-2xl lg:text-4xl'
                         : type === 'h4'
                             ? 'text-3xl'
                             : type === 'h5'
                                 ? 'text-2xl'
                                 : type === 'h6'
-                                    ? 'text-1xl'
-                                    : 'text-md';
+                                    ? 'text-md lg:text-1xl'
+                                    : 'lg:text-md';
         return _type;
     };
 

@@ -10,7 +10,8 @@ function Contact1({ content }: any) {
   const caption = content?.caption?.text;
   const heading = content?.heading?.text;
   const submitResponse =
-    content?.inputElement?.submitResponse?.text[0]?.children[0]?.text;
+  content?.inputElement?.submitResponse?.text && 
+  content?.inputElement?.submitResponse?.text[0]?.children[0]?.text;
   const buttonType = content?.buttonType;
 
   const inputElements = content?.inputElement?.inputElements;
@@ -25,14 +26,21 @@ function Contact1({ content }: any) {
     (val: any) => val.type === "textArea"
   );
 
-  const bgColor = content?.background;
+  const bgColor = content?.backgroundColor;
   const bgColorStyle = utilities.ColorCombo(bgColor);
+
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
 
   return (
     <div className="relative min-h-full">
       <div
-        className={`${bgColorStyle} sm:px-32 sm:py-10 w-full flex flex-col items-center justify-around sm:flex-col  md:flex-col lg:flex-row`}
-      >
+        className={`${bgColorStyle} ${isAnimationEnabled && 'wow animate__animated'} ${animationName} px-4 py-4 lg:px-32 lg:py-10 w-full flex flex-col items-center justify-around sm:flex-col  md:flex-col lg:flex-row`}
+        data-wow-duration={`${animationDuration}s`}
+        data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
         <div className="basis-2/4 w-full">
           <div className="text-white font-light mb-10 text-4xl">
             <CustomText content={heading} />
@@ -89,7 +97,7 @@ function Contact1({ content }: any) {
           </form>
         </div>
 
-        <div className="sm:w-2/4 lg:w-fit justify-self-end sm:self-start md:self-center">
+        <div className="w-full py-8 lg:py-0 lg:w-fit justify-self-end sm:self-start md:self-center">
           <div className="text-white font-semibold mb-10">
             <h3>Location</h3>
           </div>

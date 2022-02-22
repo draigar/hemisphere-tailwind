@@ -53,7 +53,7 @@ function TextCenteredandBg1(props: props) {
   }
 
   const ContentComp = () => (
-    <div className="flex md:justify-center md:content-center md:items-center h-full relative z-10">
+    <div className="flex md:justify-center md:content-center items-center h-full relative z-10">
       <div className="md:w-2/3 mt-12 p-6">
         <div className="text-center">
           <CustomText content={heading} textAlign="centeredTop" />
@@ -66,7 +66,7 @@ function TextCenteredandBg1(props: props) {
   );
 
   return (
-    <div className="px-16 py-4 h-600px">
+    <div className="p-2 lg:px-16 py-4 h-500px lg:h-600px">
       <div style={bgStyle} className={`relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName} ${utilities.ColorCombo(bgColor)} h-full`}
       data-wow-duration={`${animationDuration}s`}
       data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>

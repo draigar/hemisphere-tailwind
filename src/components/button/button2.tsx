@@ -37,7 +37,7 @@ function Button2({ content }: BtnProps) {
       limit: '0'
     }
     const url = await utilities.getRef(obj)
-    setLinkUrl(url.slug.current)
+    setLinkUrl(url?.slug.current !== undefined ? url?.slug.current : '/')
   }, [internalLink])
 
   React.useEffect(() => {
