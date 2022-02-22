@@ -55,7 +55,18 @@ export default {
 			validation: (Rule) => [
 				Rule.required().error('Button is Required for Contact Us Form')
 			]
-		}
+		},
+		{
+            name: 'isAnimationEnabled',
+            title: 'Enable Animation',
+            type: 'boolean',
+            description: 'Enable animation on component',
+        },
+        {
+            name: 'animation',
+            type: 'animations',
+            hidden: ({ parent }) => !(parent?.isAnimationEnabled),
+        }
 	],
 	preview: {
 		select: {

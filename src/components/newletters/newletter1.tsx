@@ -18,8 +18,8 @@ function Newletter1(props: props) {
   const backgroundVideo =
     content?.background?.backgroundVideo?.videoFile?.asset?._ref;
   const backgroundType = content?.background?.type;
-  const headLine = content?.headLine?.text;
-  const tagline = content?.tagline?.text;
+  const headLine = content?.headLine;
+  const tagline = content?.tagline;
   const buttonPosition = content?.buttonPosition;
   const btnDetails = content?.buttonType;
   const imageAsset = bgImage && urlFor(bgImage)?.url();
@@ -27,7 +27,11 @@ function Newletter1(props: props) {
   const inputElementColor = content?.inputElement?.inputLabelColor?.hex;
   const submissionResponse = content?.inputElement?.submitResponse;
 
-  // console.log(submissionResponse);
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
 
   const bgStyle = {
     backgroundImage:
@@ -56,7 +60,7 @@ function Newletter1(props: props) {
 
   const ContentComp = () => (
     <div className="flex h-full justify-center items-center px-4 py-11 relative z-10">
-      <div className="w-1/3">
+      <div className="w-full lg:w-1/3">
         <div className="my-8 text-center">
           <CustomText content={headLine} />
         </div>
@@ -100,7 +104,9 @@ function Newletter1(props: props) {
     <div className="h-600px bg-black-1">
       <div
         style={bgStyle}
-        className={`relative h-full w-full `}
+        className={`relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName} ${utilities.ColorCombo(colorBg)} h-full w-full `}
+        data-wow-duration={`${animationDuration}s`}
+      data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}
       >
         <div
           className={`${

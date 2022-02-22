@@ -56,6 +56,17 @@ export default {
             type: 'boolean',
             description: 'Should have a drop shadow',
         },
+        {
+            name: 'isAnimationEnabled',
+            title: 'Enable Animation',
+            type: 'boolean',
+            description: 'Enable animation on component',
+        },
+        {
+            name: 'animation',
+            type: 'animations',
+            hidden: ({ parent }) => !(parent?.isAnimationEnabled),
+        }
     
     ],
     preview: {

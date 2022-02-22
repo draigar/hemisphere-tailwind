@@ -8,7 +8,7 @@ interface props {
   content: any
 }
 
-const MediumBleedGrid = (props: props) => {
+const NoBleedGrid = (props: props) => {
   const { content } = props;
   const bodyText = content?.bodyText?.text;
   const heading = content?.heading?.text;
@@ -34,7 +34,7 @@ const MediumBleedGrid = (props: props) => {
         <div className="grid grid-cols-12">
           <div className={`col-span-12 lg:col-span-6 lg:pt-16 md:p-8 lg:px-16 md:text-left space-y-4 flex flex-col ${imagePositon === "left" ? 'order-last' : ''}`}>
             <div className="w-11/12 mx-auto">
-              <div className={` mt-16 ${headingLengthSize === 'md' ? 'w-2/6' :
+              <div className={` mt-4 ${headingLengthSize === 'md' ? 'w-2/6' :
                 headingLengthSize === 'lg' ? 'w-2/5' : headingLengthSize === 'xl' ? 'w-2/4'
                   : headingLengthSize === 'xs' ? 'w-1/5' : headingLengthSize === 'sm' ? 'w-1/4' :
                     headingLengthSize === 'xxl' ? 'w-2/3' : headingLengthSize === 'xxs' ? 'w-1/6' : '10%'}`}>
@@ -52,7 +52,7 @@ const MediumBleedGrid = (props: props) => {
             </div>
           </div>
           <div className="bg-teal-600 col-span-12 lg:col-span-6">
-            <img src={utilities.ImageFn(bgImage)} alt="Picture of the author" style={{ width: '100%', height: '100%', minHeight: '760px' }} />
+            <img src={utilities.ImageFn(bgImage)} alt="Picture of the author" style={{ width: '100%', height: '100%', minHeight: '553px' }} />
           </div>
         </div>
       </figure>
@@ -60,4 +60,4 @@ const MediumBleedGrid = (props: props) => {
   );
 }
 
-export default MediumBleedGrid;
+export default NoBleedGrid;

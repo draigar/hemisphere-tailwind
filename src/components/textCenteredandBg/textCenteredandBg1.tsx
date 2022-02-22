@@ -17,13 +17,17 @@ function TextCenteredandBg1(props: props) {
   const imageAsset = bgImage && utilities.ImageFn(bgImage)
   const marginSize = content?.margin
 
-  const bodyText = content?.bodyText?.text;
-  const heading = content?.heading?.text;
+  const bodyText = content?.bodyText;
+  const heading = content?.heading;
 
   const isCTAEnabled = content?.isCTAEnabled;
   const buttonType = content?.buttonType;
 
-  console.log(content)
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
 
   const bgStyle = {
     backgroundImage: backgroundType === 'image' ? `url(${imageAsset})` : undefined,
@@ -49,7 +53,7 @@ function TextCenteredandBg1(props: props) {
   }
 
   const ContentComp = () => (
-    <div className="flex md:justify-center md:content-center md:items-center h-full relative z-10">
+    <div className="flex md:justify-center md:content-center items-center h-full relative z-10">
       <div className="md:w-2/3 mt-12 p-6">
         <div className="text-center">
           <CustomText content={heading} textAlign="centeredTop" />
@@ -62,8 +66,10 @@ function TextCenteredandBg1(props: props) {
   );
 
   return (
-    <div className="px-16 py-4 h-600px">
-      <div style={bgStyle} className={`relative ${utilities.ColorCombo(bgColor)} h-full ${MarginSizing(marginSize)}`}>
+    <div className="p-2 lg:px-16 py-4 h-500px lg:h-600px">
+      <div style={bgStyle} className={`relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName} ${utilities.ColorCombo(bgColor)} h-full`}
+      data-wow-duration={`${animationDuration}s`}
+      data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
         <div className={`${backgroundType !== 'color' && 'bg-black-1 bg-opacity-25' } z-10 h-full absolute w-full`}></div>
         {backgroundType === 'video' ? <RenderVideo /> : <ContentComp />}
       </div>

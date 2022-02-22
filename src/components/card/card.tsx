@@ -16,6 +16,12 @@ function Card1({ content }: any) {
   const shadow = content?.shadow;
   const type = content?.type;
 
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
+
   console.log(content)
 
   const bgStyle = (background: string) => {
@@ -68,9 +74,9 @@ function Card1({ content }: any) {
         <figure 
           key={i} 
           style={bgStyle(val?.background.hex)}
-          className={`flex items-start my-6 ${val?.background !== undefined ? utilities.ColorCombo(val?.background) : 'white'} p-8 md:p-0 ${shadow && 'shadow-lg'}`}>
-          <div className="w-80 h-48">
-            <img className={`${shadow && 'shadow-lg'} ${type === 'verticalRoundedImage' && 'rounded-full'} w-full h-44 mx-auto`} src={utilities.ImageFn(val.Image.asset._ref)} alt="" />
+          className={`flex flex-col lg:flex-row items-start my-6 mb-12 lg:mb-0 ${val?.background !== undefined ? utilities.ColorCombo(val?.background) : 'white'} p-0 lg:p-8 md:p-0 ${shadow && 'shadow-lg'}`}>
+          <div className="w-full lg:w-80 h-80 lg:h-48 mb-8 lg:mb-0">
+          <img className={`${shadow && 'shadow-lg'} ${type === 'verticalRoundedImage' && 'rounded-full'} w-full h-full lg:h-44 mx-auto`} src={utilities.ImageFn(val.Image.asset._ref)} alt="" />
           </div>
           <div className="px-8 text-left relative">
             <CustomText content={val?.heading?.text} textAlign="center" />
@@ -105,7 +111,8 @@ function Card1({ content }: any) {
             </div>
             <CustomText content={caption} textAlign="center" />
           </div>
-          <div className="my-10">
+          <div className={`my-10 ${isAnimationEnabled && 'wow animate__animated'} ${animationName}`} data-wow-duration={`${animationDuration}s`}
+            data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
             {type === 'vertical' ? <Vertical /> : type === 'horizontal' ? <Horizontal /> : <Vertical />}
           </div>
         </div>

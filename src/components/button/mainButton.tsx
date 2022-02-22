@@ -33,9 +33,14 @@ interface BtnProps {
 
 function CustomButton({ content }: BtnProps) {
   let buttonType = content?.type;
-  console.log(content);
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
   return (
-    <>
+    <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
+                    data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
       {buttonType === "outlined" ? (
         <Button2 content={content} />
       ) : buttonType === "decorative" ? (
@@ -47,7 +52,7 @@ function CustomButton({ content }: BtnProps) {
       ) : (
         <Button1 content={content} />
       )}
-    </>
+    </div>
   );
 }
 
