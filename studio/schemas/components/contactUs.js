@@ -66,7 +66,13 @@ export default {
             name: 'animation',
             type: 'animations',
             hidden: ({ parent }) => !(parent?.isAnimationEnabled),
-        }
+        },
+		{
+			name: 'Analytics',
+			type: 'analytics',
+			title: 'Analytics',
+			description: 'Setup the Analytics for Submit action',
+		},
 	],
 	preview: {
 		select: {
