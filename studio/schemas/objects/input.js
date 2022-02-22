@@ -26,11 +26,6 @@ export default {
             name: 'inputplaceholder',
             type: 'string',
         },
-        {
-            title: 'Input Label Color',
-            name: 'inputLabelColor',
-            type: 'color',
-        },
     ],
     //TODO: Handle Previews in Sanity Schema
 }

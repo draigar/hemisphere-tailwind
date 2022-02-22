@@ -19,7 +19,7 @@ export default {
 		{
 			name: 'backgroundColor',
 			title: 'background',
-			type: 'colors',
+			type: 'color',
 			hidden: ({parent}) => parent?.type !== 'contact1',
 		},
 		{

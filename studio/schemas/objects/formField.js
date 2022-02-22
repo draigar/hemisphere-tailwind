@@ -10,6 +10,11 @@ export default {
             of: [{type: 'inputElement'}]
         },
         {
+            title: 'Input Label Color',
+            name: 'inputLabelColor',
+            type: 'color',
+        },
+        {
             title: 'Response Message',
             name: 'submitResponse',
             type: 'customText',
