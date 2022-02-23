@@ -29,7 +29,7 @@ export default function Slug({ data, preview, config }: any) {
     // connect the error page component here and
     // pass the errorPage object as a prop to the error page component
     // then connect the data from within the error page component
-    console.log("from here", config.errorPage);
+    console.log("from slug", config.errorpage);
     return "Error page";
   }
 
@@ -51,7 +51,6 @@ export default function Slug({ data, preview, config }: any) {
   )
 
   const content = data?.pages?.content;
-  console.log('main', data)
   return (
     <DefaultLayout siteConfig={siteMetaData}>
       <main className="h-full">
@@ -92,8 +91,6 @@ export async function getStaticProps({ params, preview = false }: any) {
   const pages = await getClient(false).fetch(sQuery, {
     slug: params.slug,
   });
-
-  console.log(ref);
 
   return {
     props: {
