@@ -32,8 +32,7 @@ export default function Slug({ data, preview, config }: any) {
     // connect the error page component here and
     // pass the errorPage object as a prop to the error page component
     // then connect the data from within the error page component
-    console.log("from here", config.errorPage);
-    return <Error content={config.errorPage} />;
+    return <Error content={config.errorpage} />;
   }
 
   const siteMetaData: SiteMetaConfigType = {
