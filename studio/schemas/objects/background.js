@@ -18,7 +18,7 @@ export default {
         {
             title: 'Select Color',
             name: 'backgroundColor',
-            type: 'colors',
+            type: 'color',
             hidden: ({parent}) => !(parent?.type === "color"),
         },
         {

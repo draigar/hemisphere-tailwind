@@ -2,7 +2,7 @@ import * as React from "react";
 
 import CustomText from "../text/customText";
 import { utilities } from "@web/helpers/utilities";
-import urlFor from "../../helpers/imageUrlGenerator";
+import Button from '../button/mainButton';
 
 interface ImageVideoBgComponentProps {
   content: any;
@@ -11,41 +11,41 @@ interface ImageVideoBgComponentProps {
 const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
   const { content } = props;
 
-  const heading = content.heading;
-  const backgroundType = content.background.type;
+  const heading = content?.heading;
+  const backgroundType = content?.background.type;
   const backgroundVideo =
-    content.background.backgroundVideo?.videoFile?.asset?._ref;
-  const backgroundImage = content.background.backgroundImage?.asset?._ref;
-  const backgroundColor = content.background.backgroundColor;
-  const tagline = content.tagline.text;
-  const textAlign = content.textAlign;
-  const isTaglineEnabled = content.isTaglineEnabled;
-  const isCTAEnabled = content.isCTAEnabled;
-  const buttonType = content.buttonType;
-  const headingText = heading.text;
-  const headingLengthSize = heading.lengthSize?.size;
-  const taglineLengthSize = content.tagline.lengthSize?.size;
+    content?.background.backgroundVideo?.videoFile?.asset?._ref;
+  const backgroundImage = content?.background.backgroundImage?.asset?._ref;
+  const backgroundColor = content?.background.backgroundColor;
+  const tagline = content?.tagline;
+  const textAlign = content?.textAlign;
+  const isTaglineEnabled = content?.isTaglineEnabled;
+  const isCTAEnabled = content?.isCTAEnabled;
+  const buttonType = content?.buttonType;
+  const headingText = heading?.text;
+  const headingLengthSize = heading?.lengthSize?.size;
+  const taglineLengthSize = content?.tagline.lengthSize?.size;
 
   const ContentComp = () => (
     <div
       className={`flex flex-col h-full p-5 sm:p-5 lg:p-32 bg-black-1 bg-opacity-25 ${
         textAlign === "centered"
-          ? "justify-center items-center"
+          ? "justify-center text-center items-center"
           : textAlign === "rightBottom"
-          ? "justify-end items-end"
+          ? "justify-end text-right items-end"
           : textAlign === "right"
-          ? "justify-center items-end"
+          ? "justify-center text-right items-end"
           : textAlign === "leftBottom"
-          ? "justify-end items-start"
+          ? "justify-end text-left items-start"
           : textAlign === "left"
-          ? "justify-center items-start"
+          ? "justify-center text-left items-start"
           : textAlign === "centeredTop"
-          ? "justify-start items-center"
+          ? "justify-start text-center items-center"
           : "justify-center items-center"
       }`}
     >
       <div
-        className={`wow animate__animated animate__zoomIn mb-8 ${
+        className={`mb-8 ${
           headingLengthSize === "md"
             ? "w-2/6"
             : headingLengthSize === "lg"
@@ -62,36 +62,33 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
             ? "w-1/6"
             : "10%"
         } `}
-        data-wow-duration="1s"
-        data-wow-delay="0s"
       >
-        <CustomText content={headingText} textAlign={textAlign} />
+        <CustomText content={heading} textAlign={textAlign} />
       </div>
       <div
-        className={`wow animate__animated animate__zoomIn ${
+        className={`${
           headingLengthSize === "md"
             ? "w-2/6"
-            : headingLengthSize === "lg"
+            : taglineLengthSize === "lg"
             ? "w-2/5"
-            : headingLengthSize === "xl"
+            : taglineLengthSize === "xl"
             ? "w-2/4"
-            : headingLengthSize === "xs"
+            : taglineLengthSize === "xs"
             ? "w-1/5"
-            : headingLengthSize === "sm"
+            : taglineLengthSize === "sm"
             ? "w-1/4"
-            : headingLengthSize === "xxl"
+            : taglineLengthSize === "xxl"
             ? "w-2/3"
-            : headingLengthSize === "xxs"
+            : taglineLengthSize === "xxs"
             ? "w-1/6"
             : "10%"
         } `}
-        data-wow-duration="1s"
-        data-wow-delay=".7s"
       >
         {isTaglineEnabled && (
           <CustomText content={tagline} textAlign={textAlign} />
         )}
       </div>
+      {isCTAEnabled && <Button content={buttonType} />}
     </div>
   );
 
@@ -122,7 +119,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
   };
 
   return (
-    <div className="bg-teal-600 h-screen-90 relative">
+    <div className="bg-teal-600 h-500px lg:h-screen-90 relative">
       {backgroundType === "image" ? (
         <RenderImage />
       ) : backgroundType === "video" ? (

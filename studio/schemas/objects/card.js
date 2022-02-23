@@ -20,7 +20,6 @@ export default {
             title: 'Body Text',
             type: 'customText',
         },
-       
         {
             name: 'Image',
             title: 'Image',
@@ -29,12 +28,7 @@ export default {
         {
             title: 'Background',
             name: 'background',
-            type: 'colors',
-        },
-        {
-            title: 'Border Color',
-            name: 'borderColor',
-            type: 'colors',
+            type: 'color',
         },
         {
             name: 'buttonType',

@@ -1,10 +1,10 @@
-import { type } from "os";
+/* eslint-disable import/no-anonymous-default-export */
 
 export default {
     name: 'partners',
     type: 'object',
     description: 'Partners',
-    fields:[
+    fields: [
         {
             name: 'isCustomBg',
             title: 'Change Background',
@@ -15,7 +15,7 @@ export default {
             name: 'background',
             type: 'background',
             title: 'Background',
-            hidden: ({parent}) => !(parent?.isCustomBg),
+            hidden: ({ parent }) => !(parent?.isCustomBg),
             description: 'Set the Background you want on this component',
         },
         {
@@ -33,7 +33,7 @@ export default {
             title: 'Add Partner Logo',
             type: 'array',
             of: [
-                {type: 'imageObject'}
+                { type: 'imageObject' }
             ]
         },
         {
@@ -46,19 +46,30 @@ export default {
             title: 'Height Size',
             type: 'size',
         },
-    
+        {
+            name: 'isAnimationEnabled',
+            title: 'Enable Animation',
+            type: 'boolean',
+            description: 'Enable animation on component',
+        },
+        {
+            name: 'animation',
+            type: 'animations',
+            hidden: ({ parent }) => !(parent?.isAnimationEnabled),
+        }
+
     ],
     preview: {
         select: {
-        //   media: 'images',
+            //   media: 'images',
         },
         prepare({ heading, media }) {
             return {
-            title: "Our partners",
-            subtitle: 'Partners',
-            // media,
+                title: "Our partners",
+                subtitle: 'Partners',
+                // media,
             };
         },
-      },
+    },
 
 }

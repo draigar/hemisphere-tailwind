@@ -5,12 +5,18 @@ import bgColorCombo from "../../helpers/backgroundColorFn";
 import urlFor from "../../helpers/imageUrlGenerator";
 
 function Partners({ content }: any) {
-  const caption = content?.caption?.text;
-  const heading = content?.heading?.text;
+  const caption = content?.caption;
+  const heading = content?.heading;
   const partnerLogo = content?.partnerLogo;
 
   const ImageBg = content?.background?.backgroundImage?.asset?._ref;
   const colorBg = content?.background?.backgroundColor;
+
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
 
   const imageAsset = ImageBg && urlFor(ImageBg).url();
 
@@ -32,11 +38,9 @@ function Partners({ content }: any) {
     <div style={ImageBg && bgStyle}>
       <div style={ImageBg && bgOverlayStyle}>
         <div style={colorBg && bgColorStyle}>
-          <div className="md:p-11 px-4 py-11">
+          <div className="md:p-11 px-4 py-11 mx-4 lg:mx-20">
             <div
-              className="flex flex-row items-center mb-8 wow animate__animated animate__slideInLeft"
-              data-wow-duration="1s"
-              data-wow-delay="0"
+              className="flex flex-col lg:flex-row items-start lg:items-center mb-8"
             >
               <div className="text-center mr-4">
                 <CustomText content={heading} textAlign="center" />
@@ -46,13 +50,12 @@ function Partners({ content }: any) {
               </div>
             </div>
             <div
-              className="flex flex-wrap justify-center relative wow animate__animated animate__slideInUp"
-              data-wow-duration="1.2s"
-              data-wow-delay="1.2s"
-            >
+              className={`flex flex-wrap justify-start relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName}`}
+              data-wow-duration={`${animationDuration}s`}
+              data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
               {partnerLogo?.map((val: any, i: number) => {
                 return (
-                  <div key={i} className="w-20 md:w-28 mr-6 relative">
+                  <div key={i} className="w-20 md:w-28 mb-2 mr-6 relative">
                     <Image
                       src={urlFor(val.Image.asset._ref).url()}
                       alt="Picture of the author"

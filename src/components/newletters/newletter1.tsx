@@ -14,23 +14,29 @@ interface props {
 function Newletter1(props: props) {
   const { content } = props;
   const bgImage = content?.background?.backgroundImage?.asset?._ref;
-  const colorBg = content?.background?.backgroundColor;
+  const colorBg = content?.background?.backgroundColor?.hex;
   const backgroundVideo =
     content?.background?.backgroundVideo?.videoFile?.asset?._ref;
   const backgroundType = content?.background?.type;
-  const headLine = content?.headLine?.text;
-  const tagline = content?.tagline?.text;
+  const headLine = content?.headLine;
+  const tagline = content?.tagline;
   const buttonPosition = content?.buttonPosition;
   const btnDetails = content?.buttonType;
   const imageAsset = bgImage && urlFor(bgImage)?.url();
   const inputElement = content?.inputElement?.inputElements;
+  const inputElementColor = content?.inputElement?.inputLabelColor?.hex;
   const submissionResponse = content?.inputElement?.submitResponse;
 
-  console.log(content);
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
 
   const bgStyle = {
     backgroundImage:
-      backgroundType === "image" ? `url(${imageAsset})` : undefined,
+    backgroundType === "image" ? `url(${imageAsset})` : undefined,
+    backgroundColor: backgroundType === "color" ? `${colorBg}` : undefined,
     height: "100%",
     width: "100%",
     backgroundSize: "100% 100%",
@@ -54,9 +60,9 @@ function Newletter1(props: props) {
 
   const ContentComp = () => (
     <div className="flex h-full justify-center items-center px-4 py-11 relative z-10">
-      <div className="w-1/3">
-        <div className="my-8">
-          <CustomText content={headLine} textAlign="centered" />
+      <div className="w-full lg:w-1/3">
+        <div className="my-8 text-center">
+          <CustomText content={headLine} />
         </div>
         <CustomText content={tagline} textAlign="centered" />
         <form className="mt-8">
@@ -65,7 +71,7 @@ function Newletter1(props: props) {
               return (
                 <div key={i} className="mb-4">
                   <label
-                    style={{ color: `${val?.inputLabelColor.hex}` }}
+                    style={{ color: `${inputElementColor}` }}
                     className="block"
                   >
                     {val?.inputlabel}
@@ -98,7 +104,9 @@ function Newletter1(props: props) {
     <div className="h-600px bg-black-1">
       <div
         style={bgStyle}
-        className={`relative ${utilities.ColorCombo(colorBg)} h-full w-full `}
+        className={`relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName} ${utilities.ColorCombo(colorBg)} h-full w-full `}
+        data-wow-duration={`${animationDuration}s`}
+      data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}
       >
         <div
           className={`${

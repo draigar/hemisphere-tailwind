@@ -10,10 +10,14 @@ function Contact1({ content }: any) {
   const caption = content?.caption?.text;
   const heading = content?.heading?.text;
   const submitResponse =
-    content?.inputElement?.submitResponse?.text[0]?.children[0]?.text;
+  content?.inputElement?.submitResponse?.text && 
+  content?.inputElement?.submitResponse?.text[0]?.children[0]?.text;
   const buttonType = content?.buttonType;
 
   const inputElements = content?.inputElement?.inputElements;
+  const inputElementColor = content?.inputElement?.inputLabelColor?.hex;
+
+  console.log(`The Color is ${inputElementColor}`)
 
   const textInputElement = inputElements?.filter(
     (val: any) => val.type === "text"
@@ -25,14 +29,24 @@ function Contact1({ content }: any) {
     (val: any) => val.type === "textArea"
   );
 
-  const bgColor = content?.background;
-  const bgColorStyle = utilities.ColorCombo(bgColor);
+
+  const bgStyle = {
+    backgroundColor: content?.backgroundColor ? `${content?.backgroundColor.hex}` : undefined,
+  };
+
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
 
   return (
     <div className="relative min-h-full">
       <div
-        className={`${bgColorStyle} sm:px-32 sm:py-10 w-full flex flex-col items-center justify-around sm:flex-col  md:flex-col lg:flex-row`}
-      >
+        style={bgStyle}
+        className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} px-4 py-4 lg:px-32 lg:py-10 w-full flex flex-col items-center justify-around sm:flex-col  md:flex-col lg:flex-row`}
+        data-wow-duration={`${animationDuration}s`}
+        data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
         <div className="basis-2/4 w-full">
           <div className="text-white font-light mb-10 text-4xl">
             <CustomText content={heading} />
@@ -46,7 +60,7 @@ function Contact1({ content }: any) {
               textInputElement.map((val: any) => {
                 return (
                   <div className="" key={val._key}>
-                    <label style={{ color: `${val?.inputLabelColor?.hex}` }}>{val?.inputlabel}</label>
+                    <label style={{ color: `${inputElementColor}` }}>{val?.inputlabel}</label>
                     <div className="mb-2"></div>
                     <input
                       type="text"
@@ -60,7 +74,7 @@ function Contact1({ content }: any) {
               emailInputElement.map((val: any) => {
                 return (
                   <div className="mt-6" key={val._key}>
-                    <label style={{ color: `${val?.inputLabelColor?.hex}` }}>{val?.inputlabel}</label>
+                    <label style={{ color: `${inputElementColor}` }}>{val?.inputlabel}</label>
                     <div className="mb-2"></div>
                     <input
                       type="email"
@@ -74,7 +88,7 @@ function Contact1({ content }: any) {
               textAreaInputElement.map((val: any) => {
                 return (
                   <div className="mt-6 mb-8" key={val._key}>
-                    <div style={{ color: `${val?.inputLabelColor?.hex}` }}>
+                    <div style={{ color: `${inputElementColor}` }}>
                       <CustomText content={val?.inputlabel} />
                     </div>
                     <div className="mb-2"></div>
@@ -89,7 +103,7 @@ function Contact1({ content }: any) {
           </form>
         </div>
 
-        <div className="sm:w-2/4 lg:w-fit justify-self-end sm:self-start md:self-center">
+        <div className="w-full py-8 lg:py-0 lg:w-fit justify-self-end sm:self-start md:self-center">
           <div className="text-white font-semibold mb-10">
             <h3>Location</h3>
           </div>

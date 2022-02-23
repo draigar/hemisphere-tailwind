@@ -20,15 +20,15 @@ export default {
       name: "type",
       type: "string",
       options: {
-          list: [
-              { title: "Default Button", value: "default" },
-              { title: "Outlined Button", value: "outlined" },
-              { title: "Decorative Button", value: "decorative" },
+        list: [
+          { title: "Default Button", value: "default" },
+          { title: "Outlined Button", value: "outlined" },
+          { title: "Decorative Button", value: "decorative" },
           { title: "HyperLink", value: "hyperlink" },
           { title: "Ghost", value: "ghost" },
-          ]
+        ]
       }
-  },
+    },
     {
       title: 'Text',
       name: 'buttontext',
@@ -46,26 +46,26 @@ export default {
       title: 'Background Color',
       name: 'backgroundColor',
       type: 'color',
-      hidden: ({parent}) => (parent?.type === "hyperlink") || (parent?.type === "ghost") || (parent?.type === "outlined")
+      hidden: ({ parent }) => (parent?.type === "hyperlink") || (parent?.type === "ghost") || (parent?.type === "outlined")
     },
     {
       title: 'Secondary Background Color',
       name: 'secondaryBackgroundColor',
       type: 'color',
-      hidden: ({parent}) => (!parent?.type.value === "decorative")
+      hidden: ({ parent }) => (!parent?.type.value === "decorative")
     },
-    
+
     {
       title: 'Border',
       name: 'border',
       type: 'boolean',
-      hidden: ({parent}) => (parent?.type === "hyperlink") || (parent?.type === "ghost") || (parent?.type === "outlined")
+      hidden: ({ parent }) => (parent?.type === "hyperlink") || (parent?.type === "ghost") || (parent?.type === "outlined")
     },
     {
-        title: 'Border Color',
-        name: 'borderColor',
-        type: 'color',
-        hidden: ({parent}) => !parent?.border && parent?.type !== "outlined"
+      title: 'Border Color',
+      name: 'borderColor',
+      type: 'color',
+      hidden: ({ parent }) => !parent?.border && parent?.type !== "outlined"
     },
     {
       title: 'Link ',
@@ -76,6 +76,17 @@ export default {
         Rule.required().error('where does the button lead to')
       ],
     },
+    {
+      name: 'isAnimationEnabled',
+      title: 'Enable Animation',
+      type: 'boolean',
+      description: 'Enable animation on component',
+    },
+    {
+      name: 'animation',
+      type: 'animations',
+      hidden: ({ parent }) => !(parent?.isAnimationEnabled),
+    }
   ],
   //TODO: Handle Previews in Sanity Schemas
   // preview: {

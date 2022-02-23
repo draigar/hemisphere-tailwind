@@ -19,7 +19,7 @@ export default {
 		{
 			name: 'backgroundColor',
 			title: 'background',
-			type: 'colors',
+			type: 'color',
 			hidden: ({parent}) => parent?.type !== 'contact1',
 		},
 		{
@@ -55,7 +55,24 @@ export default {
 			validation: (Rule) => [
 				Rule.required().error('Button is Required for Contact Us Form')
 			]
-		}
+		},
+		{
+            name: 'isAnimationEnabled',
+            title: 'Enable Animation',
+            type: 'boolean',
+            description: 'Enable animation on component',
+        },
+        {
+            name: 'animation',
+            type: 'animations',
+            hidden: ({ parent }) => !(parent?.isAnimationEnabled),
+        },
+		{
+			name: 'Analytics',
+			type: 'analytics',
+			title: 'Analytics',
+			description: 'Setup the Analytics for Submit action',
+		},
 	],
 	preview: {
 		select: {
