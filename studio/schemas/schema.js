@@ -45,6 +45,7 @@ import propertySize from './objects/propertySize';
 import margin from './objects/margin'
 import videoAndTextCaption from './components/videoAndTextCaption';
 import input from './objects/input';
+import analytics from './objects/analytics';
 import animations from './objects/animations';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -92,6 +93,7 @@ export default createSchema({
     // reviews,
     statistics,
     // team,
+    analytics,
     videoAndTextCaption,
     propertySize,
     margin,
