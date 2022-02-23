@@ -40,9 +40,9 @@ function Partners({ content }: any) {
         <div style={colorBg && bgColorStyle}>
           <div className="md:p-11 px-4 py-11 mx-4 lg:mx-20">
             <div
-              className="flex flex-col lg:flex-row items-start lg:items-center mb-8"
+              className="flex flex-col items-center mb-8"
             >
-              <div className="text-center mr-4">
+              <div className="text-center mr-4 mb-4">
                 <CustomText content={heading} textAlign="center" />
               </div>
               <div className="text-center">
@@ -50,7 +50,7 @@ function Partners({ content }: any) {
               </div>
             </div>
             <div
-              className={`flex flex-wrap justify-start relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName}`}
+              className={`flex flex-wrap justify-center relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName}`}
               data-wow-duration={`${animationDuration}s`}
               data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
               {partnerLogo?.map((val: any, i: number) => {
