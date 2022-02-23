@@ -56,6 +56,12 @@ export default {
       ],
     },
     {
+      name: 'Analytics',
+      type: 'analytics',
+      title: 'Analytics',
+      description: 'Setup the Analytics for this page',
+    },
+    {
       name: 'description',
       type: 'text',
       title: 'Description',

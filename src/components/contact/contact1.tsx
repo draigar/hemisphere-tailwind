@@ -15,6 +15,9 @@ function Contact1({ content }: any) {
   const buttonType = content?.buttonType;
 
   const inputElements = content?.inputElement?.inputElements;
+  const inputElementColor = content?.inputElement?.inputLabelColor?.hex;
+
+  console.log(`The Color is ${inputElementColor}`)
 
   const textInputElement = inputElements?.filter(
     (val: any) => val.type === "text"
@@ -26,8 +29,10 @@ function Contact1({ content }: any) {
     (val: any) => val.type === "textArea"
   );
 
-  const bgColor = content?.backgroundColor;
-  const bgColorStyle = utilities.ColorCombo(bgColor);
+
+  const bgStyle = {
+    backgroundColor: content?.backgroundColor ? `${content?.backgroundColor.hex}` : undefined,
+  };
 
   const isAnimationEnabled = content?.isAnimationEnabled
   const animationDelay = content?.animation?.animationDelay
@@ -38,7 +43,8 @@ function Contact1({ content }: any) {
   return (
     <div className="relative min-h-full">
       <div
-        className={`${bgColorStyle} ${isAnimationEnabled && 'wow animate__animated'} ${animationName} px-4 py-4 lg:px-32 lg:py-10 w-full flex flex-col items-center justify-around sm:flex-col  md:flex-col lg:flex-row`}
+        style={bgStyle}
+        className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} px-4 py-4 lg:px-32 lg:py-10 w-full flex flex-col items-center justify-around sm:flex-col  md:flex-col lg:flex-row`}
         data-wow-duration={`${animationDuration}s`}
         data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
         <div className="basis-2/4 w-full">
@@ -54,7 +60,7 @@ function Contact1({ content }: any) {
               textInputElement.map((val: any) => {
                 return (
                   <div className="" key={val._key}>
-                    <label style={{ color: `${val?.inputLabelColor?.hex}` }}>{val?.inputlabel}</label>
+                    <label style={{ color: `${inputElementColor}` }}>{val?.inputlabel}</label>
                     <div className="mb-2"></div>
                     <input
                       type="text"
@@ -68,7 +74,7 @@ function Contact1({ content }: any) {
               emailInputElement.map((val: any) => {
                 return (
                   <div className="mt-6" key={val._key}>
-                    <label style={{ color: `${val?.inputLabelColor?.hex}` }}>{val?.inputlabel}</label>
+                    <label style={{ color: `${inputElementColor}` }}>{val?.inputlabel}</label>
                     <div className="mb-2"></div>
                     <input
                       type="email"
@@ -82,7 +88,7 @@ function Contact1({ content }: any) {
               textAreaInputElement.map((val: any) => {
                 return (
                   <div className="mt-6 mb-8" key={val._key}>
-                    <div style={{ color: `${val?.inputLabelColor?.hex}` }}>
+                    <div style={{ color: `${inputElementColor}` }}>
                       <CustomText content={val?.inputlabel} />
                     </div>
                     <div className="mb-2"></div>

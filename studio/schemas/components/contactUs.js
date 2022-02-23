@@ -19,7 +19,7 @@ export default {
 		{
 			name: 'backgroundColor',
 			title: 'background',
-			type: 'colors',
+			type: 'color',
 			hidden: ({parent}) => parent?.type !== 'contact1',
 		},
 		{
@@ -66,7 +66,13 @@ export default {
             name: 'animation',
             type: 'animations',
             hidden: ({ parent }) => !(parent?.isAnimationEnabled),
-        }
+        },
+		{
+			name: 'Analytics',
+			type: 'analytics',
+			title: 'Analytics',
+			description: 'Setup the Analytics for Submit action',
+		},
 	],
 	preview: {
 		select: {
