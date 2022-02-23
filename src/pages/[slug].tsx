@@ -26,20 +26,20 @@ import Error from "@web/components/error/error";
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
   const router = useRouter();
-  if (!router.isFallback && !data?.pages?.slug) {
-    //TODO: Create error page component.
-    // connect the error page component here and
-    // pass the errorPage object as a prop to the error page component
-    // then connect the data from within the error page component
-    return <Error content={config.errorpage} />;
-  }
-
   const siteMetaData: SiteMetaConfigType = {
     title: config?.title,
     slug: config?.slug,
     description: config?.description,
     openGraphImage: config?.openGraphImage,
   };
+
+  if (!router.isFallback && !data?.pages?.slug) {
+    //TODO: Create error page component.
+    // connect the error page component here and
+    // pass the errorPage object as a prop to the error page component
+    // then connect the data from within the error page component
+    return <Error content={config.errorpage} siteMetaData={siteMetaData} />;
+  }
 
   const Card = dynamic(() => import("../components/card/card"), { ssr: false });
 
