@@ -21,6 +21,8 @@ import dynamic from "next/dynamic";
 import { getClient } from "../lib/sanity";
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
+import Textcardoverflow from "@web/components/textcardoverflow/textcardoverflow";
+import Error from "@web/components/error/error";
 
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
@@ -31,7 +33,7 @@ export default function Slug({ data, preview, config }: any) {
     // pass the errorPage object as a prop to the error page component
     // then connect the data from within the error page component
     console.log("from here", config.errorPage);
-    return "Error page";
+    return <Error content={config.errorPage} />;
   }
 
   const siteMetaData: SiteMetaConfigType = {
@@ -41,35 +43,37 @@ export default function Slug({ data, preview, config }: any) {
     openGraphImage: config?.openGraphImage,
   };
 
-  const Card = dynamic(
-    () => import('../components/card/card'),
-    { ssr: false }
-  )
+  const Card = dynamic(() => import("../components/card/card"), { ssr: false });
 
   const content = data?.pages?.content;
-  console.log('main', data)
+  console.log("main", data);
   return (
     <DefaultLayout siteConfig={siteMetaData}>
       <main className="h-full">
-          {content && content.map((el: any, i: number) => (
+        {content &&
+          content.map((el: any, i: number) => (
             <div key={i}>
               {el._type === "cardsAndCaptions" && <Card content={el} />}
               {el._type === "contact" && <Contact content={el} />}
               {el._type === "article" && <Article content={el} />}
               {el.type === "newsletter1" && <Newletter1 content={el} />}
               {el.type === "newsletter2" && <Newsletter2 content={el} />}
-              { el.type === "newsletter3" && <Newsletter3 content={el} />}
+              {el.type === "newsletter3" && <Newsletter3 content={el} />}
 
-              { el._type === "textCenteredAndImageBg" && <TextCenteredandBg1 content={el} />}
-              { el._type === "partners" && <Partners content={el} />}
-              { el._type === "imageVideoBgHeroComponent" && <ImageVideoBgComponent content={el} />}
-              { el.type === "imgLeftTextRight" && <TextImageGrid content={el} />}
+              {el._type === "textCenteredAndImageBg" && (
+                <TextCenteredandBg1 content={el} />
+              )}
+              {el._type === "partners" && <Partners content={el} />}
+              {el._type === "imageVideoBgHeroComponent" && (
+                <ImageVideoBgComponent content={el} />
+              )}
+              {el.type === "imgLeftTextRight" && <TextImageGrid content={el} />}
 
               {el.type === "carousel1" && <CarouselComp content={el} />}
-
+              {el.type === "cta1" && <Textcardoverflow content={el} />}
             </div>
-          ))} 
-        </main>
+          ))}
+      </main>
     </DefaultLayout>
   );
 }
