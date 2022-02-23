@@ -95,8 +95,6 @@ export async function getStaticProps({ params, preview = false }: any) {
     slug: params.slug,
   });
 
-  console.log(ref);
-
   return {
     props: {
       preview,

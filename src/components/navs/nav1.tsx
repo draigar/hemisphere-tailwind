@@ -18,12 +18,12 @@ export default function Navbar1() {
         const { title, ctaButton, navigationCTA, nav } = navItems;
 
         return (
-            <nav className={`${router.route === '/' && 'fixed' } z-30 ${stickyClass && 'bg-white drop-shadow-md'} w-full bg-white lg:bg-transparent flex flex-wrap items-center justify-between px-2 py-3`}>
+            <nav className={`${router.route === '/' && 'fixed' } z-30 lg:bg-transparent ${stickyClass && 'lg:bg-white drop-shadow-md'} w-full bg-white flex flex-wrap items-center justify-between px-2 py-3`}>
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                         <Link href="/">
                             <a
-                                className={`text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase ${stickyClass ? 'text-black' : 'text-black'}`}
+                                className={`text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase ${stickyClass ? 'text-black' : 'lg:text-white text-black'}`}
                             >
                                 {title}
                             </a>
