@@ -39,6 +39,7 @@
     "request": "^2.88.2",
     "styled-components": "^5.3.3",
     "swr": "^1.2.1",
+    "swiper": "^8.0.6",
     "wow.js": "^1.2.2"
   },
   "devDependencies": {

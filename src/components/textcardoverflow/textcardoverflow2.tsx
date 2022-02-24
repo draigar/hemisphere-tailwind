@@ -26,6 +26,10 @@ function Textcardoverflow2({ content }: any) {
     opacity: 0.6,
   };
 
+  console.log('=========  Text Card Overflow =========');
+  console.log(content);
+  console.log('==================');
+
   return (
     <div style={bgStyle}>
       <div className="pt-16">

@@ -12,8 +12,6 @@ import Newsletter2 from "@web/components/newletters/newletter2";
 import Newsletter3 from "@web/components/newletters/newletter3";
 import Partners from "../components/partners/partners";
 import { SiteMetaConfigType } from "../types";
-import Stats1 from "../components/stats/stats1";
-import Stats2 from "../components/stats/stats2";
 import TextCenteredandBg1 from "@web/components/textCenteredandBg/textCenteredandBg1";
 import dynamic from "next/dynamic";
 import { getClient } from "../lib/sanity";
@@ -64,6 +62,10 @@ export default function Slug({ data, preview, config }: any) {
               {el.type === "newsletter2" && <Newsletter2 content={el} />}
               {el.type === "newsletter3" && <Newsletter3 content={el} />}
               {el._type === "statistics" && <Statistics content={el} />}
+              {el.type === "imgLeftTextRight" && <TextImageGrid content={el} />}
+              {el.type === "carousel1" && <CarouselComp content={el} />}
+              {el.type === "cta1" && <Textcardoverflow content={el} />}
+              {el.type === "section2" && <Textcardoverflow2 content={el} />}
               {el._type === "textCenteredAndImageBg" && (
                 <TextCenteredandBg1 content={el} />
               )}
@@ -71,11 +73,7 @@ export default function Slug({ data, preview, config }: any) {
               {el._type === "imageVideoBgHeroComponent" && (
                 <ImageVideoBgComponent content={el} />
               )}
-              {el.type === "imgLeftTextRight" && <TextImageGrid content={el} />}
-
-              {el.type === "carousel1" && <CarouselComp content={el} />}
-              {el.type === "cta1" && <Textcardoverflow content={el} />}
-              {el.type === "section2" && <Textcardoverflow2 content={el} />}
+        
             </div>
           ))}
       </main>

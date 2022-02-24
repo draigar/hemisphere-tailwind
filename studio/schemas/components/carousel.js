@@ -33,11 +33,6 @@ export default {
             type: 'background',
         },
         {
-            title: 'Border Color',
-            name: 'borderColor',
-            type: 'colors',
-        },
-        {
             name: 'shadow',
             title: 'Drop shadow',
             type: 'boolean',
