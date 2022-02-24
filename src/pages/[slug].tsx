@@ -21,6 +21,7 @@ import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import Textcardoverflow from "@web/components/textcardoverflow/textcardoverflow";
 import Error from "@web/components/error/error";
+import Statistics from "@web/components/stats";
 
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
@@ -61,8 +62,7 @@ export default function Slug({ data, preview, config }: any) {
               {el.type === "newsletter1" && <Newletter1 content={el} />}
               {el.type === "newsletter2" && <Newsletter2 content={el} />}
               {el.type === "newsletter3" && <Newsletter3 content={el} />}
-              {el.type === "stats1" && <Stats1 content={el} />}
-              {el.type === "stats2" && <Stats2 content={el} />}
+              {el._type === "statistics" && <Statistics content={el} />}
               {el._type === "textCenteredAndImageBg" && (
                 <TextCenteredandBg1 content={el} />
               )}

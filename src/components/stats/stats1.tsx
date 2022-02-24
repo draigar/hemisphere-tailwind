@@ -2,40 +2,49 @@ import React from "react";
 import urlFor from "../../helpers/imageUrlGenerator";
 import bgColorCombo from "../../helpers/backgroundColorFn";
 import CustomText from "../text/customText";
+import { utilities } from "@web/helpers/utilities";
 
-const Stats1 = ({ content } : any) => {
+interface props {
+  content: any
+}
+
+const Stats1 = (props: props) => {
+  const { content} = props
+  console.log('====================================');
+  console.log(content);
+  console.log('====================================');
   const caption = content?.caption;
   const tagLine = content?.tagLine;
-  const bgColor = content?.background?.backgroundColor.hex;
+  const bgType = content?.background?.type
+  const bgColor = content?.background?.backgroundColor?.hex;
+  const bgImage = content?.background?.backgroundImage?.asset?._ref
   const statItemColor = content?.statItemColor?.hex;
 
+  const image = utilities.ImageFn(bgImage)
 
-
+  const bgStyle = {
+    backgroundImage: `url(${image})`,
+    backgroundColor: `${bgType === 'image' && bgColor}`
+  };
 
   return (
     <div 
-      style={{ backgroundColor: `${bgColor}` }}
-      className={`md:p-11 px-8 py-20`}>
-      <div className="w-4/6 mx-auto">
+      style={bgStyle}
+      className={`md:p-11 lg:px-8 py-20 bg-no-repeat bg-cover`}>
+      <div className="w-full lg:w-4/6 mx-auto">
         <div className="mb-4 text-center">
           <CustomText content={caption} textAlign="centered" />
         </div>
-        <div className="w-3/6 mx-auto font-thin text-center">
-          <CustomText
-              content={tagLine}
-              textAlign="centered"
-            />
-          </div>
 
-        <div className="flex justify-center relative mx-auto my-12 w-full">
+        <div className="flex justify-around lg:justify-center relative mx-auto my-12 w-full">
           {content?.statistics?.map((stat: any) => {
             return (
               <div
                 style={{ color: `${statItemColor}`}}
-                className="lg:flex-1 text-center md:basis-3/12 md:mr-5 sm:mr-10"
+                className="text-center md:basis-3/12 md:mr-5 sm:mr-10"
                 key={stat._key}
               >
-                <h3 className="text-7xl mb-3">
+                <h3 className=" text-4xl lg:text-7xl mb-3">
                   {stat?.Number}
                 </h3>
                 <p className="text-base font-thin text-xl">
@@ -45,6 +54,13 @@ const Stats1 = ({ content } : any) => {
             );
           })}
         </div>
+
+        <div className="w-full px-4 lg:p-0 lg:w-3/6 mx-auto font-thin text-center">
+          <CustomText
+              content={tagLine}
+              textAlign="centered"
+            />
+          </div>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import Newsletter2 from '@web/components/newletters/newletter2'
 import Newsletter3 from '@web/components/newletters/newletter3'
 import Article from "@web/components/article";
 import Whitespace from '@web/components/whitespace'
+import Statistics from '@web/components/stats'
 
 const TextImageGrid = dynamic(
   () => import('../components/textImageGrid'),
@@ -63,6 +64,7 @@ export default function Home(data: any) {
             {el.type === "newsletter3" && <Newsletter3 content={el} />}
             {el._type === "article" && <Article content={el} />}
             {el._type === "breakPoint" && <Whitespace content={el} />}
+            {el._type === "statistics" && <Statistics content={el} />}
           </div>
         ))}
       </main>
