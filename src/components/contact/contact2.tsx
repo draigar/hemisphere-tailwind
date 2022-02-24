@@ -19,6 +19,7 @@ function Contact2({ content }: any) {
   const buttonType = content?.buttonType;
 
   const inputElements = content?.inputElement?.inputElements;
+  const inputElementColor = content?.inputElement?.inputLabelColor?.hex;
 
   const textInputElement = inputElements?.filter(
     (val: any) => val.type === "text"
@@ -49,9 +50,52 @@ function Contact2({ content }: any) {
               <CustomText content={caption} />
           </div>
 
-          <div className="text-black font-thin lg:text-5xl mb-0 lg:mb-10 text-zinc-500 sm:text-2xl">
-            <CustomText content={email} />
-          </div>
+          <form className="md:w-65">
+            {textInputElement &&
+              textInputElement.map((val: any) => {
+                return (
+                  <div className="" key={val._key}>
+                    <label style={{ color: `${inputElementColor}` }}>{val?.inputlabel}</label>
+                    <div className="mb-2"></div>
+                    <input
+                      type="text"
+                      placeholder={val?.inputplaceholder}
+                      className="border-solid border-2 rounded-sm w-full p-4 focus:outline-none focus:ring focus:ring-primary-300"
+                    />
+                  </div>
+                );
+              })}
+            {emailInputElement &&
+              emailInputElement.map((val: any) => {
+                return (
+                  <div className="mt-6" key={val._key}>
+                    <label style={{ color: `${inputElementColor}` }}>{val?.inputlabel}</label>
+                    <div className="mb-2"></div>
+                    <input
+                      type="email"
+                      placeholder={val?.inputplaceholder}
+                      className="border-solid border-2 rounded-sm w-full p-2 focus:outline-none focus:ring focus:ring-primary-300"
+                    />
+                  </div>
+                );
+              })}
+            {textAreaInputElement &&
+              textAreaInputElement.map((val: any) => {
+                return (
+                  <div className="mt-6 mb-8" key={val._key}>
+                    <div style={{ color: `${inputElementColor}` }}>
+                      <CustomText content={val?.inputlabel} />
+                    </div>
+                    <div className="mb-2"></div>
+                    <textarea
+                      placeholder={val?.inputplaceholder}
+                      className="border-solid border-2 rounded-sm w-full p-2 h-56 bg-transparent focus:outline-none focus:ring-1 focus:ring-primary-300"
+                    />
+                  </div>
+                );
+              })}
+            {buttonType && <CustomButton content={buttonType} />}
+          </form>
         </div>
 
         <div className="flex flex-col w-full md:w-1/4 ">

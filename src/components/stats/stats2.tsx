@@ -3,7 +3,7 @@ import urlFor from "../../helpers/imageUrlGenerator";
 import bgColorCombo from "../../helpers/backgroundColorFn";
 import CustomText from "../text/customText";
 
-const Stats2 = ({ content }) => {
+const Stats2 = ({ content }: any) => {
   const caption = content?.caption;
   const tagLine = content?.tagLine;
   const bgColor = content?.background?.backgroundColor.hex;
