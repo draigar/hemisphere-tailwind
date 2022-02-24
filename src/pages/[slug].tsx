@@ -21,6 +21,7 @@ import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import Textcardoverflow from "@web/components/textcardoverflow/textcardoverflow";
 import Error from "@web/components/error/error";
+import Textcardoverflow2 from "@web/components/textcardoverflow/textcardoverflow2";
 import Statistics from "@web/components/stats";
 
 // Start editing here, save and see your changes.
@@ -74,6 +75,7 @@ export default function Slug({ data, preview, config }: any) {
 
               {el.type === "carousel1" && <CarouselComp content={el} />}
               {el.type === "cta1" && <Textcardoverflow content={el} />}
+              {el.type === "section2" && <Textcardoverflow2 content={el} />}
             </div>
           ))}
       </main>
