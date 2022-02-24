@@ -16,7 +16,6 @@ import { SiteMetaConfigType } from "../types";
 import Stats1 from "../components/stats/stats1";
 import Stats2 from "../components/stats/stats2";
 import TextCenteredandBg1 from "@web/components/textCenteredandBg/textCenteredandBg1";
-import TextImageGrid from "../components/textImageGrid/textImageGrid";
 import dynamic from "next/dynamic";
 import { getClient } from "../lib/sanity";
 import { groq } from "next-sanity";
@@ -44,6 +43,11 @@ export default function Slug({ data, preview, config }: any) {
   };
 
   const Card = dynamic(() => import("../components/card/card"), { ssr: false });
+
+  const TextImageGrid = dynamic(
+    () => import('../components/textImageGrid'),
+    { ssr: false }
+  )
 
   const content = data?.pages?.content;
   console.log("main", data);

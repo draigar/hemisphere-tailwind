@@ -21,7 +21,7 @@ export default {
         {
             title: 'Background',
             name: 'background',
-            type: 'colors',
+            type: 'color',
         },
         {
             name: 'heading',
@@ -39,7 +39,10 @@ export default {
             type: 'array',
             of: [
                 {type: 'card'}
-            ]
+            ],
+            validation: Rule => [
+                Rule.required().min(2).max(4).error('Card Type is required, cannot be less than 2 and more than 4')
+            ],
         },
         {
             name: 'isReview',
@@ -53,6 +56,17 @@ export default {
             type: 'boolean',
             description: 'Should have a drop shadow',
         },
+        {
+            name: 'isAnimationEnabled',
+            title: 'Enable Animation',
+            type: 'boolean',
+            description: 'Enable animation on component',
+        },
+        {
+            name: 'animation',
+            type: 'animations',
+            hidden: ({ parent }) => !(parent?.isAnimationEnabled),
+        }
     
     ],
     preview: {
