@@ -4,21 +4,27 @@ import bgColorCombo from "../../helpers/backgroundColorFn";
 import CustomText from "../text/customText";
 
 const Stats2 = ({ content }) => {
-  const caption = content?.caption?.text;
-  const tagLine = content?.tagLine?.text;
-  const bgColor = content?.background;
-  const bgColorStyle = bgColorCombo(bgColor);
+  const caption = content?.caption;
+  const tagLine = content?.tagLine;
+  const bgColor = content?.background?.backgroundColor.hex;
+  const statItemColor = content?.statItemColor?.hex;
 
-  console.log(bgColorStyle);
+  console.log('====================================');
+  console.log(content?.statItemColor.hex);
+  console.log('====================================');
+  console.log(tagLine);
+  console.log('====================================');
 
   return (
-    <div className={`${bgColorStyle} md:p-11 px-8 py-20 relative`}>
+    <div 
+      style={{ backgroundColor: `${bgColor}` }}
+      className={`md:p-11 px-8 py-20 relative`}>
       <div className="w-4/5 mx-auto">
         <div className="lg:w-3/6 mb-20 md:w-full sm:w-full">
           <div className="lg:text-5xl mb-4 md:text-6xl sm:text-6xl">
             <CustomText content={caption} textAlign="left" />
           </div>
-          <div className="text-xl text-black font-thin">
+          <div className="text-xl font-thin">
             <CustomText content={tagLine} textAlign="left" />
           </div>
         </div>
@@ -27,13 +33,14 @@ const Stats2 = ({ content }) => {
           {content?.statistics?.map((stat: any) => {
             return (
               <div
-                className="lg:flex-1 text-left border-2 border-black lg:mr-8 py-10 px-5 md:basis-full mb-10"
+                style={{ color: `${statItemColor}`}}
+                className="lg:flex-1 text-center outline-transparent shadow-md border-2 border-black lg:mr-8 py-10 px-5 md:basis-full mb-10"
                 key={stat._key}
               >
-                <h3 className="text-lime-900 text-6xl font-light mb-3">
+                <h3 className="text-7xl font-light mb-3">
                   {stat?.Number}
                 </h3>
-                <p className="text-base text-black font-thin">{stat?.text}</p>
+                <p className="text-base font-thin text-xl">{stat?.text}</p>
               </div>
             );
           })}

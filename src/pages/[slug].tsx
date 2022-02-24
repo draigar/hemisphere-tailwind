@@ -2,7 +2,6 @@ import { siteConfig, slugQuery } from "../lib/sanity/queries";
 
 import Article from "@web/components/article";
 import Article2 from "@web/components/article/article2";
-import Card1 from "../components/card/card";
 import CarouselComp from "@web/components/carousel";
 import Contact from "@web/components/contact";
 import DefaultLayout from "../layouts/default";
@@ -49,7 +48,7 @@ export default function Slug({ data, preview, config }: any) {
   )
 
   const content = data?.pages?.content;
-  console.log("main", data);
+  // console.log("main", data);
   return (
     <DefaultLayout siteConfig={siteMetaData}>
       <main className="h-full">
@@ -62,7 +61,8 @@ export default function Slug({ data, preview, config }: any) {
               {el.type === "newsletter1" && <Newletter1 content={el} />}
               {el.type === "newsletter2" && <Newsletter2 content={el} />}
               {el.type === "newsletter3" && <Newsletter3 content={el} />}
-
+              {el.type === "stats1" && <Stats1 content={el} />}
+              {el.type === "stats2" && <Stats2 content={el} />}
               {el._type === "textCenteredAndImageBg" && (
                 <TextCenteredandBg1 content={el} />
               )}

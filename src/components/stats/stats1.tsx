@@ -3,39 +3,42 @@ import urlFor from "../../helpers/imageUrlGenerator";
 import bgColorCombo from "../../helpers/backgroundColorFn";
 import CustomText from "../text/customText";
 
-const Stats1 = ({ content }) => {
-  const caption = content?.caption?.type;
+const Stats1 = ({ content } : any) => {
+  const caption = content?.caption;
   const tagLine = content?.tagLine;
-  const bgColor = content?.background?.backgroundColor;
-  const bgColorStyle = bgColorCombo(bgColor);
+  const bgColor = content?.background?.backgroundColor.hex;
+  const statItemColor = content?.statItemColor?.hex;
+
+
+
 
   return (
-    <div className={`${bgColorStyle} md:p-11 px-8 py-20`}>
+    <div 
+      style={{ backgroundColor: `${bgColor}` }}
+      className={`md:p-11 px-8 py-20`}>
       <div className="w-4/6 mx-auto">
-        <div className="text-center">
-          <h2 className="text-6xl text-white mb-8">{content?.caption?.Text}</h2>
-          {/* <CustomText content={caption} textAlign="center" /> */}
-          <div className="text-xl text-white font-thin">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ullam
-            a magni adipisci magnam ipsum accusantium fugit error beatae impedit
-            veniam doloremque ut nostrum blanditiis, ratione, quod, nam
-            provident dicta aut cumque culpa soluta? Enim quisquam delectus
-            officia, sunt laboriosam hic obcaecati eos suscipit ullam. A velit
-            blanditiis mollitia esse.
-          </div>
+        <div className="mb-4 text-center">
+          <CustomText content={caption} textAlign="centered" />
         </div>
+        <div className="w-3/6 mx-auto font-thin text-center">
+          <CustomText
+              content={tagLine}
+              textAlign="centered"
+            />
+          </div>
 
         <div className="flex justify-center relative mx-auto my-12 w-full">
           {content?.statistics?.map((stat: any) => {
             return (
               <div
+                style={{ color: `${statItemColor}`}}
                 className="lg:flex-1 text-center md:basis-3/12 md:mr-5 sm:mr-10"
                 key={stat._key}
               >
-                <h3 className="text-white lg:text-9xl mb-3 md:text-6xl sm:text-6xl">
+                <h3 className="text-7xl mb-3">
                   {stat?.Number}
                 </h3>
-                <p className="lg:text-base text-white font-thin text-xl">
+                <p className="text-base font-thin text-xl">
                   {stat?.text}
                 </p>
               </div>

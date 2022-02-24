@@ -38,6 +38,11 @@ export default {
             of: [
                 {type: 'stat'}
             ]
+        },
+        {
+            name: 'statItemColor',
+            title: 'Add Statistics Items Color',
+            type: 'color',
         } 
     
     ],

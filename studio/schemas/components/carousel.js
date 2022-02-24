@@ -37,13 +37,35 @@ export default {
             name: 'borderColor',
             type: 'colors',
         },
-        
+        {
+            name: 'shadow',
+            title: 'Drop shadow',
+            type: 'boolean',
+            description: 'Should have a drop shadow',
+        },
+        {
+            name: 'isReview',
+            title: 'Add Review Mark',
+            type: 'boolean',
+            description: 'Add Review Mark to use as a Review style',
+        },
+        {
+            name: 'isAnimationEnabled',
+            title: 'Enable Animation',
+            type: 'boolean',
+            description: 'Enable animation on component',
+        },
+        {
+            name: 'animation',
+            type: 'animations',
+            hidden: ({ parent }) => !(parent?.isAnimationEnabled),
+        }
     ],
     preview: {
         select: {
           media: 'elements',
         },
-        prepare({ title, media }) {
+        prepare({ media }) {
           return {
             title: 'Carousel',
             subtitle: 'Carousel',
