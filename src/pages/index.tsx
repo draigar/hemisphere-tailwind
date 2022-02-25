@@ -1,25 +1,24 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { getPageByData, siteConfig } from '../lib/sanity/queries'
 
-import CarouselComp from '../components/carousel'
+import Article from "@web/components/article";
+import Carousel from '@web/components/carousel/'
+import Contact from "@web/components/contact";
 import DefaultLayout from '../layouts/default'
+import Gallery1 from '@web/components/gallery/gallery'
 import ImageVideoBgComponent from '../components/heros/imageVideoBgComponent'
 import Newletter1 from '../components/newletters/newletter1'
+import Newsletter2 from '@web/components/newletters/newletter2'
+import Newsletter3 from '@web/components/newletters/newletter3'
 import Partners from '../components/partners/partners'
 import { SiteMetaConfigType } from '../types'
+import Statistics from '@web/components/stats'
+import TextCardAndOverflow from '@web/components/textcardoverflow'
+import Textcardoverflow2 from "@web/components/textcardoverflow/textcardoverflow2";
+import Whitespace from '@web/components/whitespace'
 import dynamic from 'next/dynamic'
 import { getClient } from '../lib/sanity'
 import styles from '../styles/Home.module.css'
-import Contact from "@web/components/contact";
-import Newsletter2 from '@web/components/newletters/newletter2'
-import Newsletter3 from '@web/components/newletters/newletter3'
-import Article from "@web/components/article";
-import Whitespace from '@web/components/whitespace'
-import Statistics from '@web/components/stats'
-import Textcardoverflow2 from "@web/components/textcardoverflow/textcardoverflow2";
-import TextCardAndOverflow from '@web/components/textcardoverflow'
-import Carousel from '@web/components/carousel'
-import Gallery1 from '@web/components/gallery/gallery'
 
 const TextImageGrid = dynamic(
   () => import('../components/textImageGrid'),
@@ -70,9 +69,12 @@ export default function Home(data: any) {
             {el._type === "breakPoint" && <Whitespace content={el} />}
             {el._type === "statistics" && <Statistics content={el} />}
             {el._type === "imageBgandTextCardOverflow" && <TextCardAndOverflow content={el} />}
-            {/* <Gallery1 /> */}
+            {el._type === "carousel" && <Carousel content={el} />}
+            {/* {el._type === "carousel" && <Carousel content={el} />} */}
           </div>
         ))}
+              <Gallery1 />
+
       </main>
     </DefaultLayout>
   )
