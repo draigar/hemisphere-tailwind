@@ -38,7 +38,7 @@ function Button3({ content }: BtnProps) {
       console.log('====================================');
       console.log(url);
       console.log('====================================');
-      // setLinkUrl(url?.slug.current)
+      setLinkUrl(url?.slug.current)
     }
   }, [internalLink])
 

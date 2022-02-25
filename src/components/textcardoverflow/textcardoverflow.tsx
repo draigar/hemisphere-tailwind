@@ -3,7 +3,12 @@ import CustomText from "../text/customText";
 import { utilities } from "@web/helpers/utilities";
 import CustomButton from "../button/mainButton";
 
-function Textcardoverflow({ content }: any) {
+interface props {
+  content: any;
+}
+
+function TextCardOverflow(props: props) {
+  const { content } = props;
   const bgImage = content?.image?.Image?.asset?._ref;
   const imageAsset = bgImage && utilities.ImageFn(bgImage);
 
@@ -21,14 +26,14 @@ function Textcardoverflow({ content }: any) {
   };
 
   return (
-    <div className="relative mb-10">
+    <div className="relative mb-10 ">
       <div style={bgStyle} className="h-64"></div>
-      <div className="-mt-40 md:ml-32 mx-9 lg:w-45 sm:w-4/5 mb-8 bg-white md:p-10 p-4 shadow-lg">
+      <div className=" -mt-60 md:ml-32 mx-9  w-4/5 lg:w-1/4 md:p-10 p-4 shadow-lg bg-white">
         <div className="">
-          <div className="mb-10">
+          <div className="mb-4">
             <CustomText content={heading} />
           </div>
-          <div className="">
+          <div className="text-md">
             <CustomText content={bodyText} />
           </div>
           {isCTAEnabled && <CustomButton content={buttonType} />}
@@ -38,4 +43,4 @@ function Textcardoverflow({ content }: any) {
   );
 }
 
-export default Textcardoverflow;
+export default TextCardOverflow;

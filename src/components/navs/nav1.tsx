@@ -50,7 +50,7 @@ export default function Navbar1() {
                                 <li className="nav-item mr-8 " key={i}>
                                     <Link href={el.slug}>
                                         <a
-                                            className={`py-1 hover-underline-animation flex items-center text-xs uppercase font-bold leading-snug transition delay-150 hover:ease-in duration-300 hover:text-primary-600 ${stickyClass ? 'text-black' : 'text-black md:text-white'} hover:opacity-75`}
+                                            className={`hover-underline-animation flex items-center text-xs uppercase font-bold leading-snug transition delay-150 hover:ease-in duration-300 ${stickyClass ? 'text-black' : 'text-black md:text-white'} hover:opacity-75`}
                                         >
                                             <span>{el.title}</span>
                                         </a>
