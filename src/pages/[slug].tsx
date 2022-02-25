@@ -21,6 +21,7 @@ import Textcardoverflow from "@web/components/textcardoverflow/textcardoverflow"
 import Error from "@web/components/error/error";
 import Textcardoverflow2 from "@web/components/textcardoverflow/textcardoverflow2";
 import Statistics from "@web/components/stats";
+import Carousel from "@web/components/carousel";
 
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
@@ -73,6 +74,7 @@ export default function Slug({ data, preview, config }: any) {
               {el._type === "imageVideoBgHeroComponent" && (
                 <ImageVideoBgComponent content={el} />
               )}
+              {el._type === "carousel" && <Carousel content={el} />}
         
             </div>
           ))}

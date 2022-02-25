@@ -5,6 +5,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        landing: "url(/img/Landing-Bg.png)",
+      },
+
+      boxShadow: {
+        carouselBox2: "0px 40px 80px 16px rgba(171, 169, 169, 0.25)",
+        carouselBox: "0px 2.6528px 28.5176px rgba(64, 123, 94, 0.25)",
+      },
+      
       colors: {
         primary: {
           50: '#e0fff1',

@@ -13,13 +13,13 @@ export default {
     ],
     fields: [
         {
-            name: 'Heading',
+            name: 'heading',
             type: 'customText',
             title: 'Heading Text',
             //TODO: Check how to add default value of an objet from option Values.
         },
         {
-            name: 'bodyText',
+            name: 'body',
             type: 'customText',
             title: 'Body Text',
         },

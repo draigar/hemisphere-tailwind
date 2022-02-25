@@ -3,9 +3,6 @@ import { getPageByData, siteConfig } from '../lib/sanity/queries'
 
 import Article from "@web/components/article";
 import Carousel from '@web/components/carousel/'
-import Carousel4 from '@web/components/carousel/carousel4'
-import Carousel5 from '@web/components/carousel/carousel5'
-import CarouselComp from '../components/carousel'
 import Contact from "@web/components/contact";
 import DefaultLayout from '../layouts/default'
 import Gallery1 from '@web/components/gallery/gallery'
@@ -72,9 +69,8 @@ export default function Home(data: any) {
             {el._type === "breakPoint" && <Whitespace content={el} />}
             {el._type === "statistics" && <Statistics content={el} />}
             {el._type === "imageBgandTextCardOverflow" && <TextCardAndOverflow content={el} />}
-            {el._type === "carousel" && <Carousel4 content={el} />}
-            {el._type === "carousel" && <Carousel5 content={el} />}
             {el._type === "carousel" && <Carousel content={el} />}
+            {/* {el._type === "carousel" && <Carousel content={el} />} */}
           </div>
         ))}
               <Gallery1 />
