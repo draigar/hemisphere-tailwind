@@ -15,7 +15,6 @@ const Carousel3 = ({ content}: any) => {
     const btnDetails = content?.buttonType;
     const background = content?.background?.hex;
     const shadow = content?.shadow;
-
     const isAnimationEnabled = content?.isAnimationEnabled
     const animationDelay = content?.animation?.animationDelay
     const animationDuration = content?.animation?.animationDuration
