@@ -13,7 +13,7 @@ const Carousel3 = ({ content}: any) => {
     const titleText = content?.titleText?.text;
     const cards = content?.cards;
     const btnDetails = content?.buttonType;
-    const background = content?.background.hex;
+    const background = content?.background?.hex;
     const shadow = content?.shadow;
 
     const isAnimationEnabled = content?.isAnimationEnabled

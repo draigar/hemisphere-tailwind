@@ -3,7 +3,7 @@ import { utilities } from "@web/helpers/utilities";
 import CustomText from "../text/customText";
 import CustomButton from "../button/mainButton";
 
-function Textcardoverflow2({ content }: any) {
+function TextCardOverflow2({ content }: any) {
   const bgImage = content?.image?.Image?.asset?._ref;
   const imageAsset = bgImage && utilities.ImageFn(bgImage);
 
@@ -18,7 +18,6 @@ function Textcardoverflow2({ content }: any) {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    minHeight: "70vh",
   };
 
   const textBgSTyle = {
@@ -31,18 +30,18 @@ function Textcardoverflow2({ content }: any) {
   console.log('==================');
 
   return (
-    <div style={bgStyle}>
-      <div className="pt-16">
-        <div className="text-center">
-          <CustomText content={heading} textAlign="centeredTop" />
-        </div>
-        <div className="flex content-center justify-center items-center">
-          <div
-            className="ml-auto w-65 md:w-45 p-4 mr-4 rounded mt-9 text-white"
-            style={textBgSTyle}
-          >
-            <CustomText content={bodyText} />
-            {isCTAEnabled && <CustomButton content={buttonType} />}
+    <div style={bgStyle} className="h-700px">
+      <div className="pt-16 h-full">
+        <div className="flex flex-col items-end justify-end px-8 py-12 h-full">
+          <div className="w-full md:w-45">
+              <CustomText content={heading} />
+            <div
+              className="w-full p-4 mr-4 mt-9 mb-14"
+              style={textBgSTyle}
+            >
+              <CustomText content={bodyText} />
+              {isCTAEnabled && <CustomButton content={buttonType} />}
+            </div>
           </div>
         </div>
       </div>
@@ -50,4 +49,4 @@ function Textcardoverflow2({ content }: any) {
   );
 }
 
-export default Textcardoverflow2;
+export default TextCardOverflow2;

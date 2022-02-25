@@ -17,6 +17,10 @@ import Article from "@web/components/article";
 import Whitespace from '@web/components/whitespace'
 import Statistics from '@web/components/stats'
 import Textcardoverflow2 from "@web/components/textcardoverflow/textcardoverflow2";
+import TextCardAndOverflow from '@web/components/textcardoverflow'
+import Carousel4 from '@web/components/carousel/carousel4'
+import Carousel5 from '@web/components/carousel/carousel5'
+import Gallery1 from '@web/components/gallery/gallery'
 
 const TextImageGrid = dynamic(
   () => import('../components/textImageGrid'),
@@ -66,9 +70,10 @@ export default function Home(data: any) {
             {el._type === "article" && <Article content={el} />}
             {el._type === "breakPoint" && <Whitespace content={el} />}
             {el._type === "statistics" && <Statistics content={el} />}
-            {el.type === "cta1" && <Textcardoverflow content={el} />}
-            {el.type === "section2" && <Textcardoverflow2 content={el} />}
-              
+            {el._type === "imageBgandTextCardOverflow" && <TextCardAndOverflow content={el} />}
+            {el._type === "carousel" && <Carousel4 content={el} />}
+            {el._type === "carousel" && <Carousel5 content={el} />}
+              <Gallery1 />
           </div>
         ))}
       </main>

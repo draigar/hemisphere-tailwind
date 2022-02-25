@@ -17,7 +17,7 @@ const Carousel4 = ({ content}: any) => {
   const titleText = content?.titleText?.text;
   const cards = content?.cards;
   const btnDetails = content?.buttonType;
-  const background = content?.background.hex;
+  const background = content?.background?.hex;
   const shadow = content?.shadow;
 
   const isAnimationEnabled = content?.isAnimationEnabled
@@ -27,7 +27,7 @@ const Carousel4 = ({ content}: any) => {
   const animationOffset = content?.animation?.animationOffset
 
   return (
-    <div className="my-12 relative md:mx-12">
+    <div className="my-12 relative bg-teal-700">
       <div className="next-browse-btn nav-btn-carousel1">
         <div className="h-[7px] w-[14px]">
           <Image

@@ -70,7 +70,7 @@ video {
 .hover-underline-animation {
   display: inline-block;
   position: relative;
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 
 .hover-underline-animation:after {

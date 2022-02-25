@@ -36,7 +36,12 @@ function Button4({ content }: BtnProps) {
       limit: '0'
     }
     const url = await utilities.getRef(obj)
-    setLinkUrl(url.slug.current)
+    if (url?.slug.current !== undefined) {
+      console.log('====================================');
+      console.log(url);
+      console.log('====================================');
+      setLinkUrl(url?.slug.current)
+    }
   }, [internalLink])
 
   React.useEffect(() => {
@@ -54,7 +59,7 @@ function Button4({ content }: BtnProps) {
         </Link>
       ) : (
         <Link href={externalLink} passHref={true}>
-          <a style={Styles} className="border-b-4 border-neutral-1 underline hover:no-underline underline-offset-4 decoration-2 inline-block mt-6 cursor-pointer">
+          <a style={Styles} className="hover-underline-animation border-b-4 border-neutral-1 underline hover:no-underline underline-offset-4 decoration-2 inline-block mt-6 cursor-pointer">
             <span className="mr-2">{btnText}</span>
             <span>{arrowRight}</span>
           </a>
