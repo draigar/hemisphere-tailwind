@@ -1,17 +1,17 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import * as React from 'react';
 import { AnimationHandler, AnimationHandlerResponse } from "react-responsive-carousel/lib/ts/components/Carousel/types";
-import { StyleSheet, Text, View } from 'react-native';
 import { Carousel } from 'react-responsive-carousel';
-import { hasSubscribers } from "diagnostics_channel";
 import CustomText from "../text/customText";
 import urlFor from "../../helpers/imageUrlGenerator";
 import CustomButton from "../button/mainButton";
 
-interface CarouselProps {}
+interface props {
+  content: any;
+}
 
-const CarouselComp = ({ content }: any) => {
-  console.log(content);
+const Carousel1 = (props: props) => {
+  const { content } = props;
 
   const carouselElements = content?.elements;
   const titleText = content?.titleText?.text;
@@ -58,7 +58,7 @@ const CarouselComp = ({ content }: any) => {
     };
   };
 
-  const Carousel1 = () => (
+  const CarouselComp1 = () => (
     <div>
       <Carousel
         autoPlay
@@ -87,7 +87,7 @@ const CarouselComp = ({ content }: any) => {
     </div>
   );
 
-  const Carousel2 = () => (
+  const CarouselComp2 = () => (
     <div className="container mx-auto w-full overflow-hidden relative">
       <div className="w-full h-full absolute">
         <div
@@ -145,7 +145,7 @@ const CarouselComp = ({ content }: any) => {
     </div>
   );
 
-  return <Carousel2 />;
+  return <CarouselComp2 />;
 };
 
-export default CarouselComp;
+export default Carousel1;
