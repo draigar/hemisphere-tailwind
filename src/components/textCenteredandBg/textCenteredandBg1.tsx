@@ -65,12 +65,23 @@ function TextCenteredandBg1(props: props) {
     </div>
   );
 
+  const style = {
+    margin: marginSize?.type === 'side' ? `auto ${marginSize?.marginsize?.size === 'md' ? '10em'
+      : marginSize?.marginsize?.size === 'sm' ? '6em' : marginSize?.marginsize?.size === 'xs' ? '2em'
+        : marginSize?.marginsize?.size === 'lg' ? '15em' : marginSize?.marginsize?.size === 'xl' ? '20em'
+          : marginSize?.marginsize?.size === 'xxl' ? '25em' : '20px'}`
+      : `40px ${marginSize?.marginsize?.size === 'md' ? '10em'
+      : marginSize?.marginsize?.size === 'sm' ? '6em' : marginSize?.marginsize?.size === 'xs' ? '2em'
+        : marginSize?.marginsize?.size === 'lg' ? '15em' : marginSize?.marginsize?.size === 'xl' ? '20em'
+          : marginSize?.marginsize?.size === 'xxl' ? '25em' : '20px'}`
+  }
+
   return (
-    <div className="p-2 lg:px-16 py-4 h-500px lg:h-600px">
+    <div style={style} className={`p-2 py-4 h-500px lg:h-600px`}>
       <div style={bgStyle} className={`relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName} ${utilities.ColorCombo(bgColor)} h-full`}
-      data-wow-duration={`${animationDuration}s`}
-      data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
-        <div className={`${backgroundType !== 'color' && 'bg-black-1 bg-opacity-25' } z-10 h-full absolute w-full`}></div>
+        data-wow-duration={`${animationDuration}s`}
+        data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
+        <div className={`${backgroundType !== 'color' && 'bg-black-1 bg-opacity-25'} z-10 h-full absolute w-full`}></div>
         {backgroundType === 'video' ? <RenderVideo /> : <ContentComp />}
       </div>
     </div>

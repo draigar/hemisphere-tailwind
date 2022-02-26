@@ -28,7 +28,7 @@ const FullBleedGrid = (props: FullBleedGridProps) => {
 
     return (
         <div className={`flex flex-wrap justify-between w-full`}>
-            <figure className={`flex row w-full ${isAnimationEnabled && 'wow animate__animated'} ${animationName} p-0 lg:p-8 md:p-0`}
+            <figure className={`flex row w-full ${isAnimationEnabled && 'wow animate__animated'} ${animationName}`}
                 data-wow-duration={`${animationDuration}s`}
                 data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
                 <div className="grid grid-cols-12">
