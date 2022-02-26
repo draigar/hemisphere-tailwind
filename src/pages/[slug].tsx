@@ -64,7 +64,6 @@ export default function Slug({ data, preview, config }: any) {
               {el.type === "newsletter3" && <Newsletter3 content={el} />}
               {el._type === "statistics" && <Statistics content={el} />}
               {el.type === "imgLeftTextRight" && <TextImageGrid content={el} />}
-              {el.type === "carousel1" && <CarouselComp content={el} />}
               {el.type === "cta1" && <Textcardoverflow content={el} />}
               {el.type === "section2" && <Textcardoverflow2 content={el} />}
               {el._type === "textCenteredAndImageBg" && (

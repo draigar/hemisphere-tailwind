@@ -1,151 +1,147 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import * as React from 'react';
-import { AnimationHandler, AnimationHandlerResponse } from "react-responsive-carousel/lib/ts/components/Carousel/types";
-import { Carousel } from 'react-responsive-carousel';
+import { Swiper, SwiperSlide, useSwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import useWindowSize from "@web/hooks/useWindowSize";
 import CustomText from "../text/customText";
-import urlFor from "../../helpers/imageUrlGenerator";
-import CustomButton from "../button/mainButton";
+import { utilities } from "@web/helpers/utilities";
 
 interface props {
   content: any;
 }
 
 const Carousel1 = (props: props) => {
-  const { content } = props;
+    const { content } = props;
+    const heading = content?.heading?.text;
+    const caption = content?.captionText?.text;
+    const titleText = content?.titleText?.text;
+    const carouselElements = content?.elements;
+    const btnDetails = content?.buttonType;
+    const background = content?.background?.hex;
+    const shadow = content?.shadow;
+    const isAnimationEnabled = content?.isAnimationEnabled
+    const animationDelay = content?.animation?.animationDelay
+    const animationDuration = content?.animation?.animationDuration
+    const animationName = content?.animation?.animationName
+    const animationOffset = content?.animation?.animationOffset
 
-  const carouselElements = content?.elements;
-  const titleText = content?.titleText?.text;
+    console.log(`============Carousel2===============`)
+    console.log(content)
+    console.log(`============Carousel2===============`)
 
-  const fadeAnimationHandler: AnimationHandler = (
-    props,
-    state
-  ): AnimationHandlerResponse => {
-    const transitionTime = props.transitionTime + "ms";
-    const transitionTimingFunction = "ease-in-out";
+  const swiperSlide = useSwiperSlide();
+  const { isMobile } = useWindowSize();
+  console.log(`Is mobile is ${isMobile}`);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [initialSlide, setInitialSlide] = useState<number>(() => {
+    console.log(`Inside f: ${isMobile}`);
+    //TODO: use responsiveness to know whether to return 1 or zero
+    return 1;
+  });
 
-    let slideStyle: React.CSSProperties = {
-      position: "absolute",
-      display: "block",
-      zIndex: -2,
-      minHeight: "100%",
-      opacity: 0,
-      top: 0,
-      right: 0,
-      left: 0,
-      bottom: 0,
-      transitionTimingFunction: transitionTimingFunction,
-      msTransitionTimingFunction: transitionTimingFunction,
-      MozTransitionTimingFunction: transitionTimingFunction,
-      WebkitTransitionTimingFunction: transitionTimingFunction,
-      OTransitionTimingFunction: transitionTimingFunction,
-    };
-
-    if (!state.swiping) {
-      slideStyle = {
-        ...slideStyle,
-        WebkitTransitionDuration: transitionTime,
-        MozTransitionDuration: transitionTime,
-        OTransitionDuration: transitionTime,
-        transitionDuration: transitionTime,
-        msTransitionDuration: transitionTime,
-      };
-    }
-
-    return {
-      slideStyle,
-      selectedStyle: { ...slideStyle, opacity: 1, position: "relative" },
-      prevStyle: { ...slideStyle },
-    };
-  };
-
-  const CarouselComp1 = () => (
-    <div>
-      <Carousel
-        autoPlay
-        dynamicHeight
-        infiniteLoop
-        showThumbs={false}
-        animationHandler={fadeAnimationHandler}
-        showStatus={false}
-        showIndicators={false}
-      >
-        <div>
-          <img
-            style={{ height: "800px" }}
-            src="https://images.pexels.com/photos/6799723/pexels-photo-6799723.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  return (
+    <div className="relative min-h-[90vh] w-[85%] md:w-[90%] mx-auto">
+      <div className="next-browse-btn btn-carousel-para carousel1 carousel1n">
+        <svg
+          width="14"
+          height="26"
+          viewBox="0 0 14 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0.999996 24.1424L12.5714 12.5709L1 0.999512"
+            stroke="#969696"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
-          <p className="legend">Legend 1</p>
-        </div>
-        <div>
-          <img
-            style={{ height: "800px" }}
-            src="https://images.pexels.com/photos/5912093/pexels-photo-5912093.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-          />
-          <p className="legend">Legend 2</p>
-        </div>
-      </Carousel>
-    </div>
-  );
-
-  const CarouselComp2 = () => (
-    <div className="container mx-auto w-full overflow-hidden relative">
-      <div className="w-full h-full absolute">
-        <div
-          className="w-1/4 h-full absolute z-50 left-0"
-          style={{
-            background:
-              "linear-gradient(to right, #edf2f7 0%, rgba(255, 255, 255, 0) 100%)",
-          }}
-        ></div>
-        <div
-          className="w-1/4 h-full absolute z-50 right-0"
-          style={{
-            background:
-              "linear-gradient(to left, #edf2f7 0%, rgba(255, 255, 255, 0) 100%)",
-          }}
-        ></div>
+        </svg>
       </div>
-
-      <div
-        className="carousel-items flex items-center justify-center"
-        style={{
-          width: "fit-content",
-          animation: "carouselAnim 10s infinite alternate linear",
+      <div className="prev-browse-btn btn-carousel-para carousel1 carousel1p">
+        <svg
+          width="14"
+          height="26"
+          viewBox="0 0 14 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.5703 0.999722L0.998881 12.5712L12.5703 24.1426"
+            stroke="#969696"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+      <Swiper
+        initialSlide={initialSlide}
+        centeredSlides={true}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 5,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 0,
+          },
+        }}
+        speed={600}
+        navigation={{
+          nextEl: ".carousel1n",
+          prevEl: ".carousel1p",
+        }}
+        pagination={{
+          clickable: true,
+          el: ".swiper-pagination-1",
+          bulletActiveClass: "swiper-pagination-bullet-active-rasta",
+        }}
+        modules={[Navigation, Pagination]}
+        onSlideChange={(s) => {
+          setActiveIndex(s.activeIndex);
+          console.log(swiperSlide);
         }}
       >
-        {carouselElements &&
-          carouselElements.map((val: any) => {
-            return (
+        {carouselElements && carouselElements.map((val: any, i: number) => (
+          <SwiperSlide key={i} className={`c1`}>
+            <div
+              className={`flex space-y-3 md:space-y-5 flex-col ${
+                activeIndex === i
+                  ? "!w-[300px] xl:!w-[600px] lg:!w-[500px]"
+                  : "w-[200px] xl:!w-[350px] lg:!w-[220px] mx-auto"
+              }`}
+            >
               <div
-                className="carousel-focus flex items-center flex-col relative bg-white mx-5 my-10 px-4 py-3 rounded-lg shadow-lg"
-                style={{ width: "270px" }}
+                className={`relative ${
+                  activeIndex === i
+                    ? "h-[300px] xl:h-[450px]"
+                    : "md:mt-14 h-[200px] xl:h-[350px] w-full"
+                }`}
               >
-                <svg
-                  className="fill-current text-teal-400 hover:text-teal-500 cursor-pointer h-12 w-12 absolute top-0 right-0 mt-2 -mr-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                >
-                  <path d="M11.5 0C17.847 0 23 5.153 23 11.5S17.847 23 11.5 23 0 17.847 0 11.5 5.153 0 11.5 0zm0 1C17.295 1 22 5.705 22 11.5S17.295 22 11.5 22 1 17.295 1 11.5 5.705 1 11.5 1zm.5 10h6v1h-6v6h-1v-6H5v-1h6V5h1v6z" />
-                </svg>
-                <CustomText content={val?.Heading?.text} />
-                <div className="mb-4"></div>
-                <img
-                  className="h-16 w-16 rounded-full shadow-2xl"
-                  src={urlFor(val?.Image?.Image?.asset?._ref)?.url()}
-                  alt="Img"
+                <Image
+                  src={utilities.ImageFn(val?.Image?.Image.asset._ref)}
+                  alt={val?.Image?.alt}
+                  layout="fill"
+                  objectFit="cover"
                 />
-                <div className="mb-4"></div>
-                <CustomText content={val?.bodyText?.text} />
-                {val?.isCTAEnabled && <CustomButton content={val?.button} />}
               </div>
-            );
-          })}
-      </div>
+              <div className={`${activeIndex === i ? "block" : "hidden"}`}>
+                  <CustomText content={val?.heading} />
+                  <CustomText content={val?.body} />
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <div className="swiper-pagination-1 mt-3 px-5 max-w-lg mx-auto flex justify-center space-x-4"></div>
     </div>
   );
-
-  return <CarouselComp2 />;
 };
 
 export default Carousel1;
