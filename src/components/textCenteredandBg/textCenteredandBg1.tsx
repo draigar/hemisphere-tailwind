@@ -66,7 +66,7 @@ function TextCenteredandBg1(props: props) {
   );
 
   const style = {
-    margin: marginSize?.type === 'side' ? `auto ${marginSize?.marginsize?.size === 'md' ? '10em'
+    padding: marginSize?.type === 'side' ? `auto ${marginSize?.marginsize?.size === 'md' ? '10em'
       : marginSize?.marginsize?.size === 'sm' ? '6em' : marginSize?.marginsize?.size === 'xs' ? '2em'
         : marginSize?.marginsize?.size === 'lg' ? '15em' : marginSize?.marginsize?.size === 'xl' ? '20em'
           : marginSize?.marginsize?.size === 'xxl' ? '25em' : '20px'}`
