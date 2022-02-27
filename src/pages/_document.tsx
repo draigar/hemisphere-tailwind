@@ -61,7 +61,7 @@ class MyDocument extends Document {
                     <meta property='og:url' content='https://yourdomain.com' />
                     <meta property='og:image' content='https://yourdomain.com/icons/apple-touch-icon.png' />
                     <link crossOrigin="anonymous" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 </Head>
                 <body>
                     <Main />

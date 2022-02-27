@@ -1,8 +1,8 @@
 import * as React from "react";
 
+import Button from '../button/mainButton';
 import CustomText from "../text/customText";
 import { utilities } from "@web/helpers/utilities";
-import Button from '../button/mainButton';
 
 interface ImageVideoBgComponentProps {
   content: any;
@@ -28,61 +28,58 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
 
   const ContentComp = () => (
     <div
-      className={`flex flex-col h-full p-5 sm:p-5 lg:p-32 bg-black-1 bg-opacity-25 ${
-        textAlign === "centered"
+      className={`flex flex-col h-full p-5 sm:p-5 lg:p-32 bg-black-1 bg-opacity-25 ${textAlign === "centered"
           ? "justify-center text-center items-center"
           : textAlign === "rightBottom"
-          ? "justify-end text-right items-end"
-          : textAlign === "right"
-          ? "justify-center text-right items-end"
-          : textAlign === "leftBottom"
-          ? "justify-end text-left items-start"
-          : textAlign === "left"
-          ? "justify-center text-left items-start"
-          : textAlign === "centeredTop"
-          ? "justify-start text-center items-center"
-          : "justify-center items-center"
-      }`}
+            ? "justify-end text-right items-end"
+            : textAlign === "right"
+              ? "justify-center text-right items-end"
+              : textAlign === "leftBottom"
+                ? "justify-end text-left items-start"
+                : textAlign === "left"
+                  ? "justify-center text-left items-start"
+                  : textAlign === "centeredTop"
+                    ? "justify-start text-center items-center"
+                    : "justify-center items-center"
+        }`}
     >
       <div
-        className={`mb-8 ${
-          headingLengthSize === "md"
+        className={`mb-8 ${headingLengthSize === "md"
             ? "w-2/6"
             : headingLengthSize === "lg"
-            ? "w-2/5"
-            : headingLengthSize === "xl"
-            ? "w-2/4"
-            : headingLengthSize === "xs"
-            ? "w-1/5"
-            : headingLengthSize === "sm"
-            ? "w-1/4"
-            : headingLengthSize === "xxl"
-            ? "w-2/3"
-            : headingLengthSize === "xxs"
-            ? "w-1/6"
-            : "10%"
-        } `}
+              ? "w-2/5"
+              : headingLengthSize === "xl"
+                ? "w-4/6"
+                : headingLengthSize === "xs"
+                  ? "w-1/5"
+                  : headingLengthSize === "sm"
+                    ? "w-1/4"
+                    : headingLengthSize === "xxl"
+                      ? "w-4/5"
+                      : headingLengthSize === "xxs"
+                        ? "w-1/12"
+                        : "10%"
+          } `}
       >
         <CustomText content={heading} textAlign={textAlign} />
       </div>
       <div
-        className={`${
-          headingLengthSize === "md"
+        className={`${taglineLengthSize === "md"
             ? "w-2/6"
             : taglineLengthSize === "lg"
-            ? "w-2/5"
-            : taglineLengthSize === "xl"
-            ? "w-2/4"
-            : taglineLengthSize === "xs"
-            ? "w-1/5"
-            : taglineLengthSize === "sm"
-            ? "w-1/4"
-            : taglineLengthSize === "xxl"
-            ? "w-2/3"
-            : taglineLengthSize === "xxs"
-            ? "w-1/6"
-            : "10%"
-        } `}
+              ? "w-2/5"
+              : taglineLengthSize === "xl"
+                ? "w-4/6"
+                : taglineLengthSize === "xs"
+                  ? "w-1/5"
+                  : taglineLengthSize === "sm"
+                    ? "w-1/4"
+                    : taglineLengthSize === "xxl"
+                      ? "w-4/5"
+                      : taglineLengthSize === "xxs"
+                        ? "w-1/12"
+                        : "10%"
+          } `}
       >
         {isTaglineEnabled && (
           <CustomText content={tagline} textAlign={textAlign} />
