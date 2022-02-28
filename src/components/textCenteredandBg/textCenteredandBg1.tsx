@@ -77,7 +77,7 @@ function TextCenteredandBg1(props: props) {
   }
 
   return (
-    <div style={style} className={`p-2 py-4 h-500px lg:h-600px`}>
+    <div className={`py-4 px-[10em] h-500px lg:h-600px`}>
       <div style={bgStyle} className={`relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName} ${utilities.ColorCombo(bgColor)} h-full`}
         data-wow-duration={`${animationDuration}s`}
         data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>

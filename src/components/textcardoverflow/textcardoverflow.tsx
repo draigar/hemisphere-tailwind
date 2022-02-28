@@ -1,7 +1,7 @@
-import React from "react";
-import CustomText from "../text/customText";
-import { utilities } from "@web/helpers/utilities";
 import CustomButton from "../button/mainButton";
+import CustomText from "../text/customText";
+import React from "react";
+import { utilities } from "@web/helpers/utilities";
 
 interface props {
   content: any;
@@ -17,6 +17,12 @@ function TextCardOverflow(props: props) {
   const isCTAEnabled = content?.isCTAEnabled;
   const buttonType = content?.buttonType;
 
+  const isAnimationEnabled = content?.isAnimationEnabled
+  const animationDelay = content?.animation?.animationDelay
+  const animationDuration = content?.animation?.animationDuration
+  const animationName = content?.animation?.animationName
+  const animationOffset = content?.animation?.animationOffset
+
   const bgStyle = {
     backgroundImage: `url(${imageAsset})`,
     backgroundSize: "cover",
@@ -26,7 +32,8 @@ function TextCardOverflow(props: props) {
   };
 
   return (
-    <div className="relative mb-10 ">
+    <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} relative mb-10 `} data-wow-duration={`${animationDuration}s`}
+    data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
       <div style={bgStyle} className="h-64"></div>
       <div className=" -mt-60 md:ml-32 mx-9  w-4/5 lg:w-1/4 md:p-10 p-4 shadow-lg bg-white">
         <div className="">

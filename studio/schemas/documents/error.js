@@ -1,8 +1,15 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
     name: 'errorPage',
     title: 'Error Page',
-    type: 'object',
+    type: 'document',
     fields: [
+        {
+            name: 'errorPageName',
+            title: 'Error Page Name',
+            type: 'string',
+            validation: Rule => Rule.required()
+        },
         {
             name: 'background',
             type: 'background',

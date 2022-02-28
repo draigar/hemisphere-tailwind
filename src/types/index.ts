@@ -3,6 +3,12 @@ export interface SiteMetaConfigType {
     slug: string;
     description: string;
     openGraphImage: string;
+    footer: footerType;
+}
+
+export interface footerType {
+    _ref: string;
+    _type: string;
 }
 
 export interface ColorObject {
