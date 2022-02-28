@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { GrNavigate } from 'react-icons/gr';
 import { isUniqueAcrossAllDocuments } from '../../lib/isUniqueAcrossAllDocuments';
 

@@ -40,38 +40,43 @@ export default {
                 type: "object",
                 fields: [
                   {
+                    title: 'URL',
+                    name: 'href',
+                    type: 'url',
+                  },
+                  {
                     name: 'linkType',
                     type: 'string',
-                    options:{
-                        list: [
-                            { title: "Internal Link", value: "internal" },
-                            { title: "External Url", value: "external" },
-                        ],
-                        layout: 'radio'
+                    options: {
+                      list: [
+                        { title: "Internal Link", value: "internal" },
+                        { title: "External Url", value: "external" },
+                      ],
+                      layout: 'radio'
                     },
-                    initialValue:'internal'
-                },
-                {
+                    initialValue: 'internal'
+                  },
+                  {
                     title: 'Internal Link',
                     name: 'internalLink',
                     description: 'Select pages or routes for navigation',
                     type: 'reference',
-                    to: [{ type: 'page' }], 
-                    hidden: ({parent}) => !(parent?.linkType === 'internal' )
-                },
-                {
+                    to: [{ type: 'page' }],
+                    hidden: ({ parent }) => !(parent?.linkType === 'internal')
+                  },
+                  {
                     name: 'externalUrl',
                     title: 'External URL',
-                    description:"Use fully qualified URLS for external link",
+                    description: "Use fully qualified URLS for external link",
                     type: 'url',
-                    hidden: ({parent}) => !(parent?.linkType === 'external')
-                },
-                {
+                    hidden: ({ parent }) => !(parent?.linkType === 'external')
+                  },
+                  {
                     name: 'newWindow',
                     title: 'Open in New Window',
                     type: 'boolean',
-                    hidden: ({parent}) => !(parent?.linkType === 'external')
-                },
+                    hidden: ({ parent }) => !(parent?.linkType === 'external')
+                  },
                 ]
               },
               {
@@ -80,17 +85,17 @@ export default {
                 type: 'object',
                 fields: [
                   {
-                      title: "Font Name",
-                      name: "type",
-                      type: "string",
-                      options: {
-                          list: [
-                              {title: "Helvetica", value: "helvetica"},
-                              {title: "Nueue", value: "helvetica-nueue"},
-                          ]
-                      }
+                    title: "Font Name",
+                    name: "type",
+                    type: "string",
+                    options: {
+                      list: [
+                        { title: "Helvetica", value: "helvetica" },
+                        { title: "Nueue", value: "helvetica-nueue" },
+                      ]
+                    }
                   },
-              ]
+                ]
               },
             ]
           },
@@ -107,11 +112,11 @@ export default {
       title: 'Enable Animation',
       type: 'boolean',
       description: 'Enable animation on component',
-  },
-  {
+    },
+    {
       name: 'animation',
       type: 'animations',
-      hidden: ({parent}) => !(parent?.isAnimationEnabled),
-  }
+      hidden: ({ parent }) => !(parent?.isAnimationEnabled),
+    }
   ]
 };

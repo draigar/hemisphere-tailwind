@@ -26,7 +26,7 @@ const TextImageGrid = dynamic(
 )
 const TextCenteredAndBg = dynamic(
   () => import('@web/components/textCenteredandBg/textCenteredandBg1'),
-  { ssr: false }
+  { ssr: true }
 )
 const Card = dynamic(
   () => import('../components/card/card'),
@@ -42,9 +42,8 @@ export default function Home(data: any) {
     slug: config?.slug,
     description: config?.description,
     openGraphImage: config?.openGraphImage,
+    footer: config?.mainFooter,
   }
-
-  console.log('main', content)
 
   if (content === undefined) {
     //TODO: Create error page component.

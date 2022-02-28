@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import bcp47 from 'bcp47';
 
 export default {
@@ -34,8 +35,9 @@ export default {
     {
       title: 'Error Page',
       name: 'errorpage',
-      type: 'errorPage',
       description: 'Configure the error page',
+      type: 'reference',
+      to: { type: 'errorPage' },
     },
     {
       title: 'Site language',
@@ -75,6 +77,14 @@ export default {
       to: { type: 'navigation' },
     },
     {
+      title: 'Main footer',
+      name: 'mainFooter',
+      description: 'Select footer menu',
+      // validation: Rule => Rule.unique().error('You have duplicate menu items'),
+      type: 'reference',
+      to: { type: 'footer' },
+    },
+    {
       title: 'Application Description',
       type: 'text',
       name: "description",
@@ -87,26 +97,6 @@ export default {
       title: 'Open Graph Image',
       description: 'Image for sharing previews on Facebook, Twitter etc.',
       // fieldset: 'metadata',
-    },
-    {
-      title: 'Footer navigation items',
-      name: 'footerNavigation',
-      type: 'array',
-      validation: Rule => [
-        Rule.max(10).warning('Are you sure you want more than 10 items?'),
-        Rule.unique().error('You have duplicate menu items'),
-      ],
-      fieldset: 'footer',
-      of: [
-        {
-          type: 'link',
-        },
-      ],
-    },
-    {
-      name: 'footerText',
-      type: 'string',
-      fieldset: 'footer',
     },
   ]
 };

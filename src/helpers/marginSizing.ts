@@ -8,11 +8,11 @@ const MarginSizing = (margin: any) => {
         marginsize === 'xs' ? 'mt-7' : marginsize === 'xxs' ? 'mt-5' :
         marginsize === 'xxl' ? 'mt-20' : 'mt-2.5'}`
 
-        const _sizeSide = `${marginsize === 'md' ? 'mx-12' :
-    marginsize === 'lg' ? 'mx-14' : marginsize === 'xl' ? 'mx-16'
-        : marginsize === 'sm' ? 'mx-10' : 
-        marginsize === 'xs' ? 'mx-7' : marginsize === 'xxs' ? 'mx-5' :
-        marginsize === 'xxl' ? 'mx-20' : 'mx-2.5'}`
+        const _sizeSide = `${marginsize === 'md' ? 'px-12' :
+    marginsize === 'lg' ? 'px-14' : marginsize === 'xl' ? 'px-16'
+        : marginsize === 'sm' ? 'px-10' : 
+        marginsize === 'xs' ? 'px-7' : marginsize === 'xxs' ? 'px-5' :
+        marginsize === 'xxl' ? 'px-20' : 'px-2.5'}`
 
         const _sizeTopSide = `${marginsize === 'md' ? 'mt-12 mx-12' :
     marginsize === 'lg' ? 'mt-14 mx-14' : marginsize === 'xl' ? 'mt-16 mx-16'
