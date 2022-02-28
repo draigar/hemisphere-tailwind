@@ -1,7 +1,7 @@
-import React from "react";
-import CustomText from "../text/customText";
-import urlFor from "../../helpers/imageUrlGenerator";
 import CustomButton from "../button/mainButton";
+import CustomText from "../text/customText";
+import React from "react";
+import urlFor from "../../helpers/imageUrlGenerator";
 import { utilities } from "@web/helpers/utilities";
 
 function Contact2({ content }: any) {
@@ -17,6 +17,7 @@ function Contact2({ content }: any) {
   content?.inputElement?.submitResponse?.text && 
   content?.inputElement?.submitResponse?.text[0]?.children[0]?.text;
   const buttonType = content?.buttonType;
+  const hasMargin = content?.margin?.hasMargin
 
   const inputElements = content?.inputElement?.inputElements;
   const inputElementColor = content?.inputElement?.inputLabelColor?.hex;
@@ -39,7 +40,7 @@ function Contact2({ content }: any) {
   };
 
   return (
-    <div className="relative mb-10">
+    <div className={`${hasMargin && 'lg:px-[10em]'} relative mb-10`}>
       <div style={bgStyle} className="h-64"></div>
       <div className="-mt-36 lg:w-3/5 w-4/5 flex-col md:flex-row mx-auto mb-8 bg-white p-10 shadow-lg flex justify-between">
         <div className="flex flex-col flex-2 justify-evenly w-full md:w-3/4 p-0 mb-4 lg:mb-0 md:pr-24">

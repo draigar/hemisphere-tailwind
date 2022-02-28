@@ -1,6 +1,6 @@
-import React from "react";
 import CustomButton from "../button/mainButton";
 import CustomText from "../text/customText";
+import React from "react";
 import bgColorCombo from "@web/helpers/backgroundColorFn";
 import { utilities } from "@web/helpers/utilities";
 
@@ -13,6 +13,7 @@ function Contact1({ content }: any) {
   content?.inputElement?.submitResponse?.text && 
   content?.inputElement?.submitResponse?.text[0]?.children[0]?.text;
   const buttonType = content?.buttonType;
+  const hasMargin = content?.margin?.hasMargin
 
   const inputElements = content?.inputElement?.inputElements;
   const inputElementColor = content?.inputElement?.inputLabelColor?.hex;
@@ -41,7 +42,7 @@ function Contact1({ content }: any) {
   const animationOffset = content?.animation?.animationOffset
 
   return (
-    <div className="relative min-h-full">
+    <div className={`${hasMargin && 'lg:px-[10em]'} relative min-h-full`}>
       <div
         style={bgStyle}
         className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} px-4 py-4 lg:px-32 lg:py-10 w-full flex flex-col items-center justify-around sm:flex-col  md:flex-col lg:flex-row`}

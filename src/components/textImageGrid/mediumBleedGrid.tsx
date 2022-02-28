@@ -16,7 +16,7 @@ const MediumBleedGrid = (props: props) => {
   const headingLengthSize = heading?.lengthSize?.size
   const bodyTextLengthSize = bodyText?.lengthSize?.size
   const imagePositon = content?.imagePositon
-  const marginSize = content?.margin
+  const hasMargin = content?.margin.hasMargin
   const isCTAEnabled = content?.isCTAEnabled
   const buttonType = content?.buttonType
 
@@ -31,7 +31,7 @@ const MediumBleedGrid = (props: props) => {
       <figure className={`flex row w-full mx-2 lg:mx-36 ${isAnimationEnabled && 'wow animate__animated'} ${animationName} p-0 lg:p-8 md:p-0`}
         data-wow-duration={`${animationDuration}s`}
         data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
-        <div className="grid grid-cols-12">
+        <div className={`grid grid-cols-12`}>
           <div className={`col-span-12 lg:col-span-6 lg:pt-16 md:p-8 lg:px-16 md:text-left space-y-4 flex flex-col ${imagePositon === "left" ? 'order-last' : ''}`}>
             <div className="w-11/12 mx-auto">
               <div className={` mt-16 ${headingLengthSize === 'md' ? 'w-2/6' :

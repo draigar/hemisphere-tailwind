@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Button from '../button/mainButton';
 import CustomText from "../text/customText";
 import Image from "next/image";
@@ -16,7 +17,7 @@ const FullBleedGrid = (props: FullBleedGridProps) => {
     const headingLengthSize = heading?.lengthSize?.size
     const bodyTextLengthSize = bodyText?.lengthSize?.size
     const imagePositon = content?.imagePositon
-    const marginSize = content?.margin
+    const hasMargin = content?.margin.hasMargin
     const isCTAEnabled = content?.isCTAEnabled
     const buttonType = content?.buttonType
 
@@ -26,12 +27,16 @@ const FullBleedGrid = (props: FullBleedGridProps) => {
     const animationName = content?.animation?.animationName
     const animationOffset = content?.animation?.animationOffset
 
+    console.log('================== Full bleed ==================');
+    console.log(content);
+    console.log('====================================');
+
     return (
         <div className={`flex flex-wrap justify-between w-full`}>
             <figure className={`flex row w-full ${isAnimationEnabled && 'wow animate__animated'} ${animationName}`}
                 data-wow-duration={`${animationDuration}s`}
                 data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
-                <div className="grid grid-cols-12">
+                <div className={`grid grid-cols-12 ${hasMargin && 'px-[10em]'}`}>
                     <div className={`col-span-12 lg:col-span-7 lg:pt-16 md:p-8 md:text-left space-y-4 ${imagePositon === "left" ? 'order-last' : ''}`}>
                         <div className="w-11/12 mx-auto flex flex-col justify-center h-full">
                             <div className={` mt-16 ${headingLengthSize === 'md' ? 'w-2/6' :
@@ -52,7 +57,8 @@ const FullBleedGrid = (props: FullBleedGridProps) => {
                         </div>
                     </div>
                     <div className="bg-teal-600 col-span-12 lg:col-span-5">
-                        <img src={utilities.ImageFn(bgImage)} alt="Picture of the author" style={{ width: '100%', height: '843px' }} />
+                        <img src={utilities.ImageFn(bgImage)} alt="Picture of the author" 
+                        className={`w-full ${hasMargin ? '' : 'lg:h-[58em]' }`} />
                     </div>
                 </div>
 

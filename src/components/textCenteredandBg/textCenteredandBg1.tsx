@@ -16,6 +16,7 @@ function TextCenteredandBg1(props: props) {
   const backgroundType = content?.background?.type;
   const imageAsset = bgImage && utilities.ImageFn(bgImage)
   const marginSize = content?.margin
+  const hasMargin = content?.margin?.hasMargin
 
   const bodyText = content?.bodyText;
   const heading = content?.heading;
@@ -77,7 +78,7 @@ function TextCenteredandBg1(props: props) {
   }
 
   return (
-    <div className={`py-4 lg:px-[15em] h-500px lg:h-600px`}>
+    <div className={`py-4 ${hasMargin && 'lg:px-[10em]'} h-500px lg:h-600px`}>
       <div style={bgStyle} className={`relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName} ${utilities.ColorCombo(bgColor)} h-full`}
         data-wow-duration={`${animationDuration}s`}
         data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
