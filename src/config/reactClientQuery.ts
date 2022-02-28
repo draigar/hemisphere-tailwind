@@ -1,4 +1,3 @@
-import {AppState, AppStateStatus} from 'react-native';
 import {QueryClient, focusManager, onlineManager, setLogger} from 'react-query';
 
 const rootClientQuery = new QueryClient({
