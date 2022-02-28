@@ -69,7 +69,6 @@ export default function Home(data: any) {
             {el._type === "statistics" && <Statistics content={el} />}
             {el._type === "imageBgandTextCardOverflow" && <TextCardAndOverflow content={el} />}
             {el._type === "carousel" && <Carousel content={el} />}
-            {/* {el._type === "carousel" && <Carousel content={el} />} */}
           </div>
         ))}
               <Gallery1 />
