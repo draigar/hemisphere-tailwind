@@ -78,7 +78,7 @@ const Carousel4 = ({ content }: any) => {
             },
           }}
         >
-          {carouselElements && carouselElements.map((d, i) => (
+          {carouselElements && carouselElements.map((d: any, i: number) => (
             <SwiperSlide key={i} className="flex flex-col pb-4">
               <div className="relative">
                 <Image

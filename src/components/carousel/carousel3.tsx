@@ -5,10 +5,15 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { AnyStyledComponent } from "styled-components";
 import CustomText from "../text/customText";
 import Image from "next/image";
 import Link from "next/link";
 import { utilities } from "@web/helpers/utilities";
+
+interface props {
+    content: AnyStyledComponent;
+}
 
 const Carousel3 = (props: props) => {
     const { content } = props;

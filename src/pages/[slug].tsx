@@ -2,9 +2,11 @@ import { siteConfig, slugQuery } from "../lib/sanity/queries";
 
 import Article from "@web/components/article";
 import Article2 from "@web/components/article/article2";
+import Carousel from "@web/components/carousel";
 import CarouselComp from "@web/components/carousel";
 import Contact from "@web/components/contact";
 import DefaultLayout from "../layouts/default";
+import Error from "@web/components/error/error";
 import Head from "next/head";
 import ImageVideoBgComponent from "../components/heros/imageVideoBgComponent";
 import Newletter1 from "../components/newletters/newletter1";
@@ -12,16 +14,14 @@ import Newsletter2 from "@web/components/newletters/newletter2";
 import Newsletter3 from "@web/components/newletters/newletter3";
 import Partners from "../components/partners/partners";
 import { SiteMetaConfigType } from "../types";
+import Statistics from "@web/components/stats";
 import TextCenteredandBg1 from "@web/components/textCenteredandBg/textCenteredandBg1";
+import Textcardoverflow from "@web/components/textcardoverflow/textcardoverflow";
+import Textcardoverflow2 from "@web/components/textcardoverflow/textcardoverflow2";
 import dynamic from "next/dynamic";
 import { getClient } from "../lib/sanity";
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
-import Textcardoverflow from "@web/components/textcardoverflow/textcardoverflow";
-import Error from "@web/components/error/error";
-import Textcardoverflow2 from "@web/components/textcardoverflow/textcardoverflow2";
-import Statistics from "@web/components/stats";
-import Carousel from "@web/components/carousel";
 
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
@@ -31,6 +31,10 @@ export default function Slug({ data, preview, config }: any) {
     slug: config?.slug,
     description: config?.description,
     openGraphImage: config?.openGraphImage,
+    footer: {
+      _ref: '',
+      _type: ''
+    }
   };
 
   if (!router.isFallback && !data?.pages?.slug) {
