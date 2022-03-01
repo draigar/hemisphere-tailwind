@@ -54,7 +54,13 @@ export default {
             name: 'animation',
             type: 'animations',
             hidden: ({ parent }) => !(parent?.isAnimationEnabled),
-        }
+        },
+        {
+            name: 'margin',
+            title: 'Select Margin',
+            type: 'margin',
+            description: 'Select Button Type and Fix the properties',
+        },
     ],
     preview: {
         select: {
