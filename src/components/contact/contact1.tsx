@@ -1,6 +1,6 @@
-import React from "react";
 import CustomButton from "../button/mainButton";
 import CustomText from "../text/customText";
+import React from "react";
 import bgColorCombo from "@web/helpers/backgroundColorFn";
 import { utilities } from "@web/helpers/utilities";
 
@@ -13,6 +13,7 @@ function Contact1({ content }: any) {
   content?.inputElement?.submitResponse?.text && 
   content?.inputElement?.submitResponse?.text[0]?.children[0]?.text;
   const buttonType = content?.buttonType;
+  const hasMargin = content?.margin?.hasMargin
 
   const inputElements = content?.inputElement?.inputElements;
   const inputElementColor = content?.inputElement?.inputLabelColor?.hex;
@@ -41,7 +42,7 @@ function Contact1({ content }: any) {
   const animationOffset = content?.animation?.animationOffset
 
   return (
-    <div className="relative min-h-full">
+    <div className={`${hasMargin && 'lg:px-[10em]'} relative min-h-full`}>
       <div
         style={bgStyle}
         className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} px-4 py-4 lg:px-32 lg:py-10 w-full flex flex-col items-center justify-around sm:flex-col  md:flex-col lg:flex-row`}
@@ -55,7 +56,7 @@ function Contact1({ content }: any) {
             <CustomText content={caption} />
           </div>
 
-          <form className="md:w-65">
+          <form className="md:w-full">
             {textInputElement &&
               textInputElement.map((val: any) => {
                 return (
@@ -94,7 +95,7 @@ function Contact1({ content }: any) {
                     <div className="mb-2"></div>
                     <textarea
                       placeholder={val?.inputplaceholder}
-                      className="border-solid border-2 rounded-sm w-full p-2 h-56 bg-transparent focus:outline-none focus:ring-1 focus:ring-primary-300"
+                      className="border-solid border-2 rounded-sm w-full p-2 h-56 bg-transparent placeholder-white text-white focus:outline-none focus:ring-1 focus:ring-primary-300"
                     />
                   </div>
                 );
@@ -104,12 +105,7 @@ function Contact1({ content }: any) {
         </div>
 
         <div className="w-full py-8 lg:py-0 lg:w-fit justify-self-end sm:self-start md:self-center">
-          <div className="text-white font-semibold mb-10">
-            <h3>Location</h3>
-          </div>
-          <div className="text-white">
-            <CustomText content={address} />
-          </div>
+          <CustomText content={address} />
         </div>
       </div>
     </div>
