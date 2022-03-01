@@ -29,13 +29,14 @@ const Carousel2 = (props: props) => {
     const animationDuration = content?.animation?.animationDuration
     const animationName = content?.animation?.animationName
     const animationOffset = content?.animation?.animationOffset
+    const hasMargin = content?.margin?.hasMargin
 
     console.log(`============Carousel2===============`)
     console.log(content)
     console.log(`============Carousel2=====================`)
 
     return (
-        <div className="px-5 md:px-14 relative bg-cover ">
+        <div className={`${hasMargin && 'lg:px-[10em]'} px-5 md:px-14 relative bg-cover `}>
             <div className="hidden absolute left-0 -top-14 lg:top-0 h-full w-full flex-row justify-between lg:items-center px-8">
                 <div className="next-browse-btn btn-carousel-para carousel2n">
                     <ArrowLeft size={30} />

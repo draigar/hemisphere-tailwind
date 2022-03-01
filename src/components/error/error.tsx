@@ -1,9 +1,9 @@
-import React from "react";
 import CustomButton from "../button/mainButton";
 import CustomText from "../text/customText";
-import urlFor from "../../helpers/imageUrlGenerator";
 import ErrorLayout from "@web/layouts/error";
+import React from "react";
 import { SiteMetaConfigType } from "@web/types";
+import urlFor from "../../helpers/imageUrlGenerator";
 import { useRouter } from "next/router";
 
 interface ErrorProps {
@@ -38,7 +38,11 @@ function Error(props: ErrorProps) {
     title: siteMetaData.title,
     openGraphImage: siteMetaData.openGraphImage,
     description: siteMetaData.description,
-    slug: 'Error assessing this page'
+    slug: 'Error assessing this page',
+    footer: {
+      _ref: '',
+      _type: ''
+    }
   }
 
   return (
