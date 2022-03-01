@@ -27,10 +27,6 @@ const Footer = (props: FooterProps) => {
         }
     }, [footer._ref])
 
-    console.log('====================================');
-    console.log(!fetchRefByData.isLoading && footerItems);
-    console.log('====================================');
-
     const TopFootSection = () => (
         <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
             <div className="mr-12 hidden lg:block">
@@ -106,7 +102,7 @@ const Footer = (props: FooterProps) => {
         <div>
             {fetchRefByData?.data?.topFooterSection && (<TopFootSection />)}
             <div className="mx-6 py-10 text-center md:text-left">
-                <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className={`grid grid-1 md:grid-cols-2 ${fetchRefByData?.data?.footerType === '4rows' ? 'lg:grid-cols-4' : 'lg:grid-cols-3' } gap-8`}>
                     <div className="">
                         <CustomText content={fetchRefByData?.data?.row1} />
                     </div>
@@ -127,7 +123,6 @@ const Footer = (props: FooterProps) => {
 
     return (
         <footer className=" text-center lg:text-left bg-gray-100 text-gray-600 px-8 py-8">
-            {console.log(fetchRefByData?.data)}
             {fetchRefByData.isSuccess && (
                 <FooterSection />
             )}

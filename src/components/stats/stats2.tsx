@@ -1,7 +1,7 @@
-import React from "react";
-import urlFor from "../../helpers/imageUrlGenerator";
-import bgColorCombo from "../../helpers/backgroundColorFn";
 import CustomText from "../text/customText";
+import React from "react";
+import bgColorCombo from "../../helpers/backgroundColorFn";
+import urlFor from "../../helpers/imageUrlGenerator";
 
 const Stats2 = ({ content }: any) => {
   const caption = content?.caption;
@@ -9,11 +9,10 @@ const Stats2 = ({ content }: any) => {
   const bgColor = content?.background?.backgroundColor.hex;
   const statItemColor = content?.statItemColor?.hex;
 
-  console.log('====================================');
-  console.log(content);
-  console.log('====================================');
+  const hasMargin = content?.margin?.hasMargin
 
   return (
+    <div className={`${hasMargin && 'lg:px-[10em]'}`}>
     <div 
       style={{ backgroundColor: `${bgColor}` }}
       className={` px-4 lg:px-8 py-10 lg:py-20 relative`}>
@@ -44,6 +43,7 @@ const Stats2 = ({ content }: any) => {
           })}
         </div>
       </div>
+    </div>
     </div>
   );
 };
