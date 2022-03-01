@@ -45,19 +45,19 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
     >
       <div
         className={`mb-8 ${headingLengthSize === "md"
-            ? "w-2/6"
+            ? "lg:w-2/6"
             : headingLengthSize === "lg"
-              ? "w-2/5"
+              ? "lg:w-2/5"
               : headingLengthSize === "xl"
-                ? "w-4/6"
+                ? "lg:w-4/6"
                 : headingLengthSize === "xs"
-                  ? "w-1/5"
+                  ? "lg:w-1/5"
                   : headingLengthSize === "sm"
-                    ? "w-1/4"
+                    ? "lg:w-1/4"
                     : headingLengthSize === "xxl"
-                      ? "w-4/5"
+                      ? "lg:w-4/5"
                       : headingLengthSize === "xxs"
-                        ? "w-1/12"
+                        ? "lg:w-1/12"
                         : "10%"
           } `}
       >
@@ -65,19 +65,19 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
       </div>
       <div
         className={`${taglineLengthSize === "md"
-            ? "w-2/6"
+            ? "lg:w-2/6"
             : taglineLengthSize === "lg"
-              ? "w-2/5"
+              ? "lg:w-2/5"
               : taglineLengthSize === "xl"
-                ? "w-4/6"
+                ? "lg:w-4/6"
                 : taglineLengthSize === "xs"
-                  ? "w-1/5"
+                  ? "lg:w-1/5"
                   : taglineLengthSize === "sm"
-                    ? "w-1/4"
+                    ? "lg:w-1/4"
                     : taglineLengthSize === "xxl"
-                      ? "w-4/5"
+                      ? "lg:w-4/5"
                       : taglineLengthSize === "xxs"
-                        ? "w-1/12"
+                        ? "lg:w-1/12"
                         : "10%"
           } `}
       >
@@ -116,7 +116,7 @@ const ImageVideoBgComponent = (props: ImageVideoBgComponentProps) => {
   };
 
   return (
-    <div className="bg-teal-600 h-500px lg:h-screen-90 relative">
+    <div className="h-500px lg:h-screen-90 relative">
       {backgroundType === "image" ? (
         <RenderImage />
       ) : backgroundType === "video" ? (
