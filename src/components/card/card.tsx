@@ -1,3 +1,4 @@
+import Button from '../button/mainButton';
 /* eslint-disable @next/next/no-img-element */
 import CustomButton from "../button/mainButton";
 import CustomText from "../text/customText";
@@ -5,7 +6,6 @@ import Image from "next/image";
 import Quote from '../../assets/svg/quote';
 import React from "react";
 import { utilities } from '../../helpers/utilities';
-import Button from '../button/mainButton';
 
 function Card1({ content }: any) {
   const heading = content?.heading?.text;
@@ -21,8 +21,6 @@ function Card1({ content }: any) {
   const animationDuration = content?.animation?.animationDuration
   const animationName = content?.animation?.animationName
   const animationOffset = content?.animation?.animationOffset
-
-  console.log(content)
 
   const bgStyle = (background: string) => {
 
