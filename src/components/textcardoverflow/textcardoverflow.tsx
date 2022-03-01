@@ -23,6 +23,8 @@ function TextCardOverflow(props: props) {
   const animationName = content?.animation?.animationName
   const animationOffset = content?.animation?.animationOffset
 
+  const hasMargin = content?.margin?.hasMargin
+
   const bgStyle = {
     backgroundImage: `url(${imageAsset})`,
     backgroundSize: "cover",
@@ -32,7 +34,7 @@ function TextCardOverflow(props: props) {
   };
 
   return (
-    <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} relative mb-10 `} data-wow-duration={`${animationDuration}s`}
+    <div className={`${hasMargin && 'lg:px-[10em]'} ${isAnimationEnabled && 'wow animate__animated'} ${animationName} relative mb-10 `} data-wow-duration={`${animationDuration}s`}
     data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
       <div style={bgStyle} className="h-64"></div>
       <div className=" -mt-60 md:ml-32 mx-9  w-4/5 lg:w-1/4 md:p-10 p-4 shadow-lg bg-white">
