@@ -22,6 +22,11 @@ export default {
             type: 'string',
         },
         {
+            title: 'Input Label color',
+            name: 'inputLabelColor',
+            type: 'color',
+        },
+        {
             title: 'Input Placeholder',
             name: 'inputplaceholder',
             type: 'string',
