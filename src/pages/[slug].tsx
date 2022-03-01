@@ -1,27 +1,36 @@
 import { siteConfig, slugQuery } from "../lib/sanity/queries";
 
 import Article from "@web/components/article";
-import Article2 from "@web/components/article/article2";
-import CarouselComp from "@web/components/carousel";
+import Carousel from '@web/components/carousel/'
 import Contact from "@web/components/contact";
-import DefaultLayout from "../layouts/default";
+import DefaultLayout from '../layouts/default'
+import Error from "@web/components/error/error";
 import Head from "next/head";
-import ImageVideoBgComponent from "../components/heros/imageVideoBgComponent";
-import Newletter1 from "../components/newletters/newletter1";
-import Newsletter2 from "@web/components/newletters/newletter2";
-import Newsletter3 from "@web/components/newletters/newletter3";
-import Partners from "../components/partners/partners";
-import { SiteMetaConfigType } from "../types";
-import TextCenteredandBg1 from "@web/components/textCenteredandBg/textCenteredandBg1";
-import dynamic from "next/dynamic";
-import { getClient } from "../lib/sanity";
+import ImageVideoBgComponent from '../components/heros/imageVideoBgComponent'
+import Newsletter from '../components/newletters'
+import Partners from '../components/partners/partners'
+import { SiteMetaConfigType } from '../types'
+import Statistics from '@web/components/stats'
+import TextCardAndOverflow from '@web/components/textcardoverflow'
+import Whitespace from '@web/components/whitespace'
+import dynamic from 'next/dynamic'
+import { getClient } from '../lib/sanity'
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
-import Textcardoverflow from "@web/components/textcardoverflow/textcardoverflow";
-import Error from "@web/components/error/error";
-import Textcardoverflow2 from "@web/components/textcardoverflow/textcardoverflow2";
-import Statistics from "@web/components/stats";
-import Carousel from "@web/components/carousel";
+
+const TextImageGrid = dynamic(
+  () => import('../components/textImageGrid'),
+  { ssr: false }
+)
+const TextCenteredAndBg = dynamic(
+  () => import('@web/components/textCenteredandBg/textCenteredandBg1'),
+  { ssr: true }
+)
+const Card = dynamic(
+  () => import('../components/card/card'),
+  { ssr: false }
+)
+
 
 // Start editing here, save and see your changes.
 export default function Slug({ data, preview, config }: any) {
@@ -31,6 +40,10 @@ export default function Slug({ data, preview, config }: any) {
     slug: config?.slug,
     description: config?.description,
     openGraphImage: config?.openGraphImage,
+    footer: {
+      _ref: '',
+      _type: ''
+    }
   };
 
   if (!router.isFallback && !data?.pages?.slug) {
@@ -41,12 +54,6 @@ export default function Slug({ data, preview, config }: any) {
     return <Error content={config.errorpage} siteMetaData={siteMetaData} />;
   }
 
-  const Card = dynamic(() => import("../components/card/card"), { ssr: false });
-
-  const TextImageGrid = dynamic(
-    () => import('../components/textImageGrid'),
-    { ssr: false }
-  )
 
   const content = data?.pages?.content;
   // console.log("main", data);
@@ -56,25 +63,18 @@ export default function Slug({ data, preview, config }: any) {
         {content &&
           content.map((el: any, i: number) => (
             <div key={i}>
+              {el._type === "imageVideoBgHeroComponent" && <ImageVideoBgComponent content={el} />}
+              {el._type === "imageAndTextGrid" && <TextImageGrid content={el} />}
+              {el._type === "partners" && <Partners content={el} />}
               {el._type === "cardsAndCaptions" && <Card content={el} />}
+              {el._type === "newsletter" && <Newsletter content={el} />}
+              {el._type === "textCenteredAndImageBg" && <TextCenteredAndBg content={el} />}
               {el._type === "contact" && <Contact content={el} />}
               {el._type === "article" && <Article content={el} />}
-              {el.type === "newsletter1" && <Newletter1 content={el} />}
-              {el.type === "newsletter2" && <Newsletter2 content={el} />}
-              {el.type === "newsletter3" && <Newsletter3 content={el} />}
+              {el._type === "breakPoint" && <Whitespace content={el} />}
               {el._type === "statistics" && <Statistics content={el} />}
-              {el.type === "imgLeftTextRight" && <TextImageGrid content={el} />}
-              {el.type === "cta1" && <Textcardoverflow content={el} />}
-              {el.type === "section2" && <Textcardoverflow2 content={el} />}
-              {el._type === "textCenteredAndImageBg" && (
-                <TextCenteredandBg1 content={el} />
-              )}
-              {el._type === "partners" && <Partners content={el} />}
-              {el._type === "imageVideoBgHeroComponent" && (
-                <ImageVideoBgComponent content={el} />
-              )}
+              {el._type === "imageBgandTextCardOverflow" && <TextCardAndOverflow content={el} />}
               {el._type === "carousel" && <Carousel content={el} />}
-        
             </div>
           ))}
       </main>

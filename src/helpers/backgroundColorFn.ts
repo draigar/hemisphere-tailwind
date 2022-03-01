@@ -1,5 +1,4 @@
 const bgColorCombo = (backgroundColor: any) => {
-	console.log('here');
 	
 	const colorClass = backgroundColor?.colorClass;
 	const brand = backgroundColor?.brand;

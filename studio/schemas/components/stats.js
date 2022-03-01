@@ -43,8 +43,13 @@ export default {
             name: 'statItemColor',
             title: 'Add Statistics Items Color',
             type: 'color',
-        } 
-    
+        },
+        {
+            name: 'margin',
+            title: 'Select Margin',
+            type: 'margin',
+            description: 'Select Button Type and Fix the properties',
+        },
     ],
     preview: {
         select: {

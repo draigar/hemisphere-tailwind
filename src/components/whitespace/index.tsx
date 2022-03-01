@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
 
 interface WhitespaceProps {
     content?: any;

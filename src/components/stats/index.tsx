@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import Stats1 from './stats1';
 import Stats2 from './stats2';
 
@@ -9,7 +10,6 @@ interface StatisticsProps {
 const Statistics = (props: StatisticsProps) => {
     const { content } = props;
     const type = content?.type
-    console.log('statistics', content)
     return (
         <>
         {type === 'stats1' && <Stats1 content={content} />}

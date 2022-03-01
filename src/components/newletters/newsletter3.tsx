@@ -1,47 +1,45 @@
-import React from "react";
-import urlFor from "../../helpers/imageUrlGenerator";
 import CustomButton from "../button/mainButton";
 import CustomText from "../text/customText";
+import Image from "next/image";
+import React from "react";
 import bgColorCombo from "../../helpers/backgroundColorFn";
-import { utilities } from "../../helpers/utilities";
+import urlFor from "../../helpers/imageUrlGenerator";
+import { utilities } from "@web/helpers/utilities";
 
-function Newsletter2({ content }: any) {
-  console.log(content);
+function Newsletter3({ content }: any) {
 
   const bgImage = content?.background?.backgroundImage?.asset?._ref;
-  const colorBg = content?.background?.backgroundColor?.hex;
-  const backgroundVideo =
-    content?.background?.backgroundVideo?.videoFile?.asset?._ref;
-  const backgroundType = content?.background?.type;
   const headLine = content?.headLine?.text;
   const tagline = content?.tagline?.text;
   const buttonPosition = content?.buttonPosition;
   const btnDetails = content?.buttonType;
-  const imageAsset = bgImage && urlFor(bgImage)?.url();
+  const imageAsset = utilities.ImageFn(bgImage);
   const inputElement = content?.inputElement?.inputElements;
   const inputElementColor = content?.inputElement?.inputLabelColor?.hex;
   const submissionResponse = content?.inputElement?.submitResponse;
 
-
-  // const bgColor = utilities.ColorCombo(colorBg);
-
-  const bgStyle = {
-    backgroundColor: backgroundType === "color" ? `${colorBg}` : undefined,
-  };
-
   return (
     <div
-      style={bgStyle}
-      className={`md:flex md:justify-between md:py-9 md:px-28 lg:px-36 p-4`}
+      className={`md:flex md:justify-between md:py-9 md:px-28 lg:px-36 p-4 `}
     >
-      <div className="md:w-48 ">
+      <div className="md:w-48">
+        <div className="relative">
+          <Image
+            src={imageAsset}
+            alt=""
+            width="100%"
+            height="100%"
+            layout="responsive"
+          />
+        </div>
+      </div>
+      <div className="mt-8 lg:mt-0 md:w-48 self-center">
         <CustomText content={headLine} />
         <div className="mb-2"></div>
         <CustomText content={tagline} />
-      </div>
-      <div className="md:w-48">
-        <form className="mt-6 md:mt-0">
-        {inputElement &&
+        <div className="my-8"></div>
+        <form className="mt-6 m md:mt-0">
+          {inputElement &&
             inputElement.map((val: any, i: number) => {
               return (
                 <div key={i} className="mb-4">
@@ -54,26 +52,20 @@ function Newsletter2({ content }: any) {
                   <input
                     placeholder={val?.inputplaceholder}
                     type={val.type}
-                    className="w-full mt-2 p-2 h-14 rounded-sm"
+                    className="w-full mt-2 p-2 h-14 bg-gray-200"
                   />
                 </div>
               );
             })}
           <div
-              className={`w-full flex ${
-                buttonPosition === "right"
-                  ? "justify-end"
-                  : buttonPosition === "left"
-                  ? "justify-start"
-                  : "justify-center"
-              }`}
-            >
-              <CustomButton content={btnDetails} />
-            </div>
+            
+          >
+            <CustomButton content={btnDetails} />
+          </div>
         </form>
       </div>
     </div>
   );
 }
 
-export default Newsletter2;
+export default Newsletter3;
