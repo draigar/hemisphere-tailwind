@@ -20,7 +20,7 @@ export default {
         {
             name: 'heading',
             title: 'Enter Heading Text',
-            type: 'customText',
+            type: 'string',
             description: 'Enter the Heading Text Content for this Component',
         }, 
         {
@@ -32,7 +32,7 @@ export default {
         {
             name: 'subHeading',
             title: 'Enter Sub Heading Text',
-            type: 'customText',
+            type: 'string',
             description: 'Enter the Sub Heading Text Content for this Component',
         },
         {
@@ -42,16 +42,10 @@ export default {
             description: 'Enter the Article Body Content for this Component',
         },
         {
-            name: 'image',
-            type: 'imageObject',
-            title: 'Select Image',
-            description: 'Select the Image for this Component '
-        },
-        {
-            name: 'author',
-            title: 'Enter Article Author',
-            type: 'customText',
-            description: 'Enter the quote author',
+            name: 'articleBorderColor',
+            title: 'Choose article block box color',
+            type: 'color',
+            // description: 'Enter the quote author',
         },
         
       
