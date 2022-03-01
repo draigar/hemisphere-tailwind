@@ -27,16 +27,12 @@ const FullBleedGrid = (props: FullBleedGridProps) => {
     const animationName = content?.animation?.animationName
     const animationOffset = content?.animation?.animationOffset
 
-    console.log('================== Full bleed ==================');
-    console.log(content);
-    console.log('====================================');
-
     return (
         <div className={`flex flex-wrap justify-between w-full`}>
             <figure className={`flex row w-full ${isAnimationEnabled && 'wow animate__animated'} ${animationName}`}
                 data-wow-duration={`${animationDuration}s`}
                 data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
-                <div className={`grid grid-cols-12 ${hasMargin && 'px-[10em]'}`}>
+                <div className={`grid grid-cols-12 ${hasMargin && 'lg:px-[10em]'}`}>
                     <div className={`col-span-12 lg:col-span-7 lg:pt-16 md:p-8 md:text-left space-y-4 ${imagePositon === "left" ? 'order-last' : ''}`}>
                         <div className="w-11/12 mx-auto flex flex-col justify-center h-full">
                             <div className={` mt-16 ${headingLengthSize === 'md' ? 'w-2/6' :

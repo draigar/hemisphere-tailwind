@@ -11,10 +11,6 @@ const Stats2 = ({ content }: any) => {
 
   const hasMargin = content?.margin?.hasMargin
 
-  console.log('====================================');
-  console.log(content);
-  console.log('====================================');
-
   return (
     <div className={`${hasMargin && 'lg:px-[10em]'}`}>
     <div 

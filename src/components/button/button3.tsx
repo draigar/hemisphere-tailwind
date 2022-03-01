@@ -35,9 +35,6 @@ function Button3({ content }: BtnProps) {
     }
     const url = await utilities.getRef(obj)
     if (url?.slug.current !== undefined) {
-      console.log('====================================');
-      console.log(url);
-      console.log('====================================');
       setLinkUrl(url?.slug.current)
     }
   }, [internalLink])

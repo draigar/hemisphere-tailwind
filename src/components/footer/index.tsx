@@ -27,10 +27,6 @@ const Footer = (props: FooterProps) => {
         }
     }, [footer._ref])
 
-    console.log('====================================');
-    console.log(!fetchRefByData.isLoading && footerItems);
-    console.log('====================================');
-
     const TopFootSection = () => (
         <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
             <div className="mr-12 hidden lg:block">
@@ -127,7 +123,6 @@ const Footer = (props: FooterProps) => {
 
     return (
         <footer className=" text-center lg:text-left bg-gray-100 text-gray-600 px-8 py-8">
-            {console.log(fetchRefByData?.data)}
             {fetchRefByData.isSuccess && (
                 <FooterSection />
             )}

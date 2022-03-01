@@ -10,9 +10,6 @@ interface props {
 
 const Stats1 = (props: props) => {
   const { content } = props
-  console.log('====================================');
-  console.log(content);
-  console.log('====================================');
   const caption = content?.caption;
   const tagLine = content?.tagLine;
   const bgType = content?.background?.type

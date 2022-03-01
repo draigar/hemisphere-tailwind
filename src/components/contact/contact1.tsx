@@ -56,7 +56,7 @@ function Contact1({ content }: any) {
             <CustomText content={caption} />
           </div>
 
-          <form className="md:w-65">
+          <form className="md:w-full">
             {textInputElement &&
               textInputElement.map((val: any) => {
                 return (
@@ -95,7 +95,7 @@ function Contact1({ content }: any) {
                     <div className="mb-2"></div>
                     <textarea
                       placeholder={val?.inputplaceholder}
-                      className="border-solid border-2 rounded-sm w-full p-2 h-56 bg-transparent focus:outline-none focus:ring-1 focus:ring-primary-300"
+                      className="border-solid border-2 rounded-sm w-full p-2 h-56 bg-transparent placeholder-white text-white focus:outline-none focus:ring-1 focus:ring-primary-300"
                     />
                   </div>
                 );
@@ -105,12 +105,7 @@ function Contact1({ content }: any) {
         </div>
 
         <div className="w-full py-8 lg:py-0 lg:w-fit justify-self-end sm:self-start md:self-center">
-          <div className="text-white font-semibold mb-10">
-            <h3>Location</h3>
-          </div>
-          <div className="text-white">
-            <CustomText content={address} />
-          </div>
+          <CustomText content={address} />
         </div>
       </div>
     </div>

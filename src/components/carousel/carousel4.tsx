@@ -32,9 +32,9 @@ const Carousel4 = ({ content }: any) => {
   console.log('====================================');
 
   return (
-    <div className="my-12 relative px-4 lg:px-12">
+    <div className="my-12 relative px-4 lg:px-28">
       {titleText && <div className="w-full lg:px-24 mb-8">
-        <div className="mb-4">
+        <div className="mb-4 flex justify-center pb-12">
           <CustomText content={titleText} textAlign="center" />
         </div>
       </div>}
