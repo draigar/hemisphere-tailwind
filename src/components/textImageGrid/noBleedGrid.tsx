@@ -52,7 +52,7 @@ const NoBleedGrid = (props: props) => {
             </div>
           </div>
           <div className="bg-teal-600 col-span-12 lg:col-span-6">
-            <img src={utilities.ImageFn(bgImage)} alt="Picture of the author" style={{ width: '100%', height: '100%', minHeight: '553px' }} />
+            <img src={utilities.ImageFn(bgImage)} alt="Picture of the author" className="w-full lg:h-full" />
           </div>
         </div>
       </figure>

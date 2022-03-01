@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 import bgColorCombo from "../../helpers/backgroundColorFn";
 import { fetchRefByDataType } from "@web/types";
-import { useQueries } from "@web/hooks";
 import { useRouter } from "next/router";
 import { utilities } from "@web/helpers/utilities";
 

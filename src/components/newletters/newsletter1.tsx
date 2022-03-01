@@ -26,6 +26,7 @@ function Newletter1(props: props) {
   const inputElement = content?.inputElement?.inputElements;
   const inputElementColor = content?.inputElement?.inputLabelColor?.hex;
   const submissionResponse = content?.inputElement?.submitResponse;
+  const hasMargin = content?.margin?.hasMargin
 
   const isAnimationEnabled = content?.isAnimationEnabled
   const animationDelay = content?.animation?.animationDelay
@@ -101,7 +102,7 @@ function Newletter1(props: props) {
   );
 
   return (
-    <div className="h-600px bg-black-1">
+    <div className={`${hasMargin && 'lg:px-[10em]'} h-600px`}>
       <div
         style={bgStyle}
         className={`relative ${isAnimationEnabled && 'wow animate__animated'} ${animationName} ${utilities.ColorCombo(colorBg)} h-full w-full `}
