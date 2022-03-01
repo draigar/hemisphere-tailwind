@@ -1,10 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Jquery from 'jquery';
+import Link from "next/link";
 import React from "react";
 import bgColorCombo from "../../helpers/backgroundColorFn";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchRefByDataType } from "@web/types";
+import { useRouter } from "next/router";
 import { utilities } from "@web/helpers/utilities";
 
 interface BtnProps {
@@ -52,14 +53,14 @@ function Button4({ content }: BtnProps) {
     <>
       {linkType === "internal" ? (
         <Link href={linkUrl}>
-          <a style={Styles} className="hover-underline-animation inline-block mt-6 cursor-pointer">
+          <a style={Styles} className="hover-underline-animation after:hover:bg-green-500 inline-block mt-6 cursor-pointer">
             <span className="mr-2">{btnText}</span>
             <span>{arrowRight}</span>
           </a>
         </Link>
       ) : (
         <Link href={externalLink} passHref={true}>
-          <a style={Styles} className="hover-underline-animation border-b-4 border-neutral-1 underline hover:no-underline underline-offset-4 decoration-2 inline-block mt-6 cursor-pointer">
+          <a style={Styles} className=" transition ease-out duration-150 scale-100 origin-bottom-left bg-blue-600 underline hover:no-underline underline-offset-4 decoration-2 inline-block mt-6 cursor-pointer">
             <span className="mr-2">{btnText}</span>
             <span>{arrowRight}</span>
           </a>
