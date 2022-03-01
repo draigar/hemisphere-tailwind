@@ -7,14 +7,11 @@ import Contact from "@web/components/contact";
 import DefaultLayout from '../layouts/default'
 import Gallery1 from '@web/components/gallery/gallery'
 import ImageVideoBgComponent from '../components/heros/imageVideoBgComponent'
-import Newletter1 from '../components/newletters/newletter1'
-import Newsletter2 from '@web/components/newletters/newletter2'
-import Newsletter3 from '@web/components/newletters/newletter3'
+import Newsletter from '../components/newletters'
 import Partners from '../components/partners/partners'
 import { SiteMetaConfigType } from '../types'
 import Statistics from '@web/components/stats'
 import TextCardAndOverflow from '@web/components/textcardoverflow'
-import Textcardoverflow2 from "@web/components/textcardoverflow/textcardoverflow2";
 import Whitespace from '@web/components/whitespace'
 import dynamic from 'next/dynamic'
 import { getClient } from '../lib/sanity'
@@ -55,15 +52,13 @@ export default function Home(data: any) {
       <main className="h-full">
         {content.map((el: any, i: number) => (
           <div key={i} className="">
-            {el._type === "imageAndTextGrid" && <TextImageGrid content={el} />}
             {el._type === "imageVideoBgHeroComponent" && <ImageVideoBgComponent content={el} />}
+            {el._type === "imageAndTextGrid" && <TextImageGrid content={el} />}
             {el._type === "partners" && <Partners content={el} />}
             {el._type === "cardsAndCaptions" && <Card content={el} />}
-            {el._type === "newsletter" && <Newletter1 content={el} />}
+            {el._type === "newsletter" && <Newsletter content={el} />}
             {el._type === "textCenteredAndImageBg" && <TextCenteredAndBg content={el} />}
             {el._type === "contact" && <Contact content={el} />}
-            {el.type === "newsletter2" && <Newsletter2 content={el} />}
-            {el.type === "newsletter3" && <Newsletter3 content={el} />}
             {el._type === "article" && <Article content={el} />}
             {el._type === "breakPoint" && <Whitespace content={el} />}
             {el._type === "statistics" && <Statistics content={el} />}
@@ -71,7 +66,7 @@ export default function Home(data: any) {
             {el._type === "carousel" && <Carousel content={el} />}
           </div>
         ))}
-              <Gallery1 />
+              {/* <Gallery1 /> */}
 
       </main>
     </DefaultLayout>
