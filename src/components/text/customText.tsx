@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+import Image from 'next/image';
+import { utilities } from '@web/helpers/utilities';
+
 const BlockContent = require('@sanity/block-content-to-react')
 
 interface TextProps {
@@ -42,7 +45,7 @@ const CustomText = (props: TextProps) => {
             return (
                 <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
                     data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
-                    <h1 className={`${classNames} text-3xl sm:text-5xl md:text-7xl font-bold`} style={{
+                    <h1 className={`${classNames} text-3xl sm:text-5xl lg:text-7xl font-bold`} style={{
                         textAlign: textAlign === 'centeredTop' ? 'center' :
                             textAlign === 'centered' ? 'center' : textAlign === 'rightBottom' ? 'right' : textAlign === 'right' ? 'right' : 'left'
                     }}>
@@ -73,6 +76,20 @@ const CustomText = (props: TextProps) => {
 
     const serializers = {
         types: {
+            imageObject: (props: any) => {
+                const im = props.node.Image.asset._ref
+                return (
+                    <div className="relative mt-4">
+                        <Image
+                            src={utilities.ImageFn(im)}
+                            alt=""
+                            width="100%"
+                            height="100%"
+                            layout="responsive"
+                        />
+                    </div>
+                )
+            },
             code: (props: any) => {
                 return (
                     <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
@@ -87,8 +104,7 @@ const CustomText = (props: TextProps) => {
         },
         marks: {
             color: (props: any) => {
-                return <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
-                    data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}><span style={{ color: props.mark.hex }}>{props.children}</span></div>
+                return <span style={{ color: props.mark.hex }}>{props.children}</span>
             }
         }
     }
@@ -114,7 +130,7 @@ const CustomText = (props: TextProps) => {
     const NormalText = () => (
         <div className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} `} data-wow-duration={`${animationDuration}s`}
             data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
-            <p
+            {/* <p
                 className={`${classNames !== undefined && classNames} ${textTypeCombo(`p`)}`}
                 style={{
                     lineHeight: lineHeight, textAlign: textAlign === 'centeredTop' ? 'center' :
@@ -123,7 +139,7 @@ const CustomText = (props: TextProps) => {
             >
                 {animationName}
                 {MainText}
-            </p>
+            </p> */}
         </div>
     )
 
