@@ -32,10 +32,6 @@ function TextCardOverflow2({ content }: any) {
     opacity: 0.6,
   };
 
-  console.log('=========  Text Card Overflow =========');
-  console.log(content);
-  console.log('==================');
-
   return (
     <div style={bgStyle} className={`${isAnimationEnabled && 'wow animate__animated'} ${animationName} h-700px`} data-wow-duration={`${animationDuration}s`}
       data-wow-delay={`${animationDelay}s`} data-wow-offset={animationOffset}>
@@ -44,7 +40,7 @@ function TextCardOverflow2({ content }: any) {
           <CustomText content={heading} />
         </div>
         <div className="flex flex-col items-end justify-end px-8 py-12 h-full">
-          <div className="w-full md:w-[480px] mr-32 mb-8">
+          <div className="w-full md:w-[480px] lg:mr-32 mb-8">
             <div
               className="w-full p-8 mr-4 mt-9 mb-14"
               style={textBgSTyle}
